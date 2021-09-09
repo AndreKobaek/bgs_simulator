@@ -2,11 +2,14 @@ from warband import Warband
 from copy import deepcopy
 from random import randint
 from minion import Minion
+from typing import List
 
 
 class Board(object):
     top_warband: Warband
+    # top_death_observers: List[Minion]
     bottom_warband: Warband
+    # bottom_death_observers: List[Minion]
     attacker: Warband
     defender: Warband
 
@@ -15,6 +18,12 @@ class Board(object):
         self.bottom_warband = deepcopy(bottom_warband)
         self.top_warband.name = "Top Warband"
         self.bottom_warband.name = "Bottom Warband"
+        self.top_death_observers = self._register_death_observers(
+            self.top_warband.warband
+        )
+        self.bottom_death_observers = self._register_death_observers(
+            self.bottom_warband.warband
+        )
 
     def battle(self):
         self._coin_flip()
@@ -29,18 +38,21 @@ class Board(object):
 
         winner = self._announce_winner()
         if winner is not None:
-            print(f"The winner is: {winner.name}")
-            # , f"\nBoard left:\n{winner}")
+            damage = winner.calculate_damage()
             if winner == self.top_warband:
-                return 2
-            return 0
+                return [2, damage]
+            return [0, damage]
         else:
-            print("Tie")
-            return 1
+            return [1, 0]
 
     def _fight(self, atk_minion: Minion, def_minion: Minion):
         self._combat_sequence(atk_minion, def_minion)
         self._combat_sequence(def_minion, atk_minion)
+        if atk_minion.cleave:
+            adj_minions = self.defender.get_adjacent_minions(def_minion)
+            if len(adj_minions) > 0:
+                for adj_minion in adj_minions:
+                    self._combat_sequence(adj_minion, atk_minion)
         atk_minion.number_of_attacks += 1
 
     def _combat_sequence(self, atk_minion: Minion, def_minion: Minion):
@@ -50,8 +62,20 @@ class Board(object):
         else:
             atk_minion.health -= def_minion.attack
             # check if minion has frenzy and activate if
-            if atk_minion.update_life_status() and atk_minion.frenzy:
+            alive = atk_minion.update_life_status()
+            if alive and atk_minion.frenzy:
                 atk_minion.activate_frenzy()
+            elif not alive:
+                observers = self._get_observer_list(atk_minion)
+                if observers is not None:
+                    for observer in observers:
+                        observer.activate_upon_death(atk_minion, self.defender)
+
+    def _get_observer_list(self, minion):
+        if minion in self.top_warband.warband:
+            return self.top_death_observers
+        else:
+            return self.bottom_death_observers
 
     def _coin_flip(self):
         if len(self.top_warband.warband) == len(self.bottom_warband.warband):
@@ -95,3 +119,6 @@ class Board(object):
         ):
             return True
         return False
+
+    def _register_death_observers(self, warband):
+        return [minion for minion in warband if minion.death_observer]

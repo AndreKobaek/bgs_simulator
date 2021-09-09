@@ -3,8 +3,6 @@ from random import randint
 
 
 class Warband(object):
-    # warband: list(Minion)
-
     def __init__(self) -> None:
         self.warband = []
         self.next_attacker = 0
@@ -33,7 +31,25 @@ class Warband(object):
             return self._get_random_minion()
         return self._get_random_minion(possible_defender)
 
-    def _get_random_minion(self, minions=None):
+    def get_adjacent_minions(self, minion):
+        minion_position = self.warband.index(minion)
+        warband_size = self._get_warband_size()
+
+        if 0 < minion_position and minion_position < warband_size:
+            return [
+                self.warband[minion_position - 1],
+                self.warband[minion_position + 1],
+            ]
+        elif 0 < minion_position and minion_position == warband_size:
+            return [self.warband[minion_position - 1]]
+        elif minion_position == 0 and minion_position < warband_size:
+            return [self.warband[minion_position + 1]]
+        elif minion_position == 0 and minion_position == warband_size:
+            return []
+        else:
+            print("Minion has no adjacent???")
+
+    def _get_random_minion(self, minions=None) -> Minion:
         if minions is None:
             return self.warband[randint(0, len(self.warband) - 1)]
         else:
@@ -44,3 +60,17 @@ class Warband(object):
 
     def update_warband(self):
         self.warband = [x for x in self.warband if x.alive]
+
+    def calculate_damage(self):
+        return sum([x.tier for x in self.warband])
+
+    def _get_warband_size(self):
+        return len(self.warband) - 1
+
+    def sniped(self, damage: int):
+        receiver = self._get_random_minion()
+        if receiver.divine_shield:
+            receiver.divine_shield = False
+        else:
+            receiver.health -= damage
+            receiver.update_life_status()
