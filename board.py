@@ -2,7 +2,6 @@ from warband import Warband
 from copy import deepcopy
 from random import randint
 from minion import Minion
-from typing import List
 
 
 class Board(object):
@@ -27,13 +26,31 @@ class Board(object):
 
     def battle(self):
         self._coin_flip()
-
+        
+        turn = 0
         while self._can_battle():
-            atk_minion = self.attacker.get_next_attacker()
-            for _ in range(atk_minion.windfury):
+            atk_minion: Minion = self.attacker.get_next_attacker()
+            for _ in range(
+                atk_minion.windfury * atk_minion.golden
+                if atk_minion.windfury > 1
+                else 1
+            ):
                 def_minion = self.defender.get_next_defender()
                 self._fight(atk_minion, def_minion)
-                self._update_warbands()
+
+                # print(f"----------- TURN {turn} -------------")
+                # print(f"Attacker: {atk_minion} {self.attacker.warband.index(atk_minion)}")
+                # print(f"Defender: {def_minion} {self.defender.warband.index(def_minion)}")
+                self._update_warbands()                
+                # print("Top:")
+                # print(self.top_warband)
+
+                # print("Bottom:")
+                # print(self.bottom_warband)
+                # print(f"------ END OF TURN {turn} -------------")
+
+
+            turn += 1
             self._handover_initiative()
 
         winner = self._announce_winner()
@@ -48,6 +65,9 @@ class Board(object):
     def _fight(self, atk_minion: Minion, def_minion: Minion):
         self._combat_sequence(atk_minion, def_minion)
         self._combat_sequence(def_minion, atk_minion)
+        self._fight_outcome(atk_minion, def_minion, self.defender, self.attacker)
+        self._fight_outcome(def_minion, atk_minion, self.attacker, self.defender)
+
         if atk_minion.cleave:
             adj_minions = self.defender.get_adjacent_minions(def_minion)
             if len(adj_minions) > 0:
@@ -55,21 +75,31 @@ class Board(object):
                     self._combat_sequence(adj_minion, atk_minion)
         atk_minion.number_of_attacks += 1
 
-    def _combat_sequence(self, atk_minion: Minion, def_minion: Minion):
+    def _combat_sequence(self, dealer_minion: Minion, receiver_minion: Minion):
         # Attacker health updates
-        if atk_minion.divine_shield and def_minion.attack > 0:
-            atk_minion.divine_shield = False
+        if dealer_minion.divine_shield and receiver_minion.attack > 0:
+            dealer_minion.divine_shield = False
         else:
-            atk_minion.health -= def_minion.attack
-            # check if minion has frenzy and activate if
-            alive = atk_minion.update_life_status()
-            if alive and atk_minion.frenzy:
-                atk_minion.activate_frenzy()
-            elif not alive:
-                observers = self._get_observer_list(atk_minion)
-                if observers is not None:
-                    for observer in observers:
-                        observer.activate_upon_death(atk_minion, self.defender)
+            dealer_minion.health -= receiver_minion.attack
+
+    def _fight_outcome(
+        self,
+        dealer_minion: Minion,
+        receiver_minion: Minion,
+        opponent_warband: Warband,
+        own_warband: Warband,
+    ):
+        # check if minion has frenzy and activate if
+        alive = dealer_minion.update_life_status()
+
+        if alive and dealer_minion.frenzy and receiver_minion.attack > 0:
+            dealer_minion.activate_frenzy()
+        elif not alive:
+            observers = self._get_observer_list(dealer_minion)
+            if observers is not None:
+                for observer in observers:
+                    observer.activate_upon_death(dealer_minion, opponent_warband)
+            dealer_minion.activate_death_rattle(**{"warband": own_warband})
 
     def _get_observer_list(self, minion):
         if minion in self.top_warband.warband:

@@ -11,44 +11,80 @@ class Minion(object):
     # should either be 1 or 2
     windfury: int = 1
     cleave = bool
+    poisonous = bool
     reborn: bool
     number_of_attacks: int
     divine_shield: bool
     death_observer: bool
     # should either be 1 or 2
     golden: int
+    death_rattle: bool
+    avenge: bool
+    start_of_combat: bool
+    pre_attack: bool
 
-    def __init__(
-        self,
-        name,
-        tribe,
-        tier,
-        attack,
-        health,
-        taunt,
-        divine_shield,
-        frenzy=False,
-        windfury=1,
-        reborn=False,
-        cleave=False,
-        death_observer=False,
-        golden=1,
-    ) -> None:
-        self.name = name
-        self.tribe = tribe
-        self.tier = tier
-        self.attack = attack
-        self.health = health
-        self.taunt = taunt
+    def __init__(self) -> None:
+        self.name = ""
+        self.tribe = "Neutral"
+        self.tier = 1
+        self.attack = None
+        self.health = None
+        self.base_attack = None
+        self.base_health = None
+        self.taunt = False
         self.alive = True
+        self.frenzy = False
+        self.windfury = 1
+        self.cleave = 0
+        self.poisonous = False
+        self.reborn = False
         self.number_of_attacks = 0
-        self.divine_shield = divine_shield
-        self.frenzy = frenzy
-        self.windfury = windfury
-        self.reborn = reborn
-        self.cleave = cleave
-        self.death_observer = death_observer
-        self.golden = golden
+        self.divine_shield = False
+        self.death_observer = False
+        self.golden = 1
+        self.death_rattle = False
+        self.avenge = False
+        self.start_of_combat = False
+        self.pre_attack = False
+
+    # def __init__(
+    #     self,
+    #     name,
+    #     tribe,
+    #     tier,
+    #     attack,
+    #     health,
+    #     taunt,
+    #     divine_shield,
+    #     frenzy=False,
+    #     windfury=1,
+    #     reborn=False,
+    #     cleave=False,
+    #     death_observer=False,
+    #     golden=1,
+    # ) -> None:
+    #     self.name = name
+    #     self.tribe = tribe
+    #     self.tier = tier
+    #     self.attack = attack
+    #     self.health = health
+    #     self.taunt = taunt
+    #     self.alive = True
+    #     self.number_of_attacks = 0
+    #     self.divine_shield = divine_shield
+    #     self.frenzy = frenzy
+    #     self.windfury = windfury
+    #     self.reborn = reborn
+    #     self.cleave = cleave
+    #     self.death_observer = death_observer
+    #     self.golden = golden
+
+    def make_golden(self):
+        self.golden = 2
+        self.attack += self.base_attack
+        self.base_attack *= 2
+        self.health += self.base_health
+        self.base_health *= 2
 
     def set_health(self, health):
         self.health = health
@@ -87,3 +123,10 @@ class Minion(object):
         # Kangor's Apprentice
         # TODO if dead_minion is mech and self.deathrattle is available
         # add dead_minion to death_rattle
+
+    def activate_death_rattle(self, **kwargs):
+        return None
+
+    def _add_stats(self, atk, hp):
+        self.attack += atk
+        self.health += hp
