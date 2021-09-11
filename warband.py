@@ -56,7 +56,7 @@ class Warband(object):
             return minions[randint(0, len(minions) - 1)]
 
     def minions_alive(self):
-        return len(self.warband)
+        return len([x for x in self.warband if x.alive])
 
     def update_warband(self):
         self.warband = [x for x in self.warband if x.alive]

@@ -26,7 +26,7 @@ class Board(object):
 
     def battle(self):
         self._coin_flip()
-        
+
         turn = 0
         while self._can_battle():
             atk_minion: Minion = self.attacker.get_next_attacker()
@@ -41,7 +41,6 @@ class Board(object):
                 # print(f"----------- TURN {turn} -------------")
                 # print(f"Attacker: {atk_minion} {self.attacker.warband.index(atk_minion)}")
                 # print(f"Defender: {def_minion} {self.defender.warband.index(def_minion)}")
-                self._update_warbands()                
                 # print("Top:")
                 # print(self.top_warband)
 
@@ -49,6 +48,7 @@ class Board(object):
                 # print(self.bottom_warband)
                 # print(f"------ END OF TURN {turn} -------------")
 
+                self._update_warbands()
 
             turn += 1
             self._handover_initiative()
@@ -99,7 +99,9 @@ class Board(object):
             if observers is not None:
                 for observer in observers:
                     observer.activate_upon_death(dealer_minion, opponent_warband)
-            dealer_minion.activate_death_rattle(**{"warband": own_warband})
+            dealer_minion.activate_death_rattle(
+                **{"warband": own_warband, "opponent_warband": opponent_warband}
+            )
 
     def _get_observer_list(self, minion):
         if minion in self.top_warband.warband:

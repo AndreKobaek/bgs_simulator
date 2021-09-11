@@ -89,6 +89,12 @@ class Minion(object):
     def set_health(self, health):
         self.health = health
 
+    def _set_attack_and_health(self, atk, hp):
+        self.attack = atk
+        self.base_attack = atk
+        self.health = hp
+        self.base_health = hp
+
     def set_base_attributes(self, base_atk: int, divine_shield: bool):
         self.base_attack = base_atk
         self.base_ds = divine_shield

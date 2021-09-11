@@ -2,6 +2,7 @@ from minions import Ghastcoiler, MicroBot, OmegaBuster, Sellemental
 from warband import Warband
 from minion import Minion
 from board import Board
+import progressbar
 
 # yeti = Minion("Yeti", "Neutral", 3, 4, 5, False, False)
 # senjin = Minion("Senjin", "Neutral", 3, 3, 6, True, False)
@@ -83,15 +84,24 @@ top_warband.add_minion(selly)
 # print("Bottom board")
 # print(bottom_warband)
 # print("")
+
 results = [0] * 3
 average_damage = [0] * 3
 iterations = 10000
-for _ in range(iterations):
+bar = progressbar.ProgressBar(
+    maxval=iterations,
+    widgets=[progressbar.Bar("=", "[", "]"), " ", progressbar.Percentage()],
+)
+bar.start()
+
+for i in range(iterations):
     board = Board(top_warband, bottom_warband)
     outcome = board.battle()
     results[outcome[0]] += 1
     average_damage[outcome[0]] += outcome[1]
+    bar.update(i + 1)
 
+bar.finish()
 average_damage = [
     x / y if y > 0 and x > 0 else x for x, y in zip(average_damage, results)
 ]
