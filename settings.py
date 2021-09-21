@@ -1,0 +1,9 @@
+MAX_BOARDSIZE = 7
+TRIBE_MECH = "Mech"
+TRIBE_DRAGON = "Dragon"
+TRIBE_DEMON = "Demon"
+TRIBE_BEAST = "Beast"
+TRIBE_ELEMENTAL = "Elemental"
+TRIBE_MURLOC = "Murloc"
+TRIBE_PIRATE = "Pirate"
+OBSERVER_TYPE_DEATH = "death_observer"

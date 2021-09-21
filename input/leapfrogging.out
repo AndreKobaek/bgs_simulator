@@ -1,0 +1,54 @@
+Top board:
+Leapfrogger: 3 / 3
+Leapfrogger: 3 / 3
+Rat: 1 / 1
+Rat: 1 / 1
+Rat: 1 / 1
+
+Bottom board
+Voidwalker: 5 / 13 - Taunt
+
+----------- TURN 0 -------------
+Attacker: Leapfrogger: 3 / 3 0
+Defender: Voidwalker: 5 / 13 - Taunt 0
+Top:
+Leapfrogger: 3 / 3
+Leapfrogger: 3 / 3
+Rat: 1 / 1
+Rat: 1 / 1
+Rat: 1 / 1
+Bottom:
+Voidwalker: 5 / 13 - Taunt
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+Attacker: Voidwalker: 5 / 10 - Taunt 0
+Defender: Rat: 3 / 3 1
+Top:
+Leapfrogger: 3 / 3
+Rat: 3 / 3
+Rat: 1 / 1
+Rat: 1 / 1
+Bottom:
+Voidwalker: 5 / 10 - Taunt
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+Attacker: Leapfrogger: 5 / 5 0
+Defender: Voidwalker: 5 / 7 - Taunt 0
+Top:
+Leapfrogger: 5 / 5
+Rat: 1 / 1
+Rat: 1 / 1
+Bottom:
+Voidwalker: 5 / 7 - Taunt
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+Attacker: Voidwalker: 5 / 2 - Taunt 0
+Defender: Rat: 3 / 3 1
+Top:
+Rat: 3 / 3
+Rat: 3 / 3
+Bottom:
+Voidwalker: 5 / 2 - Taunt
+------ END OF TURN 3 -------------
+Outcome: [0.0, 0.0, 100.0]
+Average damage: [0, 0, 1.0]

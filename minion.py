@@ -1,3 +1,7 @@
+from settings import MAX_BOARDSIZE
+from copy import deepcopy
+
+
 class Minion(object):
     name: str
     tribe: str
@@ -14,11 +18,12 @@ class Minion(object):
     poisonous = bool
     reborn: bool
     number_of_attacks: int
+    # TODO implement lose_divine_shield to ease observer task
     divine_shield: bool
     death_observer: bool
     # should either be 1 or 2
     golden: int
-    death_rattle: bool
+    death_rattles: list
     avenge: bool
     start_of_combat: bool
     pre_attack: bool
@@ -40,44 +45,15 @@ class Minion(object):
         self.reborn = False
         self.number_of_attacks = 0
         self.divine_shield = False
-        self.death_observer = False
         self.golden = 1
-        self.death_rattle = False
-        self.avenge = False
+        self.death_rattles = []
         self.start_of_combat = False
-        self.pre_attack = False
 
-    # def __init__(
-    #     self,
-    #     name,
-    #     tribe,
-    #     tier,
-    #     attack,
-    #     health,
-    #     taunt,
-    #     divine_shield,
-    #     frenzy=False,
-    #     windfury=1,
-    #     reborn=False,
-    #     cleave=False,
-    #     death_observer=False,
-    #     golden=1,
-    # ) -> None:
-    #     self.name = name
-    #     self.tribe = tribe
-    #     self.tier = tier
-    #     self.attack = attack
-    #     self.health = health
-    #     self.taunt = taunt
-    #     self.alive = True
-    #     self.number_of_attacks = 0
-    #     self.divine_shield = divine_shield
-    #     self.frenzy = frenzy
-    #     self.windfury = windfury
-    #     self.reborn = reborn
-    #     self.cleave = cleave
-    #     self.death_observer = death_observer
-    #     self.golden = golden
+        # Observers
+        self.death_observers = []
+        self.pre_attack_observers = []
+        self.divine_observers = []
+        self.pre_defend_observers = []
 
     def make_golden(self):
         self.golden = 2
@@ -117,22 +93,33 @@ class Minion(object):
         # frenzy triggered
         self.frenzy = False
 
-    def activate_upon_death(self, dead_minion, opponent_warband):
-        if self.name == "Scavenging Hyena" and dead_minion.tribe == "Beast":
-            self.attack += 2 * self.golden
-            self.health += 1 * self.golden
-        if self.name == "Soul Juggler" and dead_minion.tribe == "Demon":
-            for _ in range(self.golden):
-                opponent_warband.sniped(3)
+    def register_observable(self, own_warband, opponent_warband):
+        pass
 
-        # Soul Juggler
-        # Kangor's Apprentice
-        # TODO if dead_minion is mech and self.deathrattle is available
-        # add dead_minion to death_rattle
+    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+        pass
 
-    def activate_death_rattle(self, **kwargs):
+    def activate_death_rattle(self, own_warband, opponent_warband):
         return None
 
     def _add_stats(self, atk, hp):
         self.attack += atk
         self.health += hp
+
+    def _setup_minions_to_summon(self, number_of_minions, minion):
+        if self.golden == 2:
+            minion.make_golden()
+        return [deepcopy(minion) for _ in range(number_of_minions)]
+
+    def get_death_rattles(self):
+        return self.deathrattles
+
+    def pop_divine_shield(self):
+        self.divine_shield = False
+        for divine_observer in self.divine_observers:
+            divine_observer.notify(self)
+
+    def gain_divine_shield(self, warband):
+        self.divine_shield = True
+        for minion in warband.warband:
+            minion.register_observable(warband, None)

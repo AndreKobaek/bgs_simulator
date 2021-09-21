@@ -1,0 +1,72 @@
+Top board:
+Annoy-o-Module: 2 / 4 - Taunt - Divine Shield
+Microbot: 1 / 1
+Kangor's Apprentice: 3 / 6
+
+Bottom board
+Voidwalker: 6 / 13 - Taunt
+
+----------- TURN 0 -------------
+Attacker: Annoy-o-Module: 2 / 4 - Taunt - Divine Shield 0
+Defender: Voidwalker: 6 / 13 - Taunt 0
+Top:
+Annoy-o-Module: 2 / 4 - Taunt - Divine Shield
+Microbot: 1 / 1
+Kangor's Apprentice: 3 / 6
+Bottom:
+Voidwalker: 6 / 13 - Taunt
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+Attacker: Voidwalker: 6 / 11 - Taunt 0
+Defender: Annoy-o-Module: 2 / 4 - Taunt 0
+Top:
+Annoy-o-Module: 2 / 4 - Taunt
+Microbot: 1 / 1
+Kangor's Apprentice: 3 / 6
+Bottom:
+Voidwalker: 6 / 11 - Taunt
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+Attacker: Microbot: 1 / 1 0
+Defender: Voidwalker: 6 / 9 - Taunt 0
+Top:
+Microbot: 1 / 1
+Kangor's Apprentice: 3 / 6
+Bottom:
+Voidwalker: 6 / 9 - Taunt
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+Attacker: Voidwalker: 6 / 8 - Taunt 0
+Defender: Kangor's Apprentice: 3 / 6 0
+Top:
+Kangor's Apprentice: 3 / 6
+Bottom:
+Voidwalker: 6 / 8 - Taunt
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+Attacker: Microbot: 1 / 1 0
+Defender: Voidwalker: 6 / 5 - Taunt 0
+Top:
+Microbot: 1 / 1
+Annoy-o-Module: 2 / 4 - Taunt - Divine Shield
+Bottom:
+Voidwalker: 6 / 5 - Taunt
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+Attacker: Voidwalker: 6 / 4 - Taunt 0
+Defender: Annoy-o-Module: 2 / 4 - Taunt - Divine Shield 0
+Top:
+Annoy-o-Module: 2 / 4 - Taunt - Divine Shield
+Bottom:
+Voidwalker: 6 / 4 - Taunt
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+Attacker: Annoy-o-Module: 2 / 4 - Taunt 0
+Defender: Voidwalker: 6 / 2 - Taunt 0
+Top:
+Annoy-o-Module: 2 / 4 - Taunt
+Bottom:
+Voidwalker: 6 / 2 - Taunt
+------ END OF TURN 6 -------------
+Outcome: [0.0, 100.0, 0.0]
+Average damage: [0, 0, 0]

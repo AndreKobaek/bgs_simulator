@@ -1,4 +1,15 @@
 {
+    "python.pythonPath": "/usr/bin/python",
     "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true
+    "python.linting.flake8Args": [
+        "--max-line-length=160",
+        "--ignore=E402,F841,F401,E302,E305,W503",
+    ],
+    "python.linting.enabled": true,
+    "python.autoComplete.extraPaths": [
+        "${bgs_simulator}"
+    ],
+    "python.analysis.extraPaths": [
+        "${bgs_simulator}"
+    ]
 }
