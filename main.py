@@ -1,21 +1,26 @@
 from minions import (
     AnnoyoModule,
     CracklingCyclone,
+    DeckSwabbie,
+    DreadAdmiralEliza,
     GentleDjinni,
     Ghastcoiler,
+    GlyphGuadrdian,
     HarvestGolem,
+    ImpMama,
     KangorsApprentice,
     Leapfrogger,
+    MechanoEgg,
     MicroBot,
     OmegaBuster,
     Rat,
+    RipsnarlCaptain,
     Sellemental,
     Voidwalker,
 )
 from warband import Warband
 from minion import Minion
 from board import Board
-from copy import deepcopy
 import progressbar
 
 
@@ -30,6 +35,10 @@ def print_boards():
 
 def setup_bottom():
     warband = Warband()
+    # drag = GlyphGuadrdian()
+    # drag.make_golden()
+    # drag._add_stats(0, 30)
+    # warband.add_minion(drag)
     warband.add_minion(Ghastcoiler())
     warband.add_minion(Ghastcoiler())
     return warband
@@ -37,6 +46,9 @@ def setup_bottom():
 
 def setup_top():
     warband = Warband()
+    # egg = ImpMama()
+    # egg.make_golden()
+    # warband.add_minion(egg)
     warband.add_minion(Ghastcoiler())
     warband.add_minion(Ghastcoiler())
     return warband
@@ -51,7 +63,7 @@ if __name__ == "__main__":
 
     results = [0] * 3
     average_damage = [0] * 3
-    iterations = 100
+    iterations = 1_000
     bar = progressbar.ProgressBar(
         maxval=iterations,
         widgets=[

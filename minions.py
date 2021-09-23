@@ -1,8 +1,9 @@
 from copy import deepcopy
 from random import randint
+from warband import Warband
+from warband import get_random_minion
 from minion import Minion
 from settings import (
-    MAX_BOARDSIZE,
     TRIBE_BEAST,
     TRIBE_DEMON,
     TRIBE_DRAGON,
@@ -10,6 +11,7 @@ from settings import (
     TRIBE_MECH,
     TRIBE_MURLOC,
     TRIBE_PIRATE,
+    TRIBE_QUILBOAR,
 )
 
 
@@ -141,6 +143,14 @@ class Imp(Minion):
         self._set_attack_and_health(1, 1)
 
 
+class DeckSwabbie(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Deck Swabbie"
+        self.tribe = TRIBE_PIRATE
+        self._set_attack_and_health(2, 2)
+
+
 class Voidwalker(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -165,6 +175,24 @@ class IckyImp(Minion):
         self.tribe = TRIBE_DEMON
         self._set_attack_and_health(1, 1)
         self.death_rattles = [ickyimp_deathrattle]
+
+
+class ImpulsiveTrickster(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Impulsive Trickster"
+        self.tribe = TRIBE_DEMON
+        self._set_attack_and_health(2, 2)
+        self.max_health = self.health
+        self.death_rattles = [impulsivetrickster_deathrattle]
+
+    def _set_attack_and_health(self, atk, hp):
+        self.max_health = hp
+        return super()._set_attack_and_health(atk, hp)
+
+    def add_health(self, incoming_health):
+        super().add_health(incoming_health)
+        self.max_health += incoming_health
 
 
 class Imprisoner(Minion):
@@ -268,7 +296,18 @@ class Leapfrogger(Minion):
         self.tribe = TRIBE_BEAST
         self.tier = 2
         self._set_attack_and_health(3, 3)
-        self.death_rattles = [leapfrog_deathrattle]
+        self.death_rattles = [self.leapfrog_deathrattle]
+
+    def leapfrog_deathrattle(
+        self, deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+    ):
+        beasts_alive = [
+            x for x in own_warband.minions if x.tribe == TRIBE_BEAST and x.alive
+        ]
+        if len(beasts_alive) > 0:
+            receiver = get_random_minion(beasts_alive)
+            receiver._add_stats(self.golden, self.golden)
+            receiver.death_rattles.append(self.leapfrog_deathrattle)
 
 
 class DrakonidEnforcer(Minion):
@@ -279,14 +318,59 @@ class DrakonidEnforcer(Minion):
         self.tier = 4
         self._set_attack_and_health(3, 6)
 
-    def register_observable(self, own_warband, opponent_warband):
-        for minion in own_warband.warband:
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
             if minion.divine_shield and self not in minion.divine_observers:
                 minion.divine_observers.append(self)
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
         self.attack += 2 * self.golden
         self.health += 2 * self.golden
+
+
+class MurlocWarleader(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Murloc Warleader"
+        self.tribe = TRIBE_MURLOC
+        self.tier = 2
+        self._set_attack_and_health(3, 3)
+        self.death_observer = [self]
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        if self not in own_warband.summon_observers:
+            own_warband.summon_observers.append(self)
+
+    # TODO add to summon part
+    def execute_summon_effect(self, own_warband):
+        for minion in own_warband.minions:
+            if minion.tribe == TRIBE_MURLOC and minion is not self:
+                minion.attack += 2
+
+    def buff_summoned_minion(self, summoned_minion: Minion):
+        if (
+            summoned_minion.tribe == TRIBE_MURLOC
+            and summoned_minion is not self
+            and self.alive
+        ):
+            summoned_minion.attack += 2
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband: Warband = None,
+        opponent_warband=None,
+    ):
+        for minion in own_warband.minions:
+            if minion.tribe == TRIBE_MURLOC and minion is not self:
+                minion.attack -= 2 * self.golden
 
 
 class HolyMecherel(Minion):
@@ -297,13 +381,19 @@ class HolyMecherel(Minion):
         self.tier = 5
         self._set_attack_and_health(8, 4)
 
-    def register_observable(self, own_warband, opponent_warband):
-        for minion in own_warband.warband:
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
             if minion.divine_shield and self not in minion.divine_observers:
                 minion.divine_observers.append(self)
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
-        self.gain_divine_shield()
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
+        self.gain_divine_shield(own_warband)
 
 
 class GreaseBot(Minion):
@@ -314,12 +404,18 @@ class GreaseBot(Minion):
         self.tier = 4
         self._set_attack_and_health(3, 6)
 
-    def register_observable(self, own_warband, opponent_warband):
-        for minion in own_warband.warband:
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
             if minion.divine_shield and self not in minion.divine_observers:
                 minion.divine_observers.append(self)
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
         dealer_minion._add_stats(2 * self.golden, self.golden)
 
 
@@ -331,13 +427,151 @@ class RipsnarlCaptain(Minion):
         self.tier = 4
         self._set_attack_and_health(4, 5)
 
-    def register_observable(self, own_warband, opponent_warband):
-        for minion in own_warband.warband:
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
             if minion.tribe == TRIBE_PIRATE and minion is not self:
-                minion.preattack_observers.append(self)
+                minion.pre_attack_observers.append(self)
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
         dealer_minion._add_stats(2 * self.golden, 2 * self.golden)
+
+
+class ArmoftheEmpire(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Arm of the Empire"
+        self.tier = 3
+        self._set_attack_and_health(4, 4)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if minion.taunt and self not in minion.pre_attack_observers:
+                minion.pre_defend_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
+        receiver_minion.attack += 2 * self.golden
+
+
+class ChampionofYShaarj(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Champion of Y'Shaarj"
+        self.tier = 3
+        self._set_attack_and_health(4, 4)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if minion.taunt and self not in minion.pre_attack_observers:
+                minion.pre_defend_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
+        self._add_stats(self.golden, self.golden)
+
+
+class ImpMama(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Imp Mama"
+        self.tribe = TRIBE_DEMON
+        self.tier = 6
+        self._set_attack_and_health(6, 10)
+        self.post_damage_observers = [self]
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
+        if own_warband._get_available_boardspace(self.golden) > 0:
+            possible_minions = [
+                IckyImp(),
+                ImpulsiveTrickster(),
+                Imprisoner(),
+                # TODO:
+                # NathrezimOverseer(),
+                # Kathranatir(),
+                # SoulDevourer(),
+                # Bigfernal(),
+                RingMatron(),
+                # AnnihilanBattlemaster(),
+                # InsatiableUrzul(),
+                Voidlord(),
+                Amalgadon(),
+                # Famished Felbat(),
+            ]
+            chosen_minions = [
+                deepcopy(possible_minions[randint(0, len(possible_minions) - 1)])
+                for _ in range(self.golden)
+            ]
+            for chosen_minion in chosen_minions:
+                chosen_minion.taunt = True
+            own_warband.summon_minions(self, chosen_minions)
+
+
+class GlyphGuadrdian(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Glyph Guadrdian"
+        self.tribe = TRIBE_DRAGON
+        self.tier = 2
+        self._set_attack_and_health(2, 4)
+        self.pre_attack_observers = [self]
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
+        self.attack *= 1 + self.golden
+
+
+class DreadAdmiralEliza(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Dread Admiral Eliza"
+        self.tribe = TRIBE_PIRATE
+        self.tier = 6
+        self._set_attack_and_health(6, 7)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if (
+                minion.tribe == TRIBE_PIRATE
+                and minion not in minion.pre_attack_observers
+            ):
+                minion.pre_attack_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
+        for minion in own_warband.minions:
+            minion._add_stats(2 * self.golden, 1 * self.golden)
 
 
 class ScavengingHyena(Minion):
@@ -347,12 +581,18 @@ class ScavengingHyena(Minion):
         self.tribe = TRIBE_BEAST
         self._set_attack_and_health(2, 2)
 
-    def register_observable(self, own_warband, opponent_warband):
-        for minion in own_warband.warband:
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
             if minion.tribe == TRIBE_BEAST and minion is not self:
                 minion.death_observers.append(self)
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
         self.attack += 2 * self.golden
         self.health += 1 * self.golden
 
@@ -364,14 +604,37 @@ class SoulJuggler(Minion):
         self.tier = 3
         self._set_attack_and_health(3, 5)
 
-    def register_observable(self, own_warband, opponent_warband):
-        for minion in own_warband.warband:
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
             if minion.tribe == TRIBE_DEMON and self not in minion.death_observers:
                 minion.death_observers.append(self)
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
         for _ in range(self.golden):
             opponent_warband.sniped(3)
+
+
+class BristlebackKnight(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Bristleback Knight"
+        self.tribe = TRIBE_QUILBOAR
+        self.tier = 5
+        self._set_attack_and_health(4, 8)
+        self.windfury = 2
+        self.divine_shield = True
+        self.frenzy_ready = True
+
+    def activate_frenzy(self, own_warband):
+        if self.frenzy_ready:
+            self.gain_divine_shield(own_warband)
+            self.frenzy = False
 
 
 class KangorsApprentice(Minion):
@@ -380,21 +643,7 @@ class KangorsApprentice(Minion):
         self.name = "Kangor's Apprentice"
         self.tier = 5
         self._set_attack_and_health(3, 6)
-        # self.minions_to_summon = []
         self.death_rattles = [kangor_deathrattle]
-
-    # def register_observable(self, own_warband, opponent_warband):
-    #     for minion in own_warband.warband:
-    #         if minion.tribe == TRIBE_MECH and self not in minion.death_observers:
-    #             minion.death_observers.append(self)
-
-    # def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
-    #     if len(self.minions_to_summon) < 2 * self.golden:
-    #         added_minion = deepcopy(dealer_minion)
-    #         added_minion.__init__()
-    #         if dealer_minion.golden == 2:
-    #             added_minion.make_golden()
-    #         self.minions_to_summon.append(added_minion)
 
 
 class RatPack(Minion):
@@ -510,45 +759,65 @@ class GentleDjinni(Minion):
 
 
 # TIER 1
-# TODO Impulsive Trickster, Scallywag
+# TODO Scallywag
 # TIER 2
 # TODO Unstable Ghoul
 
 
-def leapfrog_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    beasts_alive = [
-        x for x in own_warband.warband if x.tribe == TRIBE_BEAST and x.alive
-    ]
-    if len(beasts_alive) > 0:
-        receiver = own_warband._get_random_minion(beasts_alive)
-        receiver._add_stats(2 * deathrattle_owner.golden, 2 * deathrattle_owner.golden)
-        receiver.death_rattles.append(leapfrog_deathrattle)
+def impulsivetrickster_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    health_to_transfer = deathrattle_owner.max_health
+    # TODO Get more evidence
+    if own_warband.can_do_battle():
+        for _ in range(deathrattle_owner.golden):
+            get_random_minion(own_warband.minions).add_health(health_to_transfer)
 
 
-def kangor_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+# def leapfrog_deathrattle(
+#     deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+# ):
+#     beasts_alive = [
+#         x for x in own_warband.minions if x.tribe == TRIBE_BEAST and x.alive
+#     ]
+#     if len(beasts_alive) > 0:
+#         receiver = get_random_minion(beasts_alive)
+#         receiver._add_stats(deathrattle_owner.golden, deathrattle_owner.golden)
+#         receiver.death_rattles.append(leapfrog_deathrattle)
+
+
+def kangor_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     minions_to_summon = own_warband.dead_mechs[: 2 * deathrattle_owner.golden]
     if len(minions_to_summon) > 0:
         own_warband.summon_minions(deathrattle_owner, minions_to_summon)
 
 
-def omegabuster_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def omegabuster_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     buff_size = (
         6 - own_warband._get_available_boardspace(6)
     ) * deathrattle_owner.golden
     _generic_summon_deathrattle(deathrattle_owner, 6, MicroBot(), own_warband)
     if buff_size > 0:
-        for minion in own_warband.warband:
+        for minion in own_warband.minions:
             if minion.tribe == TRIBE_MECH and minion is not deathrattle_owner:
                 minion._add_stats(buff_size, buff_size)
 
 
-def spawnofnzoth_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    for minion in own_warband.warband:
+def spawnofnzoth_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    for minion in own_warband.minions:
         if minion is not deathrattle_owner:
             minion._add_stats(deathrattle_owner.golden, deathrattle_owner.golden)
 
 
-def ghastcoiler_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def ghastcoiler_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     possible_minions = [
         IckyImp(),
         HarvestGolem(),
@@ -577,112 +846,147 @@ def ghastcoiler_deathrattle(deathrattle_owner, own_warband, opponent_warband):
         deepcopy(possible_minions[randint(0, len(possible_minions) - 1)])
         for _ in range(2 * deathrattle_owner.golden)
     ]
-    for chosen_minion in chosen_minions:
-        chosen_minion.number_of_attacks = deathrattle_owner.number_of_attacks
     own_warband.summon_minions(deathrattle_owner, chosen_minions)
 
 
 def _generic_summon_deathrattle(
-    deathrattle_owner, number_of_minions, minion, own_warband
+    deathrattle_owner: Minion,
+    number_of_minions: int,
+    minion: Minion,
+    own_warband: Warband,
 ):
     minions = deathrattle_owner._setup_minions_to_summon(number_of_minions, minion)
     own_warband.summon_minions(deathrattle_owner, minions)
 
 
-def ickyimp_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def ickyimp_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 2, Imp(), own_warband)
 
 
-def imprisoner_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def imprisoner_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 1, Imp(), own_warband)
 
 
-def harvestgolem_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def harvestgolem_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 1, DamagedGolem(), own_warband)
 
 
-def kaboombot_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    if len([x for x in opponent_warband.warband if x.alive]) > 0:
+def kaboombot_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    if len([x for x in opponent_warband.minions if x.alive]) > 0:
         for _ in range(deathrattle_owner.golden):
             opponent_warband.sniped(4)
 
 
-def selflesshero_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    if own_warband.minions_alive() > 0:
-        for _ in range(deathrattle_owner.golden):
-            no_ds_minions = [x for x in own_warband.warband if not x.divine_shield]
-            own_warband._get_random_minion(no_ds_minions).gain_divine_shield(
-                own_warband
-            )
+def selflesshero_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    for _ in range(deathrattle_owner.golden):
+        no_ds_minions = [
+            x for x in own_warband.minions if not x.divine_shield and x.alive
+        ]
+        if no_ds_minions != []:
+            get_random_minion(no_ds_minions).gain_divine_shield(own_warband)
 
 
-def sewerrat_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def sewerrat_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 1, HalfShell(), own_warband)
 
 
-def ratpack_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def ratpack_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(
         deathrattle_owner, deathrattle_owner.attack, Rat(), own_warband
     )
 
 
-def replicatingmenace_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def replicatingmenace_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 3, MicroBot(), own_warband)
 
 
-def mechanoegg_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def mechanoegg_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 1, Robosaur(), own_warband)
 
 
-def ringmatron_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def ringmatron_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 2, FieryImp(), own_warband)
 
 
-def savannahhighmane_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def savannahhighmane_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 2, Hyena(), own_warband)
 
 
-def voidlord_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def voidlord_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     _generic_summon_deathrattle(deathrattle_owner, 3, Voidwalker(), own_warband)
 
 
-def kingbagurgle_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    for minion in own_warband.warband:
+def kingbagurgle_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    for minion in own_warband.minions:
         if minion.tribe == TRIBE_MURLOC and minion is not deathrattle_owner:
             minion._add_stats(
                 2 * deathrattle_owner.golden, 2 * deathrattle_owner.golden
             )
 
 
-def palescalecrocolisk_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def palescalecrocolisk_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     beasts_alive = [
         x
-        for x in own_warband.warband
+        for x in own_warband.minions
         if x.tribe == TRIBE_BEAST and x is not deathrattle_owner
     ]
     if len(beasts_alive) > 0:
-        own_warband._get_random_minion(beasts_alive)._add_stats(
+        get_random_minion(beasts_alive)._add_stats(
             6 * deathrattle_owner.golden, 6 * deathrattle_owner.golden
         )
 
 
-def nadinathered_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    dragons_alive = [x for x in own_warband.warband if x.tribe == TRIBE_DRAGON]
+def nadinathered_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    dragons_alive = [x for x in own_warband.minions if x.tribe == TRIBE_DRAGON]
     for dragon in dragons_alive:
         dragon.gain_divine_shield()
 
 
-def goldrinthegreatwolf_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def goldrinthegreatwolf_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     beasts_alive = [
         x
-        for x in own_warband.warband
+        for x in own_warband.minions
         if x.tribe == TRIBE_BEAST and x is not deathrattle_owner
     ]
     for beast in beasts_alive:
         beast._add_stats(5 * deathrattle_owner.golden, 5 * deathrattle_owner.golden)
 
 
-def gentledjinni_deathrattle(deathrattle_owner, own_warband, opponent_warband):
+def gentledjinni_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
     possible_elementals = [Sellemental(), MoltenRock(), CracklingCyclone()]
     chosen_elementals = [
         deepcopy(possible_elementals[randint(0, len(possible_elementals) - 1)])
@@ -691,9 +995,11 @@ def gentledjinni_deathrattle(deathrattle_owner, own_warband, opponent_warband):
     own_warband.summon_minions(deathrattle_owner, chosen_elementals)
 
 
-def unstableghoul_deathrattle(deathrattle_owner, own_warband, opponent_warband):
-    minions_to_damage = [minion for minion in own_warband.warband if minion.alive] + [
-        minion for minion in opponent_warband.warband if minion.alive
+def unstableghoul_deathrattle(
+    deathrattle_owner: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    minions_to_damage = [minion for minion in own_warband.minions if minion.alive] + [
+        minion for minion in opponent_warband.minions if minion.alive
     ]
     for minion in minions_to_damage:
         if minion.divine_shield:

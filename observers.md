@@ -2,6 +2,7 @@
 
 # Observed??
 Murloc Warleader
+Southsea Captain
 Kathra'Natir
 
 Old murc-eye (- attack per dead murloc)
@@ -9,9 +10,7 @@ Old murc-eye (- attack per dead murloc)
 
 
 # Observe_preattack
-Arm of the Empire
 Prestor's Pyrospawn
-Champion of Y'Shaarj
 Ripsnarl Captian
 Dread Admiral Eliza
 Glyph Guardian
@@ -31,7 +30,11 @@ Kangor's Apprentice
 Scavenging Hyena
 Soul Juggler
 
-# Observe-attacked
+# Observe-defender
+Arm of the Empire
+Champion of Y'Shaarj
+
+# Post_damage
 Yo-Ho-Ogre
 Imp Mama
 

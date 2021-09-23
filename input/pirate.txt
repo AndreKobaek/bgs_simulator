@@ -1,0 +1,69 @@
+Top board:
+Mechano-Egg: 0 / 10
+
+Bottom board:
+Deck Swabbie: 2 / 2
+Ripsnarl Captain: 4 / 5
+Dread Admiral Eliza: 6 / 7
+
+----------- TURN 0 -------------
+
+Top:
+Mechano-Egg: 0 / 10
+
+Defender: Mechano-Egg: 0 / 10 0
+
+Bottom:
+Deck Swabbie: 2 / 2
+Ripsnarl Captain: 4 / 5
+Dread Admiral Eliza: 6 / 7
+
+Attacker: Deck Swabbie: 2 / 2 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Mechano-Egg: 0 / 4
+
+Defender: Mechano-Egg: 0 / 4 0
+
+Bottom:
+Deck Swabbie: 6 / 5
+Ripsnarl Captain: 6 / 6
+Dread Admiral Eliza: 8 / 8
+
+Attacker: Ripsnarl Captain: 6 / 6 1
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Robosaur: 16 / 16
+
+Attacker: Robosaur: 16 / 16 0
+
+Bottom:
+Deck Swabbie: 8 / 6
+Ripsnarl Captain: 8 / 7
+Dread Admiral Eliza: 10 / 9
+
+Defender: Deck Swabbie: 8 / 6 0
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Robosaur: 16 / 8
+
+Defender: Robosaur: 16 / 8 0
+
+Bottom:
+Ripsnarl Captain: 8 / 7
+Dread Admiral Eliza: 10 / 9
+
+Attacker: Dread Admiral Eliza: 10 / 9 1
+
+------ END OF TURN 3 -------------
+Outcome: [100.0, 0.0, 0.0]
+Average damage: [4.0, 0, 0]

@@ -1,5 +1,5 @@
-from settings import MAX_BOARDSIZE
 from copy import deepcopy
+from typing import List
 
 
 class Minion(object):
@@ -18,7 +18,6 @@ class Minion(object):
     poisonous = bool
     reborn: bool
     number_of_attacks: int
-    # TODO implement lose_divine_shield to ease observer task
     divine_shield: bool
     death_observer: bool
     # should either be 1 or 2
@@ -54,12 +53,14 @@ class Minion(object):
         self.pre_attack_observers = []
         self.divine_observers = []
         self.pre_defend_observers = []
+        self.post_damage_observers = []
+        self.summon_observers: List[Minion] = []
 
     def make_golden(self):
         self.golden = 2
         self.attack += self.base_attack
         self.base_attack *= 2
-        self.health += self.base_health
+        self.add_health(self.base_health)
         self.base_health *= 2
 
     def set_health(self, health):
@@ -75,9 +76,17 @@ class Minion(object):
         self.base_attack = base_atk
         self.base_ds = divine_shield
 
+    def take_damage(self, incoming_damage):
+        self.health -= incoming_damage
+
+    def add_health(self, incoming_health):
+        self.health += incoming_health
+
     def __str__(self) -> str:
         minion_print = f"{self.name}: {self.attack} / {self.health}{' - Taunt' if self.taunt else ''}{' - Divine Shield' if self.divine_shield else ''}"
         return minion_print
+
+    # TODO redo reborn
 
     def update_life_status(self) -> bool:
         if self.health <= 0 and self.reborn:
@@ -87,16 +96,25 @@ class Minion(object):
             self.alive = False
         return self.alive
 
-    def activate_frenzy(self):
-        # TODO Implement a more scalable Frenzy solution
-        self.divine_shield = True
-        # frenzy triggered
-        self.frenzy = False
+    def activate_frenzy(self, own_warband):
+        pass
 
     def register_observable(self, own_warband, opponent_warband):
         pass
 
-    def notify(self, dealer_minion=None, own_warband=None, opponent_warband=None):
+    def buff_summoned_minion(self, summoned_minion):
+        pass
+
+    def execute_summon_effect(self, own_warband):
+        pass
+
+    def notify(
+        self,
+        dealer_minion=None,
+        receiver_minion=None,
+        own_warband=None,
+        opponent_warband=None,
+    ):
         pass
 
     def activate_death_rattle(self, own_warband, opponent_warband):
@@ -104,7 +122,7 @@ class Minion(object):
 
     def _add_stats(self, atk, hp):
         self.attack += atk
-        self.health += hp
+        self.add_health(hp)
 
     def _setup_minions_to_summon(self, number_of_minions, minion):
         if self.golden == 2:
@@ -114,12 +132,12 @@ class Minion(object):
     def get_death_rattles(self):
         return self.deathrattles
 
-    def pop_divine_shield(self):
+    def pop_divine_shield(self, own_warband):
         self.divine_shield = False
         for divine_observer in self.divine_observers:
-            divine_observer.notify(self)
+            divine_observer.notify(self, None, own_warband)
 
     def gain_divine_shield(self, warband):
         self.divine_shield = True
-        for minion in warband.warband:
+        for minion in warband.minions:
             minion.register_observable(warband, None)
