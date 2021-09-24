@@ -4,7 +4,7 @@ from typing import List
 
 class Minion(object):
     name: str
-    tribe: str
+    tribe: List[str]
     tier: int
     attack: int
     base_attack: int
@@ -18,8 +18,9 @@ class Minion(object):
     poisonous = bool
     reborn: bool
     number_of_attacks: int
+    avenge_counter: int
+    avenge_limit: int
     divine_shield: bool
-    death_observer: bool
     # should either be 1 or 2
     golden: int
     death_rattles: list
@@ -29,7 +30,7 @@ class Minion(object):
 
     def __init__(self) -> None:
         self.name = ""
-        self.tribe = "Neutral"
+        self.tribe = ["Neutral"]
         self.tier = 1
         self.attack = None
         self.health = None
@@ -42,6 +43,8 @@ class Minion(object):
         self.cleave = 0
         self.poisonous = False
         self.reborn = False
+        self.avenge_counter = 0
+        self.avenge_limit = 0
         self.number_of_attacks = 0
         self.divine_shield = False
         self.golden = 1
@@ -49,12 +52,12 @@ class Minion(object):
         self.start_of_combat = False
 
         # Observers
-        self.death_observers = []
-        self.pre_attack_observers = []
-        self.divine_observers = []
-        self.pre_defend_observers = []
-        self.post_damage_observers = []
-        self.summon_observers: List[Minion] = []
+        self.pre_attack_observers: List[Minion] = []
+        self.pre_defend_observers: List[Minion] = []
+        self.divine_observers: List[Minion] = []
+        self.post_damage_observers: List[Minion] = []
+        self.buff_observers: List[Minion] = []
+        self.death_observers: List[Minion] = []
 
     def make_golden(self):
         self.golden = 2
@@ -76,7 +79,7 @@ class Minion(object):
         self.base_attack = base_atk
         self.base_ds = divine_shield
 
-    def take_damage(self, incoming_damage):
+    def take_damage(self, incoming_damage: int):
         self.health -= incoming_damage
 
     def add_health(self, incoming_health):
@@ -96,6 +99,23 @@ class Minion(object):
             self.alive = False
         return self.alive
 
+    def update_death_observers(self):
+        self.death_observers = [
+            death_observer
+            for death_observer in self.death_observers
+            if death_observer.alive
+        ]
+
+    def avenge_tick(self):
+        self.avenge_counter += 1
+        if self.avenge_counter % self.avenge_limit == 0:
+            self.avenge_counter = 0
+            return True
+        return False
+
+    def pre_combat_effect(self, own_warband, opponent_warband):
+        pass
+
     def activate_frenzy(self, own_warband):
         pass
 
@@ -105,7 +125,7 @@ class Minion(object):
     def buff_summoned_minion(self, summoned_minion):
         pass
 
-    def execute_summon_effect(self, own_warband):
+    def execute_summon_effect(self, own_warband, opponent_warband):
         pass
 
     def notify(

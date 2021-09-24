@@ -2,7 +2,7 @@
 
 # Observed??
 Murloc Warleader
-Southsea Captain
+Southsea Captain - Needs FIX
 Kathra'Natir
 
 Old murc-eye (- attack per dead murloc)
@@ -30,6 +30,9 @@ Kangor's Apprentice
 Scavenging Hyena
 Soul Juggler
 
+# Buff_observer
+Whelp Smuggler
+
 # Observe-defender
 Arm of the Empire
 Champion of Y'Shaarj
@@ -50,3 +53,8 @@ Khadgar
 # Start_of_combat
 Prized Promo-Drake
 Red Whelp
+
+# Deathrattles
+TIER 1
+Scallywag
+FIX Unstable ghoul

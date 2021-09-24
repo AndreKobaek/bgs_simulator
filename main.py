@@ -1,5 +1,8 @@
+from time import time
 from minions import (
     AnnoyoModule,
+    BirdBuddy,
+    BuddingGreenthumb,
     CracklingCyclone,
     DeckSwabbie,
     DreadAdmiralEliza,
@@ -11,11 +14,14 @@ from minions import (
     KangorsApprentice,
     Leapfrogger,
     MechanoEgg,
+    MechanoTank,
     MicroBot,
     OmegaBuster,
     Rat,
     RipsnarlCaptain,
+    SISefin,
     Sellemental,
+    TonyTwoTusk,
     Voidwalker,
 )
 from warband import Warband
@@ -41,6 +47,10 @@ def setup_bottom():
     # warband.add_minion(drag)
     warband.add_minion(Ghastcoiler())
     warband.add_minion(Ghastcoiler())
+    warband.add_minion(BuddingGreenthumb())
+    warband.add_minion(SISefin())
+    warband.add_minion(MechanoTank())
+
     return warband
 
 
@@ -51,6 +61,8 @@ def setup_top():
     # warband.add_minion(egg)
     warband.add_minion(Ghastcoiler())
     warband.add_minion(Ghastcoiler())
+    warband.add_minion(BirdBuddy())
+    warband.add_minion(TonyTwoTusk())
     return warband
 
 
@@ -61,6 +73,7 @@ if __name__ == "__main__":
     bottom_warband.make_all_minions_golden()
     print_boards()
 
+    turns = []
     results = [0] * 3
     average_damage = [0] * 3
     iterations = 1_000
@@ -73,12 +86,14 @@ if __name__ == "__main__":
         ],
     )
     bar.start()
+    start_time = time()
 
     for i in range(iterations):
         board = Board(top_warband, bottom_warband)
         outcome = board.battle()
         results[outcome[0]] += 1
         average_damage[outcome[0]] += outcome[1]
+        turns.append(outcome[2])
         bar.update(i + 1)
 
     bar.finish()
@@ -88,3 +103,7 @@ if __name__ == "__main__":
     results = [(x / iterations) * 100 for x in results]
     print(f"Outcome: {results}")
     print(f"Average damage: {average_damage}")
+    print(f"Average turns: {sum(turns)/iterations:.2f}")
+
+    end_time = time()
+    print(f"Turns / Time {sum(turns) / (end_time - start_time):.2f}")

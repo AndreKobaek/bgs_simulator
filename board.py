@@ -1,4 +1,4 @@
-from warband import Warband, get_next_defender
+from warband import Warband, calculate_damage, get_next_defender
 from copy import deepcopy
 from random import randint
 from minion import Minion
@@ -16,8 +16,8 @@ class Board(object):
         self.top_warband.name = "Top Warband"
         self.bottom_warband.name = "Bottom Warband"
 
-        self._register_observers(self.top_warband, self.bottom_warband)
-        self._register_observers(self.bottom_warband, self.top_warband)
+        register_observers(self.top_warband, self.bottom_warband)
+        register_observers(self.bottom_warband, self.top_warband)
 
     def battle(self):
         self._coin_flip()
@@ -54,12 +54,11 @@ class Board(object):
         # Print outcome
         # self._print_outcome(winner)
         if winner is not None:
-            damage = winner.calculate_damage()
             if winner == self.top_warband:
-                return [2, damage]
-            return [0, damage]
+                return [2, calculate_damage(winner.minions), turn]
+            return [0, calculate_damage(winner.minions), turn]
         else:
-            return [1, 0]
+            return [1, 0, turn]
 
     def _fight(self, atk_minion: Minion, def_minion: Minion):
 
@@ -86,7 +85,7 @@ class Board(object):
         atk_minion.number_of_attacks += 1
 
     def _combat_sequence(
-        self, dealer_minion: Minion, receiver_minion: Minion, own_warband
+        self, dealer_minion: Minion, receiver_minion: Minion, own_warband: Warband
     ):
         # Attacker health updates
         if dealer_minion.divine_shield and receiver_minion.attack > 0:
@@ -113,19 +112,14 @@ class Board(object):
         if alive and receiver_minion.attack > 0:
             dealer_minion.activate_frenzy(own_warband)
         elif not alive:
+            dealer_minion.update_death_observers()
             for death_observer in dealer_minion.death_observers:
                 death_observer.notify(
                     dealer_minion, receiver_minion, own_warband, opponent_warband
                 )
             for deathrattle in dealer_minion.death_rattles:
-                deathrattle(dealer_minion, own_warband, opponent_warband)
-            self._register_observers(own_warband, opponent_warband)
-
-    def _get_observer_list(self, minion):
-        if minion in self.top_warband.minions:
-            return self.top_death_observers
-        else:
-            return self.bottom_death_observers
+                deathrattle(own_warband, opponent_warband)
+            register_observers(own_warband, opponent_warband)
 
     def _coin_flip(self):
         if len(self.top_warband.minions) == len(self.bottom_warband.minions):
@@ -172,10 +166,6 @@ class Board(object):
             return True
         return False
 
-    def _register_observers(self, own_warband, opponent_warband):
-        for minion in own_warband.minions:
-            minion.register_observable(own_warband, opponent_warband)
-
     def _print_board_state(self, turn, atk_minion, def_minion):
         print(f"----------- TURN {turn} -------------")
 
@@ -202,3 +192,8 @@ class Board(object):
         print(f"------------- OUTCOME ---------------")
         print(f"The winner is: {winner}")
         print(f"------------ GAME OVER --------------")
+
+
+def register_observers(own_warband: Warband, opponent_warband: Warband):
+    for minion in own_warband.minions:
+        minion.register_observable(own_warband, opponent_warband)

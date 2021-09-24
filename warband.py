@@ -37,7 +37,7 @@ class Warband(object):
 
     def get_adjacent_minions(self, minion):
         minion_position = self.minions.index(minion)
-        warband_size = self._get_warband_size()
+        warband_size = len(self.minions) - 1
 
         if 0 < minion_position and minion_position < warband_size:
             return [
@@ -58,7 +58,7 @@ class Warband(object):
 
     def update_warband(self):
         for minion in self.minions:
-            if not minion.alive and minion.tribe == TRIBE_MECH:
+            if not minion.alive and TRIBE_MECH in minion.tribe:
                 dead_mech = deepcopy(minion)
                 dead_mech.__init__()
                 if minion.golden == 2:
@@ -66,14 +66,6 @@ class Warband(object):
                 self.dead_mechs.append(dead_mech)
         self.minions = [x for x in self.minions if x.alive]
         self.summon_observers = [x for x in self.summon_observers if x.alive]
-
-    def calculate_damage(self):
-        return sum([x.tier for x in self.minions])
-
-    def _get_warband_size(self):
-        return len(self.minions) - 1
-
-    # def _register_observers(self):
 
     def sniped(self, damage: int):
         receiver = get_random_minion(self.minions)
@@ -134,3 +126,21 @@ def get_random_minion(minions: List[Minion]) -> Minion:
     alive_minions = [x for x in minions if x.alive]
     if alive_minions != []:
         return alive_minions[randint(0, len(alive_minions) - 1)]
+
+
+def calculate_damage(minions: List[Minion]) -> int:
+    return sum([minion.tier for minion in minions])
+
+
+def get_highest_health_minion(minions: List[Minion]) -> Optional[Minion]:
+    highest_health_minions = [minion.health for minion in minions if minion.alive]
+    if highest_health_minions != []:
+        highest_health = max(highest_health_minions)
+        potential_minions = [
+            minion for minion in minions if minion.health == highest_health
+        ]
+        if len(potential_minions) > 1:
+            return get_random_minion(potential_minions)
+        elif len(potential_minions) == 1:
+            return potential_minions[0]
+    return None
