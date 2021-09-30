@@ -42,7 +42,7 @@ class IckyImp(Minion):
         self.death_rattles = [self.ickyimp_deathrattle]
 
     def ickyimp_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 2, Imp(), own_warband)
+        _generic_summon_deathrattle(self, 2, Imp(), own_warband, opponent_warband)
 
 
 class ImpulsiveTrickster(Minion):
@@ -88,7 +88,7 @@ class RedWhelp(Minion):
             ]
         )
         for _ in range(self.golden):
-            opponent_warband.sniped(damage)
+            opponent_warband.sniped(damage, self, own_warband)
 
 
 class ScavengingHyena(Minion):
@@ -154,7 +154,9 @@ class HarvestGolem(Minion):
         self.death_rattles = [self.harvestgolem_deathrattle]
 
     def harvestgolem_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 1, DamagedGolem(), own_warband)
+        _generic_summon_deathrattle(
+            self, 1, DamagedGolem(), own_warband, opponent_warband
+        )
 
 
 class Imprisoner(Minion):
@@ -168,7 +170,7 @@ class Imprisoner(Minion):
         self.death_rattles = [self.imprisoner_deathrattle]
 
     def imprisoner_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 1, Imp(), own_warband)
+        _generic_summon_deathrattle(self, 1, Imp(), own_warband, opponent_warband)
 
 
 class KaboomBot(Minion):
@@ -183,7 +185,7 @@ class KaboomBot(Minion):
     def kaboombot_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
         if len([x for x in opponent_warband.minions if x.alive]) > 0:
             for _ in range(self.golden):
-                opponent_warband.sniped(4)
+                opponent_warband.sniped(4, self, own_warband)
 
 
 class Leapfrogger(Minion):
@@ -234,7 +236,7 @@ class MurlocWarleader(Minion):
             if TRIBE_MURLOC in minion.tribe and minion is not self:
                 minion.attack += 2 * self.golden
 
-    def buff_summoned_minion(self, summoned_minion: Minion):
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
         if (
             TRIBE_MURLOC in summoned_minion.tribe
             and summoned_minion is not self
@@ -277,7 +279,7 @@ class OldMurcEye(Minion):
             if TRIBE_MURLOC in minion.tribe and minion is not self:
                 self.attack += self.golden
 
-    def buff_summoned_minion(self, summoned_minion: Minion):
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
         if (
             TRIBE_MURLOC in summoned_minion.tribe
             and summoned_minion is not self
@@ -322,7 +324,7 @@ class SewerRat(Minion):
         self.death_rattles = [self.sewerrat_deathrattle]
 
     def sewerrat_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 1, HalfShell(), own_warband)
+        _generic_summon_deathrattle(self, 1, HalfShell(), own_warband, opponent_warband)
 
 
 class SpawnOfNZoth(Minion):
@@ -360,7 +362,7 @@ class SouthseaCaptian(Minion):
                 minion.attack += self.golden
                 minion.add_health(self.golden)
 
-    def buff_summoned_minion(self, summoned_minion: Minion):
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
         if (
             TRIBE_PIRATE in summoned_minion.tribe
             and summoned_minion is not self
@@ -395,16 +397,16 @@ class UnstableGhoul(Minion):
         self, own_warband: Warband, opponent_warband: Warband
     ):
         for _ in range(self.golden):
-            minions_to_damage = [
-                minion for minion in own_warband.minions if minion.alive
-            ] + [minion for minion in opponent_warband.minions if minion.alive]
-            for minion in minions_to_damage:
-                if minion.divine_shield:
-                    minion.divine_shield = False
-                else:
-                    minion.health -= 1
+            _aoe_damage(1, self, opponent_warband, own_warband)
+            _aoe_damage(1, self, own_warband, opponent_warband)
 
-    # TODO Hvornår er update af alive??
+
+def _aoe_damage(
+    damage: int, dealer_minion: Minion, own_warband: Warband, opponent_warband: Warband
+):
+    minions_to_damage = [minion for minion in own_warband.minions if minion.alive]
+    for minion in minions_to_damage:
+        minion.take_damage_2(damage, dealer_minion, own_warband, opponent_warband)
 
 
 class WhelpSmuggler(Minion):
@@ -516,6 +518,28 @@ class CracklingCyclone(Minion):
         self._set_attack_and_health(4, 1)
         self.windfury = 2
         self.divine_shield = True
+        self.base_divine_shield = True
+
+
+class DeflectoBot(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Deflect-o-Bot"
+        self.tribe = [TRIBE_MECH]
+        self.tier = 3
+        self._set_attack_and_health(3, 2)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        if self not in own_warband.summon_observers:
+            own_warband.summon_observers.append(self)
+
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
+        if (
+            TRIBE_MECH in summoned_minion.tribe
+            and summoned_minion is not self
+            and self.alive
+        ):
+            self.gain_divine_shield(own_warband)
 
 
 class Kathranatir(Minion):
@@ -537,7 +561,7 @@ class Kathranatir(Minion):
             if TRIBE_DEMON in minion.tribe and minion is not self:
                 minion.attack += 2 * self.golden
 
-    def buff_summoned_minion(self, summoned_minion: Minion):
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
         if (
             TRIBE_DEMON in summoned_minion.tribe
             and summoned_minion is not self
@@ -567,7 +591,9 @@ class RatPack(Minion):
         self.death_rattles = [self.ratpack_deathrattle]
 
     def ratpack_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, self.attack, Rat(), own_warband)
+        _generic_summon_deathrattle(
+            self, self.attack, Rat(), own_warband, opponent_warband
+        )
 
 
 class ReplicatingMenace(Minion):
@@ -582,7 +608,7 @@ class ReplicatingMenace(Minion):
     def replicatingmenace_deathrattle(
         self, own_warband: Warband, opponent_warband: Warband
     ):
-        _generic_summon_deathrattle(self, 3, MicroBot(), own_warband)
+        _generic_summon_deathrattle(self, 3, MicroBot(), own_warband, opponent_warband)
 
 
 class SoulJuggler(Minion):
@@ -605,7 +631,7 @@ class SoulJuggler(Minion):
         opponent_warband: Warband = None,
     ):
         for _ in range(self.golden):
-            opponent_warband.sniped(3)
+            opponent_warband.sniped(3, self, own_warband)
 
 
 # ###### TIER FOUR ########
@@ -620,6 +646,28 @@ class AnnoyoModule(Minion):
         self._set_attack_and_health(2, 4)
         self.taunt = True
         self.divine_shield = True
+        self.base_divine_shield = True
+
+
+class Bigfernal(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Bigfernal"
+        self.tribe = [TRIBE_DEMON]
+        self.tier = 4
+        self._set_attack_and_health(6, 6)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        if self not in own_warband.summon_observers:
+            own_warband.summon_observers.append(self)
+
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
+        if (
+            TRIBE_DEMON in summoned_minion.tribe
+            and summoned_minion is not self
+            and self.alive
+        ):
+            self._add_stats(self.golden, self.golden)
 
 
 class ChampionofYShaarj(Minion):
@@ -701,7 +749,7 @@ class MechanoEgg(Minion):
         self.death_rattles = [self.mechanoegg_deathrattle]
 
     def mechanoegg_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 1, Robosaur(), own_warband)
+        _generic_summon_deathrattle(self, 1, Robosaur(), own_warband, opponent_warband)
 
 
 class MechanoTank(Minion):
@@ -729,7 +777,7 @@ class MechanoTank(Minion):
             for _ in range(self.golden):
                 target = get_highest_health_minion(opponent_warband.minions)
                 if target is not None:
-                    target.take_damage(6)
+                    target.take_damage_2(6, self, opponent_warband, own_warband)
 
 
 class PrestorsPyrospawn(Minion):
@@ -745,9 +793,9 @@ class PrestorsPyrospawn(Minion):
             if (
                 TRIBE_DRAGON in minion.tribe
                 and minion is not self
-                and self not in minion.death_observers
+                and self not in minion.pre_attack_observers
             ):
-                minion.death_observers.append(self)
+                minion.pre_attack_observers.append(self)
 
     def notify(
         self,
@@ -756,9 +804,10 @@ class PrestorsPyrospawn(Minion):
         own_warband: Warband = None,
         opponent_warband: Warband = None,
     ):
-        # TODO Update alive
         for _ in range(self.golden):
-            receiver_minion.take_damage(3 * self.golden)
+            receiver_minion.take_damage_2(
+                3 * self.golden, self, opponent_warband, own_warband
+            )
 
 
 class RingMatron(Minion):
@@ -774,7 +823,7 @@ class RingMatron(Minion):
     def ringmatron_deathrattle(
         self: Minion, own_warband: Warband, opponent_warband: Warband
     ):
-        _generic_summon_deathrattle(self, 2, FieryImp(), own_warband)
+        _generic_summon_deathrattle(self, 2, FieryImp(), own_warband, opponent_warband)
 
 
 class RipsnarlCaptain(Minion):
@@ -812,7 +861,7 @@ class SavannahHighmane(Minion):
     def savannahhighmane_deathrattle(
         self, own_warband: Warband, opponent_warband: Warband
     ):
-        _generic_summon_deathrattle(self, 2, Hyena(), own_warband)
+        _generic_summon_deathrattle(self, 2, Hyena(), own_warband, opponent_warband)
 
 
 # ###### TIER FIVE ########
@@ -827,6 +876,7 @@ class BristlebackKnight(Minion):
         self._set_attack_and_health(4, 8)
         self.windfury = 2
         self.divine_shield = True
+        self.base_divine_shield = True
         self.frenzy_ready = True
 
     def activate_frenzy(self, own_warband):
@@ -869,7 +919,7 @@ class KangorsApprentice(Minion):
     def kangor_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
         minions_to_summon = own_warband.dead_mechs[: 2 * self.golden]
         if len(minions_to_summon) > 0:
-            own_warband.summon_minions(self, minions_to_summon)
+            own_warband.summon_minions(self, minions_to_summon, opponent_warband)
 
 
 class KingBagurgle(Minion):
@@ -885,6 +935,27 @@ class KingBagurgle(Minion):
         for minion in own_warband.minions:
             if TRIBE_MURLOC in minion.tribe and minion.alive:
                 minion._add_stats(2 * self.golden, 2 * self.golden)
+
+
+class MamaBear(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Mama Bear"
+        self.tribe = [TRIBE_BEAST]
+        self.tier = 5
+        self._set_attack_and_health(4, 4)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        if self not in own_warband.summon_observers:
+            own_warband.summon_observers.append(self)
+
+    def buff_summoned_minion(self, summoned_minion: Minion, own_warband: Warband):
+        if (
+            TRIBE_BEAST in summoned_minion.tribe
+            and summoned_minion is not self
+            and self.alive
+        ):
+            summoned_minion._add_stats(5 * self.golden, 5 * self.golden)
 
 
 class PalescaleCrocolisk(Minion):
@@ -1024,7 +1095,9 @@ class Voidlord(Minion):
         self.death_rattles = [self.voidlord_deathrattle]
 
     def voidlord_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 3, Voidwalker(), own_warband)
+        _generic_summon_deathrattle(
+            self, 3, Voidwalker(), own_warband, opponent_warband
+        )
 
 
 # ###### TIER SIX ########
@@ -1048,7 +1121,7 @@ class Amalgadon(Minion):
         self._set_attack_and_health(6, 6)
 
     def amalgadon_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
-        _generic_summon_deathrattle(self, 2, Plant())
+        _generic_summon_deathrattle(self, 2, Plant(), own_warband, opponent_warband)
 
 
 class DreadAdmiralEliza(Minion):
@@ -1108,7 +1181,7 @@ class GentleDjinni(Minion):
             deepcopy(possible_elementals[randint(0, len(possible_elementals) - 1)])
             for _ in range(self.golden)
         ]
-        own_warband.summon_minions(self, chosen_elementals)
+        own_warband.summon_minions(self, chosen_elementals, opponent_warband)
 
 
 class Ghastcoiler(Minion):
@@ -1130,7 +1203,7 @@ class Ghastcoiler(Minion):
             SelflessHero(),
             SewerRat(),
             SpawnOfNZoth(),
-            # UnstableGhoul(),
+            UnstableGhoul(),
             RatPack(),
             ReplicatingMenace(),
             MechanoEgg(),
@@ -1149,7 +1222,7 @@ class Ghastcoiler(Minion):
             deepcopy(possible_minions[randint(0, len(possible_minions) - 1)])
             for _ in range(2 * self.golden)
         ]
-        own_warband.summon_minions(self, chosen_minions)
+        own_warband.summon_minions(self, chosen_minions, opponent_warband)
 
 
 class GoldrintheGreatWolf(Minion):
@@ -1210,7 +1283,7 @@ class ImpMama(Minion):
             ]
             for chosen_minion in chosen_minions:
                 chosen_minion.taunt = True
-            own_warband.summon_minions(self, chosen_minions)
+            own_warband.summon_minions(self, chosen_minions, opponent_warband)
 
 
 class Kalecgos(Minion):
@@ -1249,7 +1322,7 @@ class OmegaBuster(Minion):
 
     def omegabuster_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
         buff_size = (6 - own_warband._get_available_boardspace(6)) * self.golden
-        _generic_summon_deathrattle(self, 6, MicroBot(), own_warband)
+        _generic_summon_deathrattle(self, 6, MicroBot(), own_warband, opponent_warband)
         if buff_size > 0:
             for minion in own_warband.minions:
                 if minion.tribe == TRIBE_MECH and minion.alive:
@@ -1351,6 +1424,7 @@ def _generic_summon_deathrattle(
     number_of_minions: int,
     minion: Minion,
     own_warband: Warband,
+    opponent_warband: Warband,
 ):
     minions = deathrattle_owner._setup_minions_to_summon(number_of_minions, minion)
-    own_warband.summon_minions(deathrattle_owner, minions)
+    own_warband.summon_minions(deathrattle_owner, minions, opponent_warband)

@@ -1,6 +1,7 @@
 from time import time
 from minions import (
     AnnoyoModule,
+    ArmoftheEmpire,
     BirdBuddy,
     BuddingGreenthumb,
     CracklingCyclone,
@@ -13,6 +14,7 @@ from minions import (
     ImpMama,
     KangorsApprentice,
     Leapfrogger,
+    MamaBear,
     MechanoEgg,
     MechanoTank,
     MicroBot,
@@ -21,6 +23,7 @@ from minions import (
     RipsnarlCaptain,
     SISefin,
     Sellemental,
+    SoulJuggler,
     TonyTwoTusk,
     Voidwalker,
 )
@@ -62,7 +65,9 @@ def setup_top():
     warband.add_minion(Ghastcoiler())
     warband.add_minion(Ghastcoiler())
     warband.add_minion(BirdBuddy())
-    warband.add_minion(TonyTwoTusk())
+    warband.add_minion(SoulJuggler())
+    warband.add_minion(MamaBear())
+    warband.add_minion(ArmoftheEmpire())
     return warband
 
 
@@ -98,9 +103,12 @@ if __name__ == "__main__":
 
     bar.finish()
     average_damage = [
-        x / y if y > 0 and x > 0 else x for x, y in zip(average_damage, results)
+        float("{0:0.2f}".format(x / y))
+        if y > 0 and x > 0
+        else float("{0:0.2f}".format(x))
+        for x, y in zip(average_damage, results)
     ]
-    results = [(x / iterations) * 100 for x in results]
+    results = [float("{0:0.2f}".format((x / iterations) * 100)) for x in results]
     print(f"Outcome: {results}")
     print(f"Average damage: {average_damage}")
     print(f"Average turns: {sum(turns)/iterations:.2f}")

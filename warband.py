@@ -67,13 +67,15 @@ class Warband(object):
         self.minions = [x for x in self.minions if x.alive]
         self.summon_observers = [x for x in self.summon_observers if x.alive]
 
-    def sniped(self, damage: int):
+    def sniped(self, damage: int, dealer_minion: Minion, shooter_warband):
         receiver = get_random_minion(self.minions)
-        if receiver.divine_shield:
-            receiver.pop_divine_shield(self)
-        else:
-            receiver.health -= damage
-            receiver.update_life_status()
+        if receiver is not None:
+            # receiver.take_damage_2(damage, dealer_minion, shooter_warband, self)
+            if receiver.divine_shield:
+                receiver.pop_divine_shield(self)
+            else:
+                receiver.health -= damage
+                receiver.update_life_status()
 
     def _get_available_boardspace(self, limit: int):
         return min(
@@ -81,7 +83,10 @@ class Warband(object):
             limit,
         )
 
-    def summon_minions(self, summoner, minions):
+    def remove_minion(self, dead_minion: Minion):
+        self.minions = [minion for minion in self.minions if minion is not dead_minion]
+
+    def summon_minions(self, summoner: Minion, minions: List[Minion], opponent_warband):
         board_space = self._get_available_boardspace(len(minions))
         if board_space > 0:
             minions_2_sum = deepcopy(minions)
@@ -95,6 +100,12 @@ class Warband(object):
                 + minions_2_sum
                 + self.minions[summoner_position:]
             )
+            for minion in minions_2_sum:
+                minion.execute_summon_effect(self, opponent_warband)
+                for summon_observer in self.summon_observers:
+                    summon_observer.buff_summoned_minion(minion, self)
+            for minion in self.minions:
+                minion.register_observable(self, opponent_warband)
 
     def can_do_battle(self):
         return self.minions_alive() > 0

@@ -58,3 +58,26 @@ Red Whelp
 TIER 1
 Scallywag
 FIX Unstable ghoul
+
+Deathrattle ordering:
+Triggered in the order that the minions die
+if two minions (of opposing warbands) die at the same time it is random which procs first
+If it's multiple on the same side, they proc from left to right
+
+
+Combat steps:
+Pre-attack effects (Prestor's, Pirates) -> post death/
+Pre-defend effects (Arm + Champ)
+Attack + Defense simultaneous
+
+Stack of buffs - 
+    post divine-shield
+    post damage
+    post death
+
+Deathrattles (random order for minions dead simultanous)
+New deathrattles in order of death
+
+Questions: 
+Does a Champion of Y'sharj grow if a friendly taunt is shot down by a Prestor's?
+Does a Mecherel gain DS before it gets shot by a enemy juggler (after annoy-o-tron vs ickyimp)

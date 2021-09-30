@@ -1,7 +1,8 @@
+from typing import List
 from warband import Warband, calculate_damage, get_next_defender
 from copy import deepcopy
-from random import randint
-from minion import Minion
+from random import randint, shuffle
+from minion import Minion, notify_observers, on_death
 
 
 class Board(object):
@@ -15,13 +16,17 @@ class Board(object):
         self.bottom_warband = deepcopy(bottom_warband)
         self.top_warband.name = "Top Warband"
         self.bottom_warband.name = "Bottom Warband"
+        self.deathrattle_handler = []
 
         register_observers(self.top_warband, self.bottom_warband)
         register_observers(self.bottom_warband, self.top_warband)
 
     def battle(self):
         self._coin_flip()
-
+        for minion in self.attacker.minions:
+            minion.pre_combat_effect(self.attacker, self.defender)
+        for minion in self.defender.minions:
+            minion.pre_combat_effect(self.defender, self.attacker)
         turn = 0
         while self._can_battle():
             atk_minion: Minion = self.attacker.get_next_attacker()
@@ -39,6 +44,7 @@ class Board(object):
 
                 # Printing board state:
                 # self._print_board_state(turn, atk_minion, def_minion)
+
                 self._fight(atk_minion, def_minion)
 
                 self._update_warbands()
@@ -61,27 +67,57 @@ class Board(object):
             return [1, 0, turn]
 
     def _fight(self, atk_minion: Minion, def_minion: Minion):
+        notify_observers(
+            atk_minion.pre_attack_observers,
+            atk_minion,
+            def_minion,
+            self.attacker,
+            self.defender,
+        )
+        if not def_minion.alive:
+            # TODO needs to be handled differently, deathrattles need to trigger/reborn, more
+            return
 
-        for pre_attack_observer in atk_minion.pre_attack_observers:
-            pre_attack_observer.notify(
-                atk_minion, def_minion, self.attacker, self.defender
-            )
-            # TODO update if minion is dead
+        notify_observers(
+            def_minion.pre_defend_observers,
+            def_minion,
+            atk_minion,
+            self.defender,
+            self.attacker,
+        )
+        # Replaced by take_damage_2
+        atk_minion.take_damage_2(
+            def_minion.attack,
+            def_minion,
+            self.attacker,
+            self.defender,
+        )
+        def_minion.take_damage_2(
+            atk_minion.attack,
+            atk_minion,
+            self.defender,
+            self.attacker,
+        )
 
-        for pre_defend_observer in def_minion.pre_defend_observers:
-            pre_defend_observer.notify(
-                atk_minion, def_minion, self.defender, self.attacker
-            )
-        self._combat_sequence(atk_minion, def_minion, self.attacker)
-        self._combat_sequence(def_minion, atk_minion, self.defender)
-        self._fight_outcome(atk_minion, def_minion, self.defender, self.attacker)
-        self._fight_outcome(def_minion, atk_minion, self.attacker, self.defender)
+        while dead_minions(self.attacker, self.defender, self.deathrattle_handler):
+            for deathrattles in self.deathrattle_handler:
+                on_death(
+                    deathrattles[0], deathrattles[1], deathrattles[2], deathrattles[3]
+                )
+            self.deathrattle_handler = []
+
+        # self._combat_sequence(atk_minion, def_minion, self.attacker)
+        # self._combat_sequence(def_minion, atk_minion, self.defender)
+        # self._fight_outcome(atk_minion, def_minion, self.defender, self.attacker)
+        # self._fight_outcome(def_minion, atk_minion, self.attacker, self.defender)
 
         if atk_minion.cleave:
             adj_minions = self.defender.get_adjacent_minions(def_minion)
             if len(adj_minions) > 0:
                 for adj_minion in adj_minions:
-                    self._combat_sequence(adj_minion, atk_minion)
+                    adj_minion.take_damage_2(
+                        atk_minion.attack, atk_minion, self.defender, self.attacker
+                    )
         atk_minion.number_of_attacks += 1
 
     def _combat_sequence(
@@ -105,10 +141,13 @@ class Board(object):
         # check if minion has frenzy and activate if
         alive = dealer_minion.update_life_status()
         if receiver_minion.attack > 0:
-            for minion in dealer_minion.post_damage_observers:
-                minion.notify(
-                    dealer_minion, receiver_minion, own_warband, opponent_warband
-                )
+            notify_observers(
+                dealer_minion.post_damage_observers,
+                dealer_minion,
+                receiver_minion,
+                own_warband,
+                opponent_warband,
+            )
         if alive and receiver_minion.attack > 0:
             dealer_minion.activate_frenzy(own_warband)
         elif not alive:
@@ -197,3 +236,35 @@ class Board(object):
 def register_observers(own_warband: Warband, opponent_warband: Warband):
     for minion in own_warband.minions:
         minion.register_observable(own_warband, opponent_warband)
+
+
+# def notify_observers(
+#     observers: List[Minion],
+#     dealer_minion: Minion,
+#     receiver_minion: Minion,
+#     own_warband: Warband,
+#     opponent_warband: Warband,
+# ):
+#     for observer in observers:
+#         observer.notify(dealer_minion, receiver_minion, own_warband, opponent_warband)
+
+
+def dead_minions(
+    own_warband: Warband, opponent_warband: Warband, deathrattle_handler: List
+) -> bool:
+    warbands = [own_warband, opponent_warband]
+    shuffle(warbands)
+    any_drs = add_deathrattles(warbands[0], warbands[1], deathrattle_handler)
+    any_drs2 = add_deathrattles(warbands[1], warbands[0], deathrattle_handler)
+    return any_drs or any_drs2
+
+
+def add_deathrattles(
+    own_warband: Warband, opponent_warband: Warband, deathrattle_handler: List
+) -> bool:
+    return_value = False
+    for minion in own_warband.minions:
+        if not minion.alive:
+            deathrattle_handler.append([minion, None, own_warband, opponent_warband])
+            return_value = True
+    return return_value

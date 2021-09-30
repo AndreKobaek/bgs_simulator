@@ -9,6 +9,7 @@ class Minion(object):
     attack: int
     base_attack: int
     health: int
+    damage_taken: int
     taunt: bool
     alive: bool
     frenzy: bool = False
@@ -21,6 +22,7 @@ class Minion(object):
     avenge_counter: int
     avenge_limit: int
     divine_shield: bool
+    base_divine_shield: bool
     # should either be 1 or 2
     golden: int
     death_rattles: list
@@ -36,6 +38,7 @@ class Minion(object):
         self.health = None
         self.base_attack = None
         self.base_health = None
+        self.damage_taken = 0
         self.taunt = False
         self.alive = True
         self.frenzy = False
@@ -47,6 +50,7 @@ class Minion(object):
         self.avenge_limit = 0
         self.number_of_attacks = 0
         self.divine_shield = False
+        self.base_divine_shield = False
         self.golden = 1
         self.death_rattles = []
         self.start_of_combat = False
@@ -81,6 +85,29 @@ class Minion(object):
 
     def take_damage(self, incoming_damage: int):
         self.health -= incoming_damage
+        self.damage_taken += incoming_damage
+
+    def take_damage_2(
+        self,
+        incoming_damage: int,
+        receiver_minion,
+        own_warband,
+        opponent_warband,
+    ):
+        if incoming_damage > 0:
+            if self.divine_shield:
+                self.pop_divine_shield(own_warband)
+            elif receiver_minion is not None and receiver_minion.poisonous:
+                self.alive = False
+            else:
+                self.health -= incoming_damage
+                self.damage_taken += incoming_damage
+
+            if self.health <= 0:
+                self.alive = False
+
+            if self.alive:
+                self.activate_frenzy(own_warband)
 
     def add_health(self, incoming_health):
         self.health += incoming_health
@@ -89,7 +116,13 @@ class Minion(object):
         minion_print = f"{self.name}: {self.attack} / {self.health}{' - Taunt' if self.taunt else ''}{' - Divine Shield' if self.divine_shield else ''}"
         return minion_print
 
-    # TODO redo reborn
+    def _reborn(self):
+        if self.reborn:
+            self.alive = True
+            self.divine_shield = self.base_divine_shield
+            self._set_attack_and_health(self.base_attack, 1)
+            self.damage_taken = self.base_health - 1
+            self.reborn = False
 
     def update_life_status(self) -> bool:
         if self.health <= 0 and self.reborn:
@@ -122,7 +155,7 @@ class Minion(object):
     def register_observable(self, own_warband, opponent_warband):
         pass
 
-    def buff_summoned_minion(self, summoned_minion):
+    def buff_summoned_minion(self, summoned_minion, own_warband):
         pass
 
     def execute_summon_effect(self, own_warband, opponent_warband):
@@ -157,7 +190,40 @@ class Minion(object):
         for divine_observer in self.divine_observers:
             divine_observer.notify(self, None, own_warband)
 
-    def gain_divine_shield(self, warband):
+    def gain_divine_shield(self, own_warband):
         self.divine_shield = True
-        for minion in warband.minions:
-            minion.register_observable(warband, None)
+        for minion in own_warband.minions:
+            minion.register_observable(own_warband, None)
+
+
+def on_death(
+    dealer_minion: Minion,
+    receiver_minion: Minion,
+    own_warband,
+    opponent_warband,
+):
+    dealer_minion.update_death_observers()
+    notify_observers(
+        dealer_minion.death_observers,
+        dealer_minion,
+        receiver_minion,
+        own_warband,
+        opponent_warband,
+    )
+    for deathrattle in dealer_minion.death_rattles:
+        deathrattle(own_warband, opponent_warband)
+    if dealer_minion.reborn:
+        dealer_minion._reborn()
+    else:
+        own_warband.remove_minion(dealer_minion)
+
+
+def notify_observers(
+    observers: List[Minion],
+    dealer_minion: Minion,
+    receiver_minion: Minion,
+    own_warband,
+    opponent_warband,
+):
+    for observer in observers:
+        observer.notify(dealer_minion, receiver_minion, own_warband, opponent_warband)
