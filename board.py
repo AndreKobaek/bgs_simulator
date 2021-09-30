@@ -16,7 +16,6 @@ class Board(object):
         self.bottom_warband = deepcopy(bottom_warband)
         self.top_warband.name = "Top Warband"
         self.bottom_warband.name = "Bottom Warband"
-        self.deathrattle_handler = []
 
         register_observers(self.top_warband, self.bottom_warband)
         register_observers(self.bottom_warband, self.top_warband)
@@ -43,9 +42,14 @@ class Board(object):
                 def_minion = get_next_defender(self.defender.minions)
 
                 # Printing board state:
-                # self._print_board_state(turn, atk_minion, def_minion)
+                self._print_board_state(turn, atk_minion, def_minion)
 
-                self._fight(atk_minion, def_minion)
+                fight(
+                    atk_minion,
+                    def_minion,
+                    self.attacker,
+                    self.defender,
+                )
 
                 self._update_warbands()
                 # TODO What if windfury minion is dead?
@@ -65,71 +69,6 @@ class Board(object):
             return [0, calculate_damage(winner.minions), turn]
         else:
             return [1, 0, turn]
-
-    def _fight(self, atk_minion: Minion, def_minion: Minion):
-        notify_observers(
-            atk_minion.pre_attack_observers,
-            atk_minion,
-            def_minion,
-            self.attacker,
-            self.defender,
-        )
-        if not def_minion.alive:
-            # TODO needs to be handled differently, deathrattles need to trigger/reborn, more
-            return
-
-        notify_observers(
-            def_minion.pre_defend_observers,
-            def_minion,
-            atk_minion,
-            self.defender,
-            self.attacker,
-        )
-        # Replaced by take_damage_2
-        atk_minion.take_damage_2(
-            def_minion.attack,
-            def_minion,
-            self.attacker,
-            self.defender,
-        )
-        def_minion.take_damage_2(
-            atk_minion.attack,
-            atk_minion,
-            self.defender,
-            self.attacker,
-        )
-
-        while dead_minions(self.attacker, self.defender, self.deathrattle_handler):
-            for deathrattles in self.deathrattle_handler:
-                on_death(
-                    deathrattles[0], deathrattles[1], deathrattles[2], deathrattles[3]
-                )
-            self.deathrattle_handler = []
-
-        # self._combat_sequence(atk_minion, def_minion, self.attacker)
-        # self._combat_sequence(def_minion, atk_minion, self.defender)
-        # self._fight_outcome(atk_minion, def_minion, self.defender, self.attacker)
-        # self._fight_outcome(def_minion, atk_minion, self.attacker, self.defender)
-
-        if atk_minion.cleave:
-            adj_minions = self.defender.get_adjacent_minions(def_minion)
-            if len(adj_minions) > 0:
-                for adj_minion in adj_minions:
-                    adj_minion.take_damage_2(
-                        atk_minion.attack, atk_minion, self.defender, self.attacker
-                    )
-        atk_minion.number_of_attacks += 1
-
-    def _combat_sequence(
-        self, dealer_minion: Minion, receiver_minion: Minion, own_warband: Warband
-    ):
-        # Attacker health updates
-        if dealer_minion.divine_shield and receiver_minion.attack > 0:
-            dealer_minion.pop_divine_shield(own_warband)
-        elif receiver_minion.poisonous and receiver_minion.attack > 0:
-            dealer_minion.alive = False
-        else:
-            dealer_minion.health -= receiver_minion.attack
 
     def _fight_outcome(
         self,
@@ -249,22 +188,102 @@ def register_observers(own_warband: Warband, opponent_warband: Warband):
 #         observer.notify(dealer_minion, receiver_minion, own_warband, opponent_warband)
 
 
+def combat_sequence(
+    atk_minion: Minion,
+    def_minion: Minion,
+    atk_warband: Warband,
+    def_warband: Warband,
+):
+    notify_observers(
+        atk_minion.pre_attack_observers,
+        atk_minion,
+        def_minion,
+        atk_warband,
+        def_warband,
+    )
+    if not def_minion.alive:
+        # TODO needs to be handled differently, deathrattles need to trigger/reborn, more
+        return
+
+    notify_observers(
+        def_minion.pre_defend_observers,
+        def_minion,
+        atk_minion,
+        def_warband,
+        atk_warband,
+    )
+    # Replaced by take_damage_2
+    atk_minion.take_damage_2(
+        def_minion.attack,
+        def_minion,
+        atk_warband,
+        def_warband,
+    )
+    def_minion.take_damage_2(
+        atk_minion.attack,
+        atk_minion,
+        def_warband,
+        atk_warband,
+    )
+
+
+def fight(
+    atk_minion: Minion,
+    def_minion: Minion,
+    atk_warband: Warband,
+    def_warband: Warband,
+):
+    combat_sequence(atk_minion, def_minion, atk_warband, def_warband)
+
+    already_handled = []
+    deathrattle_handler = {}
+    while dead_minions(atk_warband, def_warband, deathrattle_handler, already_handled):
+        for minion in deathrattle_handler:
+            own_warband, opponent_warband = deathrattle_handler[minion]
+            on_death(minion, None, own_warband, opponent_warband)
+            already_handled.append(minion)
+        deathrattle_handler = {}
+
+    if atk_minion.cleave:
+        adj_minions = def_warband.get_adjacent_minions(def_minion)
+        if len(adj_minions) > 0:
+            for adj_minion in adj_minions:
+                adj_minion.take_damage_2(
+                    atk_minion.attack, atk_minion, def_warband, atk_warband
+                )
+    atk_minion.number_of_attacks += 1
+
+
 def dead_minions(
-    own_warband: Warband, opponent_warband: Warband, deathrattle_handler: List
+    own_warband: Warband,
+    opponent_warband: Warband,
+    deathrattle_handler: dict,
+    already_handled: List,
 ) -> bool:
     warbands = [own_warband, opponent_warband]
     shuffle(warbands)
-    any_drs = add_deathrattles(warbands[0], warbands[1], deathrattle_handler)
-    any_drs2 = add_deathrattles(warbands[1], warbands[0], deathrattle_handler)
+    any_drs = add_deathrattles(
+        warbands[0], warbands[1], deathrattle_handler, already_handled
+    )
+    any_drs2 = add_deathrattles(
+        warbands[1], warbands[0], deathrattle_handler, already_handled
+    )
     return any_drs or any_drs2
 
 
 def add_deathrattles(
-    own_warband: Warband, opponent_warband: Warband, deathrattle_handler: List
+    own_warband: Warband,
+    opponent_warband: Warband,
+    deathrattle_handler: dict,
+    already_handled: List,
 ) -> bool:
     return_value = False
     for minion in own_warband.minions:
-        if not minion.alive:
-            deathrattle_handler.append([minion, None, own_warband, opponent_warband])
+        if (
+            not minion.alive
+            and minion not in deathrattle_handler
+            and minion not in already_handled
+        ):
+            deathrattle_handler[minion] = [own_warband, opponent_warband]
             return_value = True
     return return_value

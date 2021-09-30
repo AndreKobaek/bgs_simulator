@@ -22,6 +22,7 @@ from minions import (
     Rat,
     RipsnarlCaptain,
     SISefin,
+    Scallywag,
     Sellemental,
     SoulJuggler,
     TonyTwoTusk,
@@ -48,11 +49,13 @@ def setup_bottom():
     # drag.make_golden()
     # drag._add_stats(0, 30)
     # warband.add_minion(drag)
-    warband.add_minion(Ghastcoiler())
-    warband.add_minion(Ghastcoiler())
-    warband.add_minion(BuddingGreenthumb())
-    warband.add_minion(SISefin())
-    warband.add_minion(MechanoTank())
+    # warband.add_minion(Ghastcoiler())
+    # warband.add_minion(Ghastcoiler())
+    # warband.add_minion(BuddingGreenthumb())
+    # warband.add_minion(SISefin())
+    # warband.add_minion(MechanoTank())
+    warband.add_minion(Scallywag())
+    warband.add_minion(RipsnarlCaptain())
 
     return warband
 
@@ -62,26 +65,29 @@ def setup_top():
     # egg = ImpMama()
     # egg.make_golden()
     # warband.add_minion(egg)
-    warband.add_minion(Ghastcoiler())
-    warband.add_minion(Ghastcoiler())
-    warband.add_minion(BirdBuddy())
-    warband.add_minion(SoulJuggler())
-    warband.add_minion(MamaBear())
-    warband.add_minion(ArmoftheEmpire())
+    # warband.add_minion(Ghastcoiler())
+    # warband.add_minion(Ghastcoiler())
+    # warband.add_minion(BirdBuddy())
+    # warband.add_minion(SoulJuggler())
+    # warband.add_minion(MamaBear())
+    # warband.add_minion(ArmoftheEmpire())
+    selly = Sellemental()
+    selly._add_stats(5, 9)
+    warband.add_minion(selly)
     return warband
 
 
 if __name__ == "__main__":
     top_warband = setup_top()
     bottom_warband = setup_bottom()
-    top_warband.make_all_minions_golden()
-    bottom_warband.make_all_minions_golden()
+    # top_warband.make_all_minions_golden()
+    # bottom_warband.make_all_minions_golden()
     print_boards()
 
     turns = []
     results = [0] * 3
     average_damage = [0] * 3
-    iterations = 1_000
+    iterations = 1
     bar = progressbar.ProgressBar(
         maxval=iterations,
         widgets=[

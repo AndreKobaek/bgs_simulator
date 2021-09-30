@@ -1,6 +1,7 @@
 from copy import deepcopy
 from random import randint
-from warband import Warband, get_highest_health_minion
+from board import combat_sequence
+from warband import Warband, get_highest_health_minion, get_next_defender
 from warband import get_random_minion
 from minion import Minion
 from settings import (
@@ -89,6 +90,18 @@ class RedWhelp(Minion):
         )
         for _ in range(self.golden):
             opponent_warband.sniped(damage, self, own_warband)
+
+
+class Scallywag(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Scallywag"
+        self.tribe = [TRIBE_PIRATE]
+        self._set_attack_and_health(2, 1)
+        self.death_rattles = [self.scallywag_deathrattle]
+
+    def scallywag_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
+        _generic_summon_deathrattle(self, 1, SkyPirate(), own_warband, opponent_warband)
 
 
 class ScavengingHyena(Minion):
@@ -1330,6 +1343,22 @@ class OmegaBuster(Minion):
 
 
 # ###### TOKEN MINIONS ########
+
+
+class SkyPirate(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Sky Pirate"
+        self.tribe = [TRIBE_PIRATE]
+        self._set_attack_and_health(1, 1)
+
+    def execute_summon_effect(self, own_warband: Warband, opponent_warband: Warband):
+        combat_sequence(
+            self,
+            get_next_defender(opponent_warband.minions),
+            own_warband,
+            opponent_warband,
+        )
 
 
 class MicroBot(Minion):

@@ -100,12 +100,12 @@ class Warband(object):
                 + minions_2_sum
                 + self.minions[summoner_position:]
             )
-            for minion in minions_2_sum:
-                minion.execute_summon_effect(self, opponent_warband)
-                for summon_observer in self.summon_observers:
-                    summon_observer.buff_summoned_minion(minion, self)
             for minion in self.minions:
                 minion.register_observable(self, opponent_warband)
+            for minion in minions_2_sum:
+                for summon_observer in self.summon_observers:
+                    summon_observer.buff_summoned_minion(minion, self)
+                minion.execute_summon_effect(self, opponent_warband)
 
     def can_do_battle(self):
         return self.minions_alive() > 0
