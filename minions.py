@@ -1,7 +1,12 @@
 from copy import deepcopy
 from random import randint
 from board import combat_sequence
-from warband import Warband, get_highest_health_minion, get_next_defender
+from warband import (
+    Warband,
+    get_deathrattle_minion,
+    get_highest_health_minion,
+    get_next_defender,
+)
 from warband import get_random_minion
 from minion import Minion
 from settings import (
@@ -16,6 +21,14 @@ from settings import (
 )
 
 # ###### TIER ONE ########
+
+
+class Alleycat(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Alleycat"
+        self.tribe = [TRIBE_BEAST]
+        self._set_attack_and_health(1, 1)
 
 
 class DeckSwabbie(Minion):
@@ -73,6 +86,23 @@ class ImpulsiveTrickster(Minion):
                 get_random_minion(own_warband.minions).add_health(health_to_transfer)
 
 
+class Pupbot(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Pupbot"
+        self.tribe = [TRIBE_MECH]
+        self.set_divine_shield(True)
+        self._set_attack_and_health(2, 1)
+
+
+class RazorfenGeomancer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Razorfen Geomancer"
+        self.tribe = [TRIBE_QUILBOAR]
+        self._set_attack_and_health(3, 1)
+
+
 class RedWhelp(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -90,6 +120,14 @@ class RedWhelp(Minion):
         )
         for _ in range(self.golden):
             opponent_warband.sniped(damage, self, own_warband)
+
+
+class RefreshingAnomaly(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Refreshing Anomaly"
+        self.tribe = [TRIBE_ELEMENTAL]
+        self._set_attack_and_health(1, 4)
 
 
 class Scallywag(Minion):
@@ -529,9 +567,8 @@ class CracklingCyclone(Minion):
         self.tier = 3
         self.tribe = [TRIBE_ELEMENTAL]
         self._set_attack_and_health(4, 1)
+        self.set_divine_shield(True)
         self.windfury = 2
-        self.divine_shield = True
-        self.base_divine_shield = True
 
 
 class DeflectoBot(Minion):
@@ -592,6 +629,29 @@ class Kathranatir(Minion):
         for minion in own_warband.minions:
             if TRIBE_DEMON in minion.tribe and minion is not self:
                 minion.attack -= 2 * self.golden
+
+
+class MonstrousMacaw(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Monstrous Macaw"
+        self.tribe = [TRIBE_BEAST]
+        self.tier = 3
+        self._set_attack_and_health(5, 3)
+        self.post_attack_observers = [self]
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        for _ in range(self.golden):
+            deathrattle_minion = get_deathrattle_minion(own_warband.minions)
+            if deathrattle_minion is None:
+                break
+            deathrattle_minion.activate_death_rattle(own_warband, opponent_warband)
 
 
 class RatPack(Minion):
@@ -658,8 +718,7 @@ class AnnoyoModule(Minion):
         self.tribe = [TRIBE_MECH]
         self._set_attack_and_health(2, 4)
         self.taunt = True
-        self.divine_shield = True
-        self.base_divine_shield = True
+        self.set_divine_shield(True)
 
 
 class Bigfernal(Minion):
@@ -888,8 +947,7 @@ class BristlebackKnight(Minion):
         self.tier = 5
         self._set_attack_and_health(4, 8)
         self.windfury = 2
-        self.divine_shield = True
-        self.base_divine_shield = True
+        self.set_divine_shield(True)
         self.frenzy_ready = True
 
     def activate_frenzy(self, own_warband):
@@ -1343,6 +1401,14 @@ class OmegaBuster(Minion):
 
 
 # ###### TOKEN MINIONS ########
+
+
+class Tabbycat(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Tabbycat"
+        self.tribe = [TRIBE_BEAST]
+        self._set_attack_and_health(1, 1)
 
 
 class SkyPirate(Minion):

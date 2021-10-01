@@ -59,6 +59,7 @@ class Minion(object):
         self.pre_attack_observers: List[Minion] = []
         self.pre_defend_observers: List[Minion] = []
         self.divine_observers: List[Minion] = []
+        self.post_attack_observers: List[Minion] = []
         self.post_damage_observers: List[Minion] = []
         self.buff_observers: List[Minion] = []
         self.death_observers: List[Minion] = []
@@ -79,8 +80,8 @@ class Minion(object):
         self.health = hp
         self.base_health = hp
 
-    def set_base_attributes(self, base_atk: int, divine_shield: bool):
-        self.base_attack = base_atk
+    def set_divine_shield(self, divine_shield: bool):
+        self.divine_shield = divine_shield
         self.base_ds = divine_shield
 
     def take_damage(self, incoming_damage: int):

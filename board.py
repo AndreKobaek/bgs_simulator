@@ -42,7 +42,7 @@ class Board(object):
                 def_minion = get_next_defender(self.defender.minions)
 
                 # Printing board state:
-                self._print_board_state(turn, atk_minion, def_minion)
+                # self._print_board_state(turn, atk_minion, def_minion)
 
                 fight(
                     atk_minion,
@@ -224,6 +224,13 @@ def combat_sequence(
         atk_minion,
         def_warband,
         atk_warband,
+    )
+    notify_observers(
+        atk_minion.post_attack_observers,
+        atk_minion,
+        def_minion,
+        atk_warband,
+        def_warband,
     )
 
 

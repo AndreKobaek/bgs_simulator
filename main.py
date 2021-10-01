@@ -1,5 +1,6 @@
 from time import time
 from minions import (
+    Alleycat,
     AnnoyoModule,
     ArmoftheEmpire,
     BirdBuddy,
@@ -18,13 +19,17 @@ from minions import (
     MechanoEgg,
     MechanoTank,
     MicroBot,
+    MonstrousMacaw,
     OmegaBuster,
     Rat,
     RipsnarlCaptain,
     SISefin,
     Scallywag,
     Sellemental,
+    SewerRat,
     SoulJuggler,
+    SpawnOfNZoth,
+    Tabbycat,
     TonyTwoTusk,
     Voidwalker,
 )
@@ -45,35 +50,27 @@ def print_boards():
 
 def setup_bottom():
     warband = Warband()
-    # drag = GlyphGuadrdian()
-    # drag.make_golden()
-    # drag._add_stats(0, 30)
-    # warband.add_minion(drag)
-    # warband.add_minion(Ghastcoiler())
-    # warband.add_minion(Ghastcoiler())
-    # warband.add_minion(BuddingGreenthumb())
-    # warband.add_minion(SISefin())
-    # warband.add_minion(MechanoTank())
-    warband.add_minion(Scallywag())
-    warband.add_minion(RipsnarlCaptain())
+    warband.add_minion(MonstrousMacaw())
+    SoN = SpawnOfNZoth()
+    SoN.reborn = True
+    warband.add_minion(SoN)
+    minion1 = GlyphGuadrdian()
+    minion1._add_stats(1, 1)
+    warband.add_minion(minion1)
+    warband.add_minion(GlyphGuadrdian())
 
     return warband
 
 
 def setup_top():
     warband = Warband()
-    # egg = ImpMama()
-    # egg.make_golden()
-    # warband.add_minion(egg)
-    # warband.add_minion(Ghastcoiler())
-    # warband.add_minion(Ghastcoiler())
-    # warband.add_minion(BirdBuddy())
-    # warband.add_minion(SoulJuggler())
-    # warband.add_minion(MamaBear())
-    # warband.add_minion(ArmoftheEmpire())
-    selly = Sellemental()
-    selly._add_stats(5, 9)
-    warband.add_minion(selly)
+    warband.add_minion(Leapfrogger())
+    warband.add_minion(SewerRat())
+    warband.add_minion(Alleycat())
+    warband.add_minion(Tabbycat())
+    warband.add_minion(Tabbycat())
+    warband.add_minion(Sellemental())
+    warband.add_minion(Sellemental())
     return warband
 
 
@@ -87,7 +84,7 @@ if __name__ == "__main__":
     turns = []
     results = [0] * 3
     average_damage = [0] * 3
-    iterations = 1
+    iterations = 10_000
     bar = progressbar.ProgressBar(
         maxval=iterations,
         widgets=[

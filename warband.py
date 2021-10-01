@@ -155,3 +155,13 @@ def get_highest_health_minion(minions: List[Minion]) -> Optional[Minion]:
         elif len(potential_minions) == 1:
             return potential_minions[0]
     return None
+
+
+def get_deathrattle_minion(minions: List[Minion]) -> Optional[Minion]:
+    deathrattle_minions = [minion for minion in minions if minion.death_rattles != []]
+    if deathrattle_minions != []:
+        if len(deathrattle_minions) > 1:
+            return get_random_minion(deathrattle_minions)
+        elif len(deathrattle_minions) == 1:
+            return deathrattle_minions[0]
+    return None
