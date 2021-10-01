@@ -66,6 +66,7 @@ class Minion(object):
 
     def make_golden(self):
         self.golden = 2
+        self.windfury *= 2
         self.attack += self.base_attack
         self.base_attack *= 2
         self.add_health(self.base_health)
@@ -170,9 +171,6 @@ class Minion(object):
         opponent_warband=None,
     ):
         pass
-
-    def activate_death_rattle(self, own_warband, opponent_warband):
-        return None
 
     def _add_stats(self, atk, hp):
         self.attack += atk

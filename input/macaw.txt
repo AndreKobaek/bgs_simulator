@@ -1,0 +1,1660 @@
+Top board:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Bottom board:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 2 / 4 3
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sewer Rat: 3 / 2 1
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 1 -------------
+Spawn of N'Zoth: 2 / 2
+----------- TURN 2 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Half-Shell: 2 / 3 - Taunt 1
+
+Bottom:
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Defender: Glyph Guadrdian: 3 / 5 1
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 5
+
+Bottom:
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 3
+Glyph Guadrdian: 2 / 1
+
+Attacker: Spawn of N'Zoth: 2 / 2 0
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 1 / 1 1
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 4
+Glyph Guadrdian: 3 / 2
+
+Defender: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 1
+
+Bottom:
+Glyph Guadrdian: 5 / 5
+Glyph Guadrdian: 4 / 3
+
+Attacker: Glyph Guadrdian: 5 / 5 0
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 1 / 1 1
+
+Bottom:
+Glyph Guadrdian: 10 / 4
+Glyph Guadrdian: 4 / 3
+
+Defender: Glyph Guadrdian: 10 / 4 0
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sellemental: 2 / 2
+
+Defender: Leapfrogger: 3 / 1 0
+
+Bottom:
+Glyph Guadrdian: 10 / 3
+Glyph Guadrdian: 4 / 3
+
+Attacker: Glyph Guadrdian: 4 / 3 1
+
+------ END OF TURN 7 -------------
+----------- TURN 8 -------------
+
+Top:
+Sellemental: 2 / 2
+
+Attacker: Sellemental: 2 / 2 0
+
+Bottom:
+Glyph Guadrdian: 10 / 3
+
+Defender: Glyph Guadrdian: 10 / 3 0
+
+------ END OF TURN 8 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 2 / 4 3
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 3
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 1 -------------
+Spawn of N'Zoth: 2 / 2
+----------- TURN 2 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 1
+
+Bottom:
+Monstrous Macaw: 5 / 2
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Defender: Glyph Guadrdian: 2 / 1 3
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 5 / 2
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+
+Attacker: Spawn of N'Zoth: 2 / 2 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 1 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Half-Shell: 2 / 1 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 6 / 3
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+
+Defender: Spawn of N'Zoth: 2 / 1 1
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 4
+
+Bottom:
+Monstrous Macaw: 7 / 4
+Glyph Guadrdian: 5 / 7
+
+Attacker: Glyph Guadrdian: 5 / 7 1
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 7 / 4
+Glyph Guadrdian: 10 / 5
+
+Defender: Glyph Guadrdian: 10 / 5 1
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 2
+
+Bottom:
+Monstrous Macaw: 7 / 4
+Glyph Guadrdian: 10 / 4
+
+Attacker: Monstrous Macaw: 7 / 4 0
+
+------ END OF TURN 7 -------------
+None
+----------- TURN 8 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+
+Attacker: Tabbycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 7 / 2
+Glyph Guadrdian: 10 / 4
+
+Defender: Glyph Guadrdian: 10 / 4 1
+
+------ END OF TURN 8 -------------
+----------- TURN 9 -------------
+
+Top:
+Leapfrogger: 3 / 1
+
+Defender: Leapfrogger: 3 / 1 0
+
+Bottom:
+Monstrous Macaw: 7 / 2
+Glyph Guadrdian: 10 / 3
+
+Attacker: Glyph Guadrdian: 10 / 3 1
+
+------ END OF TURN 9 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 5
+
+Bottom:
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Attacker: Spawn of N'Zoth: 2 / 2 0
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+Glyph Guadrdian: 3 / 5
+
+Defender: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 0
+
+Bottom:
+Glyph Guadrdian: 5 / 7
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 5 / 7 0
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 1 / 1 0
+
+Bottom:
+Glyph Guadrdian: 10 / 5
+Glyph Guadrdian: 4 / 6
+
+Defender: Glyph Guadrdian: 4 / 6 1
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 2
+
+Bottom:
+Glyph Guadrdian: 10 / 5
+Glyph Guadrdian: 4 / 5
+
+Attacker: Glyph Guadrdian: 4 / 5 1
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+
+Attacker: Tabbycat: 1 / 1 0
+
+Bottom:
+Glyph Guadrdian: 10 / 5
+Glyph Guadrdian: 8 / 3
+
+Defender: Glyph Guadrdian: 10 / 5 0
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Tabbycat: 2 / 2
+
+Defender: Tabbycat: 2 / 2 0
+
+Bottom:
+Glyph Guadrdian: 10 / 4
+Glyph Guadrdian: 8 / 3
+
+Attacker: Glyph Guadrdian: 10 / 4 0
+
+------ END OF TURN 7 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 2 / 4 3
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 6
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 1 -------------
+Spawn of N'Zoth: 2 / 2
+----------- TURN 2 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 1
+
+Bottom:
+Monstrous Macaw: 5 / 1
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Defender: Glyph Guadrdian: 3 / 5 2
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 5 / 1
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 2
+Glyph Guadrdian: 2 / 1
+
+Attacker: Spawn of N'Zoth: 2 / 2 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 1 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Half-Shell: 2 / 1 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 6 / 2
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 3
+Glyph Guadrdian: 3 / 2
+
+Defender: Glyph Guadrdian: 3 / 2 3
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Alleycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 6 / 2
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 3
+
+Attacker: Glyph Guadrdian: 4 / 3 2
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 6 / 2
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 2
+
+Defender: Glyph Guadrdian: 8 / 2 2
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Leapfrogger: 3 / 1 0
+
+Bottom:
+Monstrous Macaw: 6 / 2
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 1
+
+Attacker: Monstrous Macaw: 6 / 2 0
+
+------ END OF TURN 7 -------------
+Spawn of N'Zoth: 2 / 1
+----------- TURN 8 -------------
+
+Top:
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 1
+
+Defender: Glyph Guadrdian: 8 / 1 1
+
+------ END OF TURN 8 -------------
+----------- TURN 9 -------------
+
+Top:
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+
+Attacker: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 9 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 5
+
+Bottom:
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Attacker: Spawn of N'Zoth: 2 / 2 0
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+Glyph Guadrdian: 3 / 5
+
+Defender: Glyph Guadrdian: 4 / 6 1
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 3
+Glyph Guadrdian: 3 / 5
+
+Attacker: Glyph Guadrdian: 4 / 3 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 1 / 1 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 1
+Glyph Guadrdian: 3 / 5
+
+Defender: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Tabbycat: 1 / 1
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 0
+
+Bottom:
+Glyph Guadrdian: 9 / 2
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 4 / 6 1
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 2 / 2 0
+
+Bottom:
+Glyph Guadrdian: 9 / 2
+Glyph Guadrdian: 8 / 5
+
+Defender: Glyph Guadrdian: 9 / 2 0
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 0
+
+Bottom:
+Glyph Guadrdian: 8 / 5
+
+Attacker: Glyph Guadrdian: 8 / 5 0
+
+------ END OF TURN 7 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Sewer Rat: 3 / 2
+Alleycat: 2 / 2
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 3
+
+Bottom:
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Attacker: Spawn of N'Zoth: 2 / 2 0
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Sewer Rat: 3 / 2
+Alleycat: 2 / 2
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 2 / 2
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+Glyph Guadrdian: 3 / 5
+
+Attacker: Glyph Guadrdian: 4 / 6 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Alleycat: 2 / 2
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 4
+Glyph Guadrdian: 3 / 5
+
+Defender: Glyph Guadrdian: 3 / 5 2
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 1
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 4
+Glyph Guadrdian: 3 / 3
+
+Attacker: Glyph Guadrdian: 3 / 3 2
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 4
+Glyph Guadrdian: 6 / 1
+
+Defender: Glyph Guadrdian: 8 / 4 1
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 2
+Glyph Guadrdian: 6 / 1
+
+Attacker: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 7 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Sewer Rat: 4 / 3
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 2
+
+Bottom:
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Attacker: Spawn of N'Zoth: 2 / 2 0
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Sewer Rat: 4 / 3
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 4 / 3 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 3 / 5 1
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Half-Shell: 3 / 4 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 3 / 4 - Taunt 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 3 / 1
+Glyph Guadrdian: 2 / 4
+
+Attacker: Glyph Guadrdian: 3 / 1 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Alleycat: 2 / 2
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 2 / 4 1
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 2 / 2
+
+Attacker: Glyph Guadrdian: 2 / 2 1
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sellemental: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+
+Defender: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 0
+
+Bottom:
+Spawn of N'Zoth: 2 / 1
+
+Attacker: Spawn of N'Zoth: 2 / 1 0
+
+------ END OF TURN 7 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 3 / 5 2
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Sewer Rat: 4 / 3
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 5
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 2
+Glyph Guadrdian: 2 / 4
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 1 -------------
+Spawn of N'Zoth: 2 / 2
+----------- TURN 2 -------------
+
+Top:
+Sewer Rat: 4 / 3
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 4 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 1
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 2
+Glyph Guadrdian: 2 / 4
+
+Defender: Spawn of N'Zoth: 2 / 2 1
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Sewer Rat: 4 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Sewer Rat: 4 / 1 0
+
+Bottom:
+Monstrous Macaw: 6 / 2
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 3
+Glyph Guadrdian: 3 / 5
+
+Attacker: Spawn of N'Zoth: 2 / 1 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 2 / 2
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 2 / 2 1
+
+Bottom:
+Monstrous Macaw: 7 / 3
+Glyph Guadrdian: 5 / 4
+Glyph Guadrdian: 4 / 6
+
+Defender: Monstrous Macaw: 7 / 3 0
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Half-Shell: 2 / 3 - Taunt
+Tabbycat: 2 / 2
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 0
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 5 / 4
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 5 / 4 1
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Tabbycat: 2 / 2
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 2 / 2 0
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 10 / 2
+Glyph Guadrdian: 4 / 6
+
+Defender: Glyph Guadrdian: 10 / 2 1
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Tabbycat: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 2 / 2 0
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 4 / 6 1
+
+------ END OF TURN 7 -------------
+----------- TURN 8 -------------
+
+Top:
+Sellemental: 2 / 2
+
+Attacker: Sellemental: 2 / 2 0
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 8 / 4
+
+Defender: Glyph Guadrdian: 8 / 4 1
+
+------ END OF TURN 8 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Glyph Guadrdian: 2 / 4 3
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Alleycat: 1 / 1 2
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 1 -------------
+Spawn of N'Zoth: 2 / 2
+----------- TURN 2 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 1
+
+Bottom:
+Monstrous Macaw: 5 / 2
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 1
+
+Defender: Glyph Guadrdian: 2 / 1 3
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 3 - Taunt
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 5 / 2
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+
+Attacker: Spawn of N'Zoth: 2 / 2 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 1 - Taunt
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Half-Shell: 2 / 1 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 6 / 3
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+
+Defender: Monstrous Macaw: 6 / 3 0
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 3
+
+Bottom:
+Monstrous Macaw: 6 / 1
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 4 / 6 2
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 6 / 1
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 8 / 4
+
+Defender: Spawn of N'Zoth: 2 / 1 1
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 7 / 2
+Glyph Guadrdian: 9 / 5
+
+Attacker: Monstrous Macaw: 7 / 2 0
+
+------ END OF TURN 7 -------------
+None
+----------- TURN 8 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sellemental: 2 / 2
+
+Attacker: Sellemental: 2 / 2 1
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 9 / 5
+
+Defender: Glyph Guadrdian: 9 / 5 1
+
+------ END OF TURN 8 -------------
+----------- TURN 9 -------------
+
+Top:
+Leapfrogger: 3 / 1
+
+Defender: Leapfrogger: 3 / 1 0
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 9 / 3
+
+Attacker: Glyph Guadrdian: 9 / 3 1
+
+------ END OF TURN 9 -------------
+----------- TURN 0 -------------
+
+Top:
+Leapfrogger: 3 / 3
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Attacker: Leapfrogger: 3 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Spawn of N'Zoth: 2 / 2
+Glyph Guadrdian: 3 / 5
+Glyph Guadrdian: 2 / 4
+
+Defender: Spawn of N'Zoth: 2 / 2 1
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 6
+
+Bottom:
+Monstrous Macaw: 6 / 4
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+Glyph Guadrdian: 3 / 5
+
+Attacker: Monstrous Macaw: 6 / 4 0
+
+------ END OF TURN 1 -------------
+Spawn of N'Zoth: 2 / 1
+----------- TURN 2 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sewer Rat: 3 / 2
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Sewer Rat: 3 / 2 1
+
+Bottom:
+Monstrous Macaw: 6 / 2
+Spawn of N'Zoth: 2 / 1
+Glyph Guadrdian: 4 / 6
+Glyph Guadrdian: 3 / 5
+
+Defender: Spawn of N'Zoth: 2 / 1 1
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Half-Shell: 2 / 3 - Taunt
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Half-Shell: 2 / 3 - Taunt 1
+
+Bottom:
+Monstrous Macaw: 7 / 3
+Glyph Guadrdian: 5 / 7
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 5 / 7 1
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Alleycat: 1 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Alleycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 7 / 3
+Glyph Guadrdian: 10 / 5
+Glyph Guadrdian: 4 / 6
+
+Defender: Glyph Guadrdian: 10 / 5 1
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Defender: Tabbycat: 1 / 1 2
+
+Bottom:
+Monstrous Macaw: 7 / 3
+Glyph Guadrdian: 10 / 4
+Glyph Guadrdian: 4 / 6
+
+Attacker: Glyph Guadrdian: 4 / 6 2
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Tabbycat: 1 / 1
+Sellemental: 2 / 2
+
+Attacker: Tabbycat: 1 / 1 1
+
+Bottom:
+Monstrous Macaw: 7 / 3
+Glyph Guadrdian: 10 / 4
+Glyph Guadrdian: 8 / 5
+
+Defender: Glyph Guadrdian: 10 / 4 1
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Leapfrogger: 3 / 1
+Sellemental: 2 / 2
+
+Defender: Sellemental: 2 / 2 1
+
+Bottom:
+Monstrous Macaw: 7 / 3
+Glyph Guadrdian: 10 / 3
+Glyph Guadrdian: 8 / 5
+
+Attacker: Monstrous Macaw: 7 / 3 0
+
+------ END OF TURN 7 -------------
+None
+----------- TURN 8 -------------
+
+Top:
+Leapfrogger: 3 / 1
+
+Attacker: Leapfrogger: 3 / 1 0
+
+Bottom:
+Monstrous Macaw: 7 / 1
+Glyph Guadrdian: 10 / 3
+Glyph Guadrdian: 8 / 5
+
+Defender: Monstrous Macaw: 7 / 1 0
+
+------ END OF TURN 8 -------------
+Outcome: [80.0, 20.0, 0.0]
+Average damage: [3.38, 0.0, 0.0]
+Average turns: 8.90
+Turns / Time 10178.96

@@ -23,6 +23,14 @@ from settings import (
 # ###### TIER ONE ########
 
 
+class AcolyteOfCthun(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Acolyte of C'thun"
+        self.reborn = True
+        self._set_attack_and_health(2, 2)
+
+
 class Alleycat(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -86,6 +94,23 @@ class ImpulsiveTrickster(Minion):
                 get_random_minion(own_warband.minions).add_health(health_to_transfer)
 
 
+class MicroMummy(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Micro Mummy"
+        self.tribe = [TRIBE_MECH]
+        self.reborn = True
+        self._set_attack_and_health(1, 2)
+
+
+class MurlocTidehunter(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Murloc Tidehunter"
+        self.tribe = [TRIBE_MURLOC]
+        self._set_attack_and_health(2, 1)
+
+
 class Pupbot(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -128,6 +153,14 @@ class RefreshingAnomaly(Minion):
         self.name = "Refreshing Anomaly"
         self.tribe = [TRIBE_ELEMENTAL]
         self._set_attack_and_health(1, 4)
+
+
+class RockpoolHunter(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Rockpool Hunter"
+        self.tribe = [TRIBE_MURLOC]
+        self._set_attack_and_health(2, 3)
 
 
 class Scallywag(Minion):
@@ -173,7 +206,31 @@ class Sellemental(Minion):
         self._set_attack_and_health(2, 2)
 
 
+class SunBaconRelaxer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Sun-Bacon Relaxer"
+        self.tribe = [TRIBE_QUILBOAR]
+        self._set_attack_and_health(1, 2)
+
+
+class WrathWeaver(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Wrath Weaver"
+        self._set_attack_and_health(1, 3)
+
+
 # ###### TIER TWO ########
+
+
+class FreedealingGambler(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Freedealing Gambler"
+        self.tier = 2
+        self.tribe = [TRIBE_PIRATE]
+        self._set_attack_and_health(3, 3)
 
 
 class GlyphGuadrdian(Minion):
@@ -258,6 +315,23 @@ class Leapfrogger(Minion):
             receiver.death_rattles.append(self.leapfrog_deathrattle)
 
 
+class MenagerieMug(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Menagerie Mug"
+        self.tier = 2
+        self._set_attack_and_health(2, 2)
+
+
+class MetaltoothLeaper(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "MetaltoothLeaper"
+        self.tier = 2
+        self.tribe = [TRIBE_MECH]
+        self._set_attack_and_health(3, 3)
+
+
 class MoltenRock(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -307,6 +381,15 @@ class MurlocWarleader(Minion):
                 minion.attack -= 2 * self.golden
 
 
+class NathrezimOverseer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Nathrezim Overseer"
+        self.tribe = [TRIBE_DEMON]
+        self.tier = 2
+        self._set_attack_and_health(2, 4)
+
+
 class OldMurcEye(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -346,6 +429,50 @@ class OldMurcEye(Minion):
         opponent_warband: Warband = None,
     ):
         self.attack -= self.golden
+
+
+class PartyElemental(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Party Elemental"
+        self.tier = 2
+        self.tribe = [TRIBE_ELEMENTAL]
+        self._set_attack_and_health(3, 2)
+
+
+class ProphetoftheBoar(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Prophet of the Boar"
+        self.tier = 2
+        self._set_attack_and_health(3, 3)
+
+
+class RabidSaurolisk(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Rabid Saurolisk"
+        self.tier = 2
+        self.tribe = [TRIBE_BEAST]
+        self._set_attack_and_health(3, 2)
+
+
+class Roadboar(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Roadboar"
+        self.tier = 2
+        self.tribe = [TRIBE_QUILBOAR]
+        self._set_attack_and_health(2, 4)
+
+
+class SaltscaleHoncho(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Saltscale Honcho"
+        self.tier = 2
+        self.tribe = [TRIBE_MURLOC]
+        self._set_attack_and_health(3, 2)
 
 
 class SelflessHero(Minion):
@@ -436,6 +563,15 @@ class SouthseaCaptian(Minion):
                 minion.take_damage(self.golden)
 
 
+class ToughTusk(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Tough Tusk"
+        self.tier = 2
+        self.tribe = [TRIBE_QUILBOAR]
+        self._set_attack_and_health(4, 3)
+
+
 class UnstableGhoul(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -463,7 +599,7 @@ def _aoe_damage(
 class WhelpSmuggler(Minion):
     def __init__(self) -> None:
         super().__init__()
-        self.name = "WhelpSmuggler"
+        self.name = "Whelp Smuggler"
         self.tier = 2
         self._set_attack_and_health(2, 5)
 
@@ -480,6 +616,30 @@ class WhelpSmuggler(Minion):
         opponent_warband: Warband = None,
     ):
         dealer_minion.add_health(self.golden)
+
+
+class YoHoOgre(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Yo-Ho-Ogre"
+        self.tier = 2
+        self.tribe = [TRIBE_PIRATE]
+        self._set_attack_and_health(2, 6)
+        self.post_damage_observers[self]
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        combat_sequence(
+            self,
+            get_next_defender(opponent_warband.minions),
+            own_warband,
+            opponent_warband,
+        )
 
 
 # ###### TIER THREE ########
@@ -505,6 +665,15 @@ class ArmoftheEmpire(Minion):
         opponent_warband: Warband = None,
     ):
         receiver_minion.attack += 2 * self.golden
+
+
+class Bannerboar(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Bannerboar"
+        self.tier = 3
+        self.tribe = [TRIBE_QUILBOAR]
+        self._set_attack_and_health(1, 4)
 
 
 class BirdBuddy(Minion):
@@ -533,6 +702,35 @@ class BirdBuddy(Minion):
                     minion._add_stats(self.golden, self.golden)
 
 
+class BrinyBootlegger(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Briny Bootlegger"
+        self.tier = 3
+        self._set_attack_and_health(4, 4)
+        self.tribe = [TRIBE_PIRATE]
+
+
+class BristlebackBrute(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Bristleback Brute"
+        self.tier = 3
+        self._set_attack_and_health(4, 4)
+        self.tribe = [TRIBE_QUILBOAR]
+
+
+class BronzeWarden(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Bronze Warden"
+        self.tier = 3
+        self._set_attack_and_health(2, 1)
+        self.tribe = [TRIBE_DRAGON]
+        self.reborn = True
+        self.set_divine_shield(True)
+
+
 class BuddingGreenthumb(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -558,6 +756,15 @@ class BuddingGreenthumb(Minion):
             for minion in adjacent_minions:
                 if minion.alive:
                     minion._add_stats(2 * self.golden, self.golden)
+
+
+class ColdlightSeer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "ColdlightSeer"
+        self.tier = 3
+        self.tribe = [TRIBE_MURLOC]
+        self._set_attack_and_health(2, 3)
 
 
 class CracklingCyclone(Minion):
@@ -590,6 +797,47 @@ class DeflectoBot(Minion):
             and self.alive
         ):
             self.gain_divine_shield(own_warband)
+
+
+class FelfinNavigator(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Felfin Navigator"
+        self.tribe = [TRIBE_MURLOC]
+        self.tier = 3
+        self._set_attack_and_health(4, 4)
+
+
+class Gemsplitter(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Gemsplitter"
+        self.tribe = [TRIBE_QUILBOAR]
+        self.tier = 3
+        self._set_attack_and_health(2, 4)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if self not in minion.divine_observers:
+                minion.divine_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        pass
+        # TODO add card to hand
+
+
+class Houndmaster(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Houndmaster"
+        self.tier = 3
+        self._set_attack_and_health(4, 3)
 
 
 class Kathranatir(Minion):
@@ -631,6 +879,14 @@ class Kathranatir(Minion):
                 minion.attack -= 2 * self.golden
 
 
+class Khadgar(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Khadgar"
+        self.tier = 3
+        self._set_attack_and_health(2, 2)
+
+
 class MonstrousMacaw(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -651,16 +907,26 @@ class MonstrousMacaw(Minion):
             deathrattle_minion = get_deathrattle_minion(own_warband.minions)
             if deathrattle_minion is None:
                 break
-            deathrattle_minion.activate_death_rattle(own_warband, opponent_warband)
+            for deathrattle in deathrattle_minion.death_rattles:
+                deathrattle(own_warband, opponent_warband)
+
+
+class Necrolyte(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Necrolyte"
+        self._set_attack_and_health(3, 3)
+        self.tier = 3
+        self.tribe = [TRIBE_QUILBOAR]
 
 
 class RatPack(Minion):
     def __init__(self) -> None:
         super().__init__()
         self.name = "Rat Pack"
-        self.tribe = [TRIBE_BEAST]
-        self.tier = 3
         self._set_attack_and_health(2, 2)
+        self.tier = 3
+        self.tribe = [TRIBE_BEAST]
         self.death_rattles = [self.ratpack_deathrattle]
 
     def ratpack_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
@@ -684,6 +950,42 @@ class ReplicatingMenace(Minion):
         _generic_summon_deathrattle(self, 3, MicroBot(), own_warband, opponent_warband)
 
 
+class SaltyLooter(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Salty Looter"
+        self._set_attack_and_health(4, 5)
+        self.tier = 3
+        self.tribe = [TRIBE_PIRATE]
+
+
+class ScrewjankClunker(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Screwjank Clunker"
+        self._set_attack_and_health(2, 5)
+        self.tier = 3
+        self.tribe = [TRIBE_MECH]
+
+
+class Smogger(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Smogger"
+        self._set_attack_and_health(3, 3)
+        self.tier = 3
+        self.tribe = [TRIBE_ELEMENTAL]
+
+
+class SoulDevourer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Soul Devourer"
+        self._set_attack_and_health(3, 3)
+        self.tier = 3
+        self.tribe = [TRIBE_DEMON]
+
+
 class SoulJuggler(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -705,6 +1007,51 @@ class SoulJuggler(Minion):
     ):
         for _ in range(self.golden):
             opponent_warband.sniped(3, self, own_warband)
+
+
+class SouthseaStrongarm(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "SouthseaStrongarm"
+        self._set_attack_and_health(4, 3)
+        self.tier = 3
+        self.tribe = [TRIBE_PIRATE]
+
+
+class StatisElemental(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Statis Elemental"
+        self.tier = 3
+        self.tribe = [TRIBE_ELEMENTAL]
+        self._set_attack_and_health(4, 4)
+
+
+class Swolefin(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Swolefin"
+        self._set_attack_and_health(4, 2)
+        self.tier = 3
+        self.tribe = [TRIBE_MURLOC]
+
+
+class Tarecgosa(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Tarecgosa"
+        self._set_attack_and_health(4, 4)
+        self.tier = 3
+        self.tribe = [TRIBE_DRAGON]
+
+
+class TwilightEmissary(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Twilight Emissary"
+        self.tier = 3
+        self.tribe = [TRIBE_DRAGON]
+        self._set_attack_and_health(4, 4)
 
 
 # ###### TIER FOUR ########
@@ -740,6 +1087,37 @@ class Bigfernal(Minion):
             and self.alive
         ):
             self._add_stats(self.golden, self.golden)
+
+
+class Bonker(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Bonker"
+        self._set_attack_and_health(3, 7)
+        self.tier = 4
+        self.windfury = 1
+        self.tribe = [TRIBE_QUILBOAR]
+        self.post_attack_observers[self]
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        pass
+        # TODO add bloodgem to hand
+
+
+class CaveHydra(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Cave Hydra"
+        self._set_attack_and_health(2, 4)
+        self.tier = 4
+        self.cleave = True
+        self.tribe = [TRIBE_BEAST]
 
 
 class ChampionofYShaarj(Minion):
@@ -788,6 +1166,50 @@ class DrakonidEnforcer(Minion):
         self.health += 2 * self.golden
 
 
+class CobaltScalebane(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Cobalt Scalebane"
+        self._set_attack_and_health(5, 5)
+        self.tier = 4
+        self.tribe = [TRIBE_DRAGON]
+
+
+class DazzlingLightspawn(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Dazzling Lightspawn"
+        self._set_attack_and_health(4, 5)
+        self.tier = 4
+        self.tribe = [TRIBE_ELEMENTAL]
+
+
+class DefenderofArgus(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Defender of Argus"
+        self._set_attack_and_health(3, 3)
+        self.tier = 4
+
+
+class DynamicDuo(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Dynamic Duo"
+        self._set_attack_and_health(4, 5)
+        self.tier = 4
+        self.tribe = [TRIBE_QUILBOAR]
+
+
+class Goldgrubber(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Goldgrubber"
+        self._set_attack_and_health(4, 4)
+        self.tier = 4
+        self.tribe = [TRIBE_PIRATE]
+
+
 class GreaseBot(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -809,6 +1231,48 @@ class GreaseBot(Minion):
         opponent_warband: Warband = None,
     ):
         dealer_minion._add_stats(2 * self.golden, self.golden)
+
+
+class Groundshaker(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Groundshaker"
+        self._set_attack_and_health(2, 6)
+        self.tier = 4
+        self.tribe = [TRIBE_QUILBOAR]
+
+
+class ImpatientDoomsayer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Impatient Doomsayer"
+        self._set_attack_and_health(2, 6)
+        self.tier = 4
+        self.avenge_limit = 4
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if minion is not self and self not in minion.divine_observers:
+                minion.death_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        if self.avenge_tick():
+            pass
+            # TODO add card to hand
+
+
+class MajordomoExecutus(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Majordomo Executus"
+        self._set_attack_and_health(6, 3)
+        self.tier = 4
 
 
 class MechanoEgg(Minion):
@@ -852,6 +1316,39 @@ class MechanoTank(Minion):
                     target.take_damage_2(6, self, opponent_warband, own_warband)
 
 
+class MenagerieJug(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Menagerie Mug"
+        self._set_attack_and_health(3, 3)
+        self.tier = 4
+
+
+class PeggyBrittlebone(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "PeggyBrittlebone"
+        self._set_attack_and_health(6, 5)
+        self.tier = 4
+        self.tribe = [TRIBE_PIRATE]
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        pirates = [
+            minion
+            for minion in own_warband.minions
+            if TRIBE_PIRATE in minion.tribe and minion is not self
+        ]
+        buff_target = get_random_minion(pirates)
+        if buff_target is not None:
+            buff_target._add_stats(self.golden, self.golden)
+
+
 class PrestorsPyrospawn(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -880,6 +1377,41 @@ class PrestorsPyrospawn(Minion):
             receiver_minion.take_damage_2(
                 3 * self.golden, self, opponent_warband, own_warband
             )
+
+
+class PrimalfinLookout(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Primalfin Lookout"
+        self._set_attack_and_health(3, 2)
+        self.tier = 4
+        self.tribe = [TRIBE_MURLOC]
+
+
+class PrizedPromoDrake(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Prized Promo-Drake"
+        self._set_attack_and_health(5, 5)
+        self.tier = 4
+        self.tribe = [TRIBE_DRAGON]
+
+    def pre_combat_effect(self, own_warband: Warband, opponent_warband: Warband):
+        dragon_count = len(
+            [minion for minion in own_warband.minions if TRIBE_DRAGON in minion.tribe]
+        )
+        minions_to_buff = own_warband.get_adjacent_minions(self)
+        for minion in minions_to_buff:
+            minion._add_stats(dragon_count * self.golden, dragon_count * self.golden)
+
+
+class RecyclingWraith(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "RecyclingWraith"
+        self._set_attack_and_health(5, 4)
+        self.tier = 4
+        self.tribe = [TRIBE_ELEMENTAL]
 
 
 class RingMatron(Minion):
@@ -936,7 +1468,90 @@ class SavannahHighmane(Minion):
         _generic_summon_deathrattle(self, 2, Hyena(), own_warband, opponent_warband)
 
 
+class WildfireElemental(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Wildfire Elemental"
+        self._set_attack_and_health(7, 4)
+        self.tier = 4
+        self.tribe = [TRIBE_ELEMENTAL]
+        self.post_attack_observers[self]
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        # TODO IMPLEMENT ELEMENTAL CLEAVE
+        pass
+
+
+class WitchwingNestmatron(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Wildfire Elemental"
+        self._set_attack_and_health(3, 5)
+        self.tier = 4
+        self.avenge_limit = 3
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        if self.avenge_tick():
+            pass
+            # TODO add card to hand
+
+
 # ###### TIER FIVE ########
+
+
+class AgamaggantheGreatBoar(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Agamaggan, the Great Boar"
+        self._set_attack_and_health(6, 6)
+        self.tier = 5
+        self.tribe = [TRIBE_BEAST]
+
+
+class AggemThorncurse(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Aggem Thornecurse"
+        self._set_attack_and_health(3, 6)
+        self.tier = 5
+        self.tribe = [TRIBE_QUILBOAR]
+
+
+class AnnihilanBattlemaster(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Annihilan Battlemaster"
+        self._set_attack_and_health(3, 1)
+        self.tier = 5
+        self.tribe = [TRIBE_DEMON]
+
+
+class BaronRivendare(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Baron Rivendare"
+        self._set_attack_and_health(1, 7)
+        self.tier = 5
+
+
+class BrannBronzebeard(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "BrannBronzebeard"
+        self._set_attack_and_health(2, 4)
+        self.tier = 5
 
 
 class BristlebackKnight(Minion):
@@ -954,6 +1569,24 @@ class BristlebackKnight(Minion):
         if self.frenzy_ready:
             self.gain_divine_shield(own_warband)
             self.frenzy = False
+
+
+class CapnHoggarr(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Cap'n Hoggarr"
+        self._set_attack_and_health(6, 6)
+        self.tier = 5
+        self.tribe = [TRIBE_PIRATE]
+
+
+class DeadlySpore(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Deadly Spore"
+        self._set_attack_and_health(1, 1)
+        self.tier = 5
+        self.poisonous = True
 
 
 class HolyMecherel(Minion):
@@ -977,6 +1610,16 @@ class HolyMecherel(Minion):
         opponent_warband: Warband = None,
     ):
         self.gain_divine_shield(own_warband)
+
+
+class InsataibleUrzul(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Insatiable Ur'zul"
+        self._set_attack_and_health(4, 6)
+        self.tier = 5
+        self.tribe = [TRIBE_DEMON]
+        self.taunt = True
 
 
 class KangorsApprentice(Minion):
@@ -1008,6 +1651,14 @@ class KingBagurgle(Minion):
                 minion._add_stats(2 * self.golden, 2 * self.golden)
 
 
+class LightfangEnforcer(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Lightfang Enforcer"
+        self._set_attack_and_health(2, 2)
+        self.tier = 5
+
+
 class MamaBear(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -1027,6 +1678,45 @@ class MamaBear(Minion):
             and self.alive
         ):
             summoned_minion._add_stats(5 * self.golden, 5 * self.golden)
+
+
+class MasterofRealities(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Master of Realities"
+        self._set_attack_and_health(6, 6)
+        self.tier = 5
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if TRIBE_ELEMENTAL in minion.tribe and self not in minion.buff_observers:
+                minion.buff_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion: Minion,
+        receiver_minion: Minion,
+        own_warband: Warband,
+        opponent_warband: Warband,
+    ):
+        self._add_stats(self.golden, self.golden)
+
+
+class Murozond(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Murozond"
+        self._set_attack_and_health(5, 5)
+        self.tier = 5
+        self.tribe = [TRIBE_DRAGON]
+
+
+class NomiKitchenNightmare(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Nomi, Kitchen Nightmare"
+        self.tier = 5
+        self._set_attack_and_health(4, 4)
 
 
 class PalescaleCrocolisk(Minion):
@@ -1083,6 +1773,15 @@ class RazorgoretheUntamed(Minion):
         self._set_attack_and_health(4, 6)
 
 
+class ReanimatingRattler(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Reanimating Rattler"
+        self._set_attack_and_health(7, 3)
+        self.tier = 5
+        self.tribe = [TRIBE_BEAST]
+
+
 class SISefin(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -1117,6 +1816,23 @@ class SISefin(Minion):
                     get_random_minion(potential_recievers).poisonous = True
                 else:
                     break
+
+
+class StrongshellScavenger(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Strongshell Scavenger"
+        self._set_attack_and_health(2, 3)
+        self.tier = 5
+
+
+class TavernTempest(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Tavern Tempest"
+        self._set_attack_and_health(4, 4)
+        self.tier = 5
+        self.tribe = [TRIBE_ELEMENTAL]
 
 
 class TonyTwoTusk(Minion):
@@ -1195,6 +1911,32 @@ class Amalgadon(Minion):
         _generic_summon_deathrattle(self, 2, Plant(), own_warband, opponent_warband)
 
 
+class ArchdruidHamuul(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Archdruid Hamuul"
+        self._set_attack_and_health(4, 4)
+        self.tier = 6
+
+
+class CaptainFlatTusk(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Captain Flat Tusk"
+        self._set_attack_and_health(9, 6)
+        self.tier = 6
+        self.tribe = [TRIBE_QUILBOAR]
+
+
+class Charlga(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Charlga"
+        self._set_attack_and_health(4, 4)
+        self.tier = 6
+        self.tribe = [TRIBE_QUILBOAR]
+
+
 class DreadAdmiralEliza(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -1222,6 +1964,25 @@ class DreadAdmiralEliza(Minion):
             minion._add_stats(2 * self.golden, 1 * self.golden)
 
 
+class FamishedFelbat(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "FamishedFelbat"
+        self._set_attack_and_health(9, 5)
+        self.tier = 6
+        self.tribe = [TRIBE_DEMON]
+
+
+class FoeReaper4000(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Foe Reaper 4000"
+        self._set_attack_and_health(6, 9)
+        self.tier = 6
+        self.tribe = [TRIBE_MECH]
+        self.cleave = True
+
+
 class GentleDjinni(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -1234,19 +1995,19 @@ class GentleDjinni(Minion):
 
     def gentledjinni_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
         possible_elementals = [
-            # RefreshingAnomaly(),
+            RefreshingAnomaly(),
             Sellemental(),
             MoltenRock(),
-            # PartyElemental(),
+            PartyElemental(),
             CracklingCyclone(),
-            # Smogger(),
-            # StatisElemental(),
-            # DazzlingLightspawn(),
-            # RecyclingWraith(),
-            # WildfireElemental(),
-            # TavernTempest(),
+            Smogger(),
+            StatisElemental(),
+            DazzlingLightspawn(),
+            RecyclingWraith(),
+            WildfireElemental(),
+            TavernTempest(),
             Amalgadon(),
-            # LilRag(),
+            LilRag(),
         ]
         chosen_elementals = [
             deepcopy(possible_elementals[randint(0, len(possible_elementals) - 1)])
@@ -1366,6 +2127,25 @@ class Kalecgos(Minion):
         self._set_attack_and_health(4, 12)
 
 
+class LilRag(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Lil' Rag"
+        self._set_attack_and_health(6, 6)
+        self.tier = 6
+        self.tribe = [TRIBE_ELEMENTAL]
+
+
+class Maexxna(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Maexxna"
+        self._set_attack_and_health(2, 8)
+        self.tier = 6
+        self.tribe = [TRIBE_BEAST]
+        self.poisonous = True
+
+
 class NadinaTheRed(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -1380,6 +2160,15 @@ class NadinaTheRed(Minion):
         ]
         for dragon in dragons_alive:
             dragon.gain_divine_shield()
+
+
+class NosyLooter(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Noosy Looter"
+        self._set_attack_and_health(7, 6)
+        self.tier = 6
+        self.tribe = [TRIBE_PIRATE]
 
 
 class OmegaBuster(Minion):
@@ -1398,6 +2187,23 @@ class OmegaBuster(Minion):
             for minion in own_warband.minions:
                 if minion.tribe == TRIBE_MECH and minion.alive:
                     minion._add_stats(buff_size, buff_size)
+
+
+class SeafoodSlinger(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Seafood Slinger"
+        self._set_attack_and_health(5, 5)
+        self.tier = 6
+
+
+class ZappSlywick(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Zapp Slywick"
+        self._set_attack_and_health(7, 10)
+        self.tier = 6
+        self.windfury = 1
 
 
 # ###### TOKEN MINIONS ########
@@ -1509,6 +2315,29 @@ class Plant(Minion):
 
     def make_golden(self):
         pass
+
+
+class FishOfNzoth(Minion):
+    def __init__(self) -> None:
+        super().__init__()
+        self.name = "Fish of N'Zoth"
+        self._set_attack_and_health(2, 2)
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        for minion in own_warband.minions:
+            if minion.death_rattles != [] and self not in minion.death_observers:
+                minion.death_observers.append(self)
+
+    def notify(
+        self,
+        dealer_minion: Minion = None,
+        receiver_minion: Minion = None,
+        own_warband: Warband = None,
+        opponent_warband: Warband = None,
+    ):
+        for _ in range(self.golden):
+            for deathrattle in dealer_minion.death_rattles:
+                self.death_rattles.append[deathrattle]
 
 
 # #### UTILITY FUNCTIONS #####
