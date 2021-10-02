@@ -209,12 +209,28 @@ def on_death(
         own_warband,
         opponent_warband,
     )
-    for deathrattle in dealer_minion.death_rattles:
-        deathrattle(own_warband, opponent_warband)
+    execute_deathrattles(dealer_minion, own_warband, opponent_warband)
+
     if dealer_minion.reborn:
         dealer_minion._reborn()
     else:
         own_warband.remove_minion(dealer_minion)
+
+
+def execute_deathrattles(dealer_minion: Minion, own_warband, opponent_warband):
+    barons = [
+        minion.golden + 1
+        for minion in own_warband.minions
+        if minion.name == "Baron Rivendare"
+    ]
+    if barons != []:
+        baron_count = max(barons)
+    else:
+        baron_count = 1
+    # TODO undersøge baron interaction, er det alle deathrattles 3 gange eller hvert deathrattle 3 gange
+    for _ in range(baron_count):
+        for deathrattle in dealer_minion.death_rattles:
+            deathrattle(own_warband, opponent_warband)
 
 
 def notify_observers(

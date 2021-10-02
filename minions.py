@@ -8,7 +8,7 @@ from warband import (
     get_next_defender,
 )
 from warband import get_random_minion
-from minion import Minion
+from minion import Minion, execute_deathrattles
 from settings import (
     TRIBE_BEAST,
     TRIBE_DEMON,
@@ -355,7 +355,6 @@ class MurlocWarleader(Minion):
         if self not in own_warband.summon_observers:
             own_warband.summon_observers.append(self)
 
-    # TODO add to summon part
     def execute_summon_effect(self, own_warband: Warband, opponent_warband: Warband):
         for minion in own_warband.minions:
             if TRIBE_MURLOC in minion.tribe and minion is not self:
@@ -407,7 +406,6 @@ class OldMurcEye(Minion):
             ):
                 minion.death_observers.append(self)
 
-    # TODO add to summon part
     def execute_summon_effect(self, own_warband, opponent_warband: Warband):
         for minion in own_warband.minions:
             if TRIBE_MURLOC in minion.tribe and minion is not self:
@@ -464,6 +462,11 @@ class Roadboar(Minion):
         self.tier = 2
         self.tribe = [TRIBE_QUILBOAR]
         self._set_attack_and_health(2, 4)
+        self.frenzy = True
+
+    def activate_frenzy(self, own_warband: Warband):
+        pass
+        # TODO add blood gem to hand
 
 
 class SaltscaleHoncho(Minion):
@@ -519,7 +522,8 @@ class SpawnOfNZoth(Minion):
                 minion._add_stats(self.golden, self.golden)
 
 
-# skal have en broadcasting funktion som den sender ud til alle abbonenter, alle pirates skal abbonere på ham, fx i tilfælde af han bliver golden mid game. ØV
+# TODO skal have en broadcasting funktion som den sender ud til alle abbonenter,
+# alle pirates skal abbonere på ham, fx i tilfælde af han bliver golden mid game. ØV
 class SouthseaCaptian(Minion):
     def __init__(self) -> None:
         super().__init__()
@@ -533,7 +537,6 @@ class SouthseaCaptian(Minion):
         if self not in own_warband.summon_observers:
             own_warband.summon_observers.append(self)
 
-    # TODO add to summon part
     def execute_summon_effect(self, own_warband: Warband, opponent_warband: Warband):
         for minion in own_warband.minions:
             if TRIBE_PIRATE in minion.tribe and minion is not self:
@@ -558,9 +561,10 @@ class SouthseaCaptian(Minion):
     ):
         for minion in own_warband.minions:
             if TRIBE_PIRATE in minion.tribe and minion is not self:
-                # TODO Needs fix
                 minion.attack -= self.golden
-                minion.take_damage(self.golden)
+                if minion.damage_taken < self.golden:
+                    health_loss = self.golden - minion.damage_taken
+                    minion.take_damage(health_loss)
 
 
 class ToughTusk(Minion):
@@ -853,7 +857,6 @@ class Kathranatir(Minion):
         if self not in own_warband.summon_observers:
             own_warband.summon_observers.append(self)
 
-    # TODO add to summon part
     def execute_summon_effect(self, own_warband):
         for minion in own_warband.minions:
             if TRIBE_DEMON in minion.tribe and minion is not self:
@@ -907,8 +910,7 @@ class MonstrousMacaw(Minion):
             deathrattle_minion = get_deathrattle_minion(own_warband.minions)
             if deathrattle_minion is None:
                 break
-            for deathrattle in deathrattle_minion.death_rattles:
-                deathrattle(own_warband, opponent_warband)
+            execute_deathrattles(deathrattle_minion, own_warband, opponent_warband)
 
 
 class Necrolyte(Minion):
@@ -1475,7 +1477,7 @@ class WildfireElemental(Minion):
         self._set_attack_and_health(7, 4)
         self.tier = 4
         self.tribe = [TRIBE_ELEMENTAL]
-        self.post_attack_observers[self]
+        self.post_attack_observers = [self]
 
     def notify(
         self,
@@ -1484,8 +1486,17 @@ class WildfireElemental(Minion):
         own_warband: Warband = None,
         opponent_warband: Warband = None,
     ):
-        # TODO IMPLEMENT ELEMENTAL CLEAVE
-        pass
+        if not receiver_minion.alive:
+            overkill_damage = receiver_minion.health
+            if overkill_damage > 0:
+                next_receivers = opponent_warband.get_adjacent_minions(receiver_minion)
+                if next_receivers != []:
+                    if len(next_receivers) > self.golden:
+                        next_receivers = get_random_minion(next_receivers)
+                    for next_receiver in next_receivers:
+                        next_receiver.take_damage_2(
+                            overkill_damage, self, opponent_warband, own_warband
+                        )
 
 
 class WitchwingNestmatron(Minion):
@@ -1612,7 +1623,7 @@ class HolyMecherel(Minion):
         self.gain_divine_shield(own_warband)
 
 
-class InsataibleUrzul(Minion):
+class InsatiableUrzul(Minion):
     def __init__(self) -> None:
         super().__init__()
         self.name = "Insatiable Ur'zul"
@@ -2014,6 +2025,7 @@ class GentleDjinni(Minion):
             for _ in range(self.golden)
         ]
         own_warband.summon_minions(self, chosen_elementals, opponent_warband)
+        # TODO add card to hand
 
 
 class Ghastcoiler(Minion):
@@ -2028,6 +2040,8 @@ class Ghastcoiler(Minion):
     def ghastcoiler_deathrattle(self, own_warband: Warband, opponent_warband: Warband):
         possible_minions = [
             IckyImp(),
+            ImpulsiveTrickster(),
+            Scallywag(),
             HarvestGolem(),
             Imprisoner(),
             KaboomBot(),
@@ -2097,17 +2111,16 @@ class ImpMama(Minion):
                 IckyImp(),
                 ImpulsiveTrickster(),
                 Imprisoner(),
-                # TODO:
-                # NathrezimOverseer(),
+                NathrezimOverseer(),
                 Kathranatir(),
-                # SoulDevourer(),
-                # Bigfernal(),
+                SoulDevourer(),
+                Bigfernal(),
                 RingMatron(),
-                # AnnihilanBattlemaster(),
-                # InsatiableUrzul(),
+                AnnihilanBattlemaster(),
+                InsatiableUrzul(),
                 Voidlord(),
                 Amalgadon(),
-                # Famished Felbat(),
+                FamishedFelbat(),
             ]
             chosen_minions = [
                 deepcopy(possible_minions[randint(0, len(possible_minions) - 1)])

@@ -1,5 +1,7 @@
+from copy import deepcopy
 from random import seed
 from time import time
+from typing import List
 from minions import (
     AcolyteOfCthun,
     Alleycat,
@@ -8,38 +10,47 @@ from minions import (
     BirdBuddy,
     BronzeWarden,
     BuddingGreenthumb,
+    CapnHoggarr,
     CracklingCyclone,
     DeckSwabbie,
     DreadAdmiralEliza,
     EvolvingChromawing,
+    FreedealingGambler,
     GentleDjinni,
     Ghastcoiler,
     GlyphGuadrdian,
     HarvestGolem,
+    IckyImp,
     ImpMama,
     Imprisoner,
     ImpulsiveTrickster,
     KangorsApprentice,
     Leapfrogger,
+    MajordomoExecutus,
     MamaBear,
     MechanoEgg,
     MechanoTank,
     MicroBot,
+    MoltenRock,
     MonstrousMacaw,
     NomiKitchenNightmare,
     OmegaBuster,
     PartyElemental,
+    PeggyBrittlebone,
     Rat,
     RatPack,
     RazorfenGeomancer,
     RazorgoretheUntamed,
     RedWhelp,
+    RefreshingAnomaly,
     RipsnarlCaptain,
     SISefin,
     Scallywag,
     Sellemental,
     SewerRat,
     SoulJuggler,
+    SouthseaCaptian,
+    SouthseaStrongarm,
     SpawnOfNZoth,
     StatisElemental,
     Tabbycat,
@@ -47,10 +58,9 @@ from minions import (
     TwilightEmissary,
     Voidwalker,
     WhelpSmuggler,
+    WildfireElemental,
 )
-from test_simulator import warbands
 from warband import Warband
-from minion import Minion
 from board import Board
 import progressbar
 
@@ -89,6 +99,7 @@ def boje():
     warband.add_minion(Sellemental())
     warband.add_minion(PartyElemental())
     warband.add_minion(RedWhelp())
+    return warband
 
 
 def boje_opponent():
@@ -96,6 +107,7 @@ def boje_opponent():
     warband.add_minion(Sellemental())
     warband.add_minion(Sellemental())
     warband.add_minion(AcolyteOfCthun())
+    return warband
 
 
 def Esben1():
@@ -110,6 +122,7 @@ def Esben1():
     juggler.make_golden()
     warband.add_minion(juggler)
     # 22.7 35.7 41.6
+    return warband
 
 
 def Esben1_opp():
@@ -125,6 +138,54 @@ def Esben1_opp():
     warband.add_minion(PartyElemental())
     redwhelp = RedWhelp()
     redwhelp._add_stats(1, 0)
+    return warband
+
+
+def Esben2():
+    warbands: List[Warband] = [Warband(), Warband()]
+    party1 = PartyElemental()
+    party1.make_golden()
+    party1._add_stats(8, 8)
+    warbands[0].add_minion(party1)
+    selle = Sellemental()
+    selle._add_stats(11, 11)
+    warbands[0].add_minion(selle)
+    party2 = PartyElemental()
+    party2._add_stats(5, 5)
+    warbands[0].add_minion(party2)
+    warbands[0].add_minion(MajordomoExecutus())
+    refresh = RefreshingAnomaly()
+    refresh._add_stats(4, 4)
+    warbands[0].add_minion(refresh)
+    molten = MoltenRock()
+    molten._add_stats(7, 7)
+    warbands[0].add_minion(molten)
+    warbands[0].add_minion(NomiKitchenNightmare())
+    return warbands[0]
+
+
+def Esben_opp2():
+    warbands: List[Warband] = [Warband(), Warband()]
+    SoN = SpawnOfNZoth()
+    SoN.make_golden()
+    warbands[1].add_minion(SoN)
+    wfe = WildfireElemental()
+    wfe._add_stats(4, 4)
+    warbands[1].add_minion(wfe)
+    peggy = PeggyBrittlebone()
+    peggy._add_stats(3, 3)
+    warbands[1].add_minion(peggy)
+    hog1 = CapnHoggarr()
+    hog1._add_stats(5, 5)
+    warbands[1].add_minion(hog1)
+    hog2 = CapnHoggarr()
+    hog2._add_stats(18, 18)
+    warbands[1].add_minion(hog2)
+    ss = SouthseaStrongarm()
+    ss._add_stats(1, 1)
+    warbands[1].add_minion(ss)
+    warbands[1].add_minion(SouthseaCaptian())
+    return warbands[1]
 
 
 def setup_top():
@@ -142,8 +203,10 @@ def setup_top():
 
 
 if __name__ == "__main__":
-    top_warband = setup_top()
-    bottom_warband = setup_bottom()
+    # top_warband = setup_top()
+    # bottom_warband = setup_bottom()
+    top_warband = Esben_opp2()
+    bottom_warband = Esben2()
     # top_warband.make_all_minions_golden()
     # bottom_warband.make_all_minions_golden()
     print_boards()
@@ -162,7 +225,7 @@ if __name__ == "__main__":
     )
     bar.start()
     start_time = time()
-    # seed(1)
+    seed(1)
     for i in range(iterations):
         board = Board(top_warband, bottom_warband)
         outcome = board.battle()
@@ -190,7 +253,7 @@ if __name__ == "__main__":
 def execute_battles(bottom_warband: Warband, top_warband: Warband, iterations: int):
     results = [0] * 3
     for i in range(iterations):
-        board = Board(bottom_warband, top_warband)
+        board = Board(top_warband, bottom_warband)
         outcome = board.battle()
         results[outcome[0]] += 1
     return [float("{0:0.2f}".format((x / iterations) * 100)) for x in results]

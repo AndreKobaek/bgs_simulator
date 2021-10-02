@@ -1,13 +1,8 @@
-
-
-# Observed??
+# Observed
 Murloc Warleader
 Southsea Captain - Needs FIX
 Kathra'Natir
-
 Old murc-eye (- attack per dead murloc)
-
-
 
 # Observe_preattack
 Prestor's Pyrospawn
@@ -41,24 +36,17 @@ Champion of Y'Shaarj
 Yo-Ho-Ogre
 Imp Mama
 
-AVENGE
-
-Gemsplitter??
-Peggy??
-
-Baron Rivendare
+# TODO
+Peggy
 Khadgar
-
+Zapp
+Southsea Captain
 
 # Start_of_combat
 Prized Promo-Drake
 Red Whelp
 
 # Deathrattles
-TIER 1
-Scallywag
-FIX Unstable ghoul
-
 Deathrattle ordering:
 Triggered in the order that the minions die
 if two minions (of opposing warbands) die at the same time it is random which procs first
@@ -81,3 +69,4 @@ New deathrattles in order of death
 Questions: 
 Does a Champion of Y'sharj grow if a friendly taunt is shot down by a Prestor's?
 Does a Mecherel gain DS before it gets shot by a enemy juggler (after annoy-o-tron vs ickyimp)
+If a minion has multiple deathrattles and a baron is present, do all the deathrattles get triggered and then repeated once or twice, or does the first deathrattle get triggered two to three times and then the next?
