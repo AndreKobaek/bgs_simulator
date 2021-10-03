@@ -7,10 +7,13 @@ from main import execute_battles
 from minions import (
     AcolyteOfCthun,
     Alleycat,
+    BaronRivendare,
     CapnHoggarr,
+    DreadAdmiralEliza,
     FreedealingGambler,
     GlyphGuadrdian,
     IckyImp,
+    InsatiableUrzul,
     Leapfrogger,
     MajordomoExecutus,
     MoltenRock,
@@ -18,7 +21,9 @@ from minions import (
     NomiKitchenNightmare,
     PartyElemental,
     PeggyBrittlebone,
+    RabidSaurolisk,
     RazorfenGeomancer,
+    ReanimatingRattler,
     RefreshingAnomaly,
     RipsnarlCaptain,
     Scallywag,
@@ -28,6 +33,7 @@ from minions import (
     SouthseaStrongarm,
     SpawnOfNZoth,
     Tabbycat,
+    TonyTwoTusk,
     WildfireElemental,
 )
 from warband import Warband, get_highest_health_minion
@@ -49,24 +55,16 @@ def test_get_highest_health_minion_none():
 
 
 def test_case_1(warbands: List[Warband]):
-    RG = RazorfenGeomancer()
-    RG.reborn = True
-    warbands[0].add_minion(RG)
+    warbands[0].add_minion(RazorfenGeomancer().set_reborn())
     warbands[1].add_minion(RefreshingAnomaly())
     board = Board(warbands[0], warbands[1])
     assert board.battle() == [1, 0, 2]
 
 
 def test_case_2(warbands: List[Warband]):
-    SoN = SpawnOfNZoth()
-    SoN.reborn = True
-    GG = GlyphGuadrdian()
-    GG._add_stats(1, 1)
-    warbands[0].add_minion(SoN)
-    warbands[0].add_minion(GG)
-    selly = Sellemental()
-    selly._add_stats(5, 5)
-    warbands[1].add_minion(selly)
+    warbands[0].add_minion(SpawnOfNZoth().set_reborn())
+    warbands[0].add_minion(GlyphGuadrdian(3, 5))
+    warbands[1].add_minion(Sellemental(7, 7))
     board = Board(warbands[0], warbands[1])
     # needs accumulated results and bounds
 
@@ -74,22 +72,15 @@ def test_case_2(warbands: List[Warband]):
 def test_case_3(warbands: List[Warband]):
     warbands[0].add_minion(Scallywag())
     warbands[0].add_minion(RipsnarlCaptain())
-    selly = Sellemental()
-    selly._add_stats(5, 9)
-    warbands[1].add_minion(selly)
+    warbands[1].add_minion(Sellemental(7, 11))
     board = Board(warbands[0], warbands[1])
     assert board.battle() == [1, 0, 2]
 
 
 def test_case_4(warbands: List[Warband]):
-
     warbands[0].add_minion(MonstrousMacaw())
-    SoN = SpawnOfNZoth()
-    SoN.reborn = True
-    warbands[0].add_minion(SoN)
-    minion1 = GlyphGuadrdian()
-    minion1._add_stats(1, 1)
-    warbands[0].add_minion(minion1)
+    warbands[0].add_minion(SpawnOfNZoth().set_reborn())
+    warbands[0].add_minion(GlyphGuadrdian(3, 5))
     warbands[0].add_minion(GlyphGuadrdian())
 
     warbands[1].add_minion(Leapfrogger())
@@ -101,20 +92,14 @@ def test_case_4(warbands: List[Warband]):
     warbands[1].add_minion(Sellemental())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [94.9, 4.2, 0.9], "Results were not as expected"
+    assert results == [93.6, 5.0, 1.4], "Results were not as expected"
 
 
 def test_case_5(warbands: List[Warband]):
-    SoN = SpawnOfNZoth()
-    SoN.reborn = True
-    warbands[0].add_minion(SoN)
-    minion1 = GlyphGuadrdian()
-    minion1._add_stats(1, 1)
-    warbands[0].add_minion(minion1)
+    warbands[0].add_minion(SpawnOfNZoth().set_reborn())
+    warbands[0].add_minion(GlyphGuadrdian(3, 5))
 
-    nomi = NomiKitchenNightmare()
-    nomi._add_stats(1, 1)
-    warbands[1].add_minion(nomi)
+    warbands[1].add_minion(NomiKitchenNightmare(5, 5))
     warbands[1].add_minion(RazorfenGeomancer())
 
     seed(1)
@@ -128,14 +113,9 @@ def test_case_6(warbands: List[Warband]):
     warbands[0].add_minion(PartyElemental())
     warbands[0].add_minion(Scallywag())
 
-    icky = IckyImp()
-    icky._add_stats(6, 3)
-    warbands[1].add_minion(icky)
-    refresh = RefreshingAnomaly()
-    refresh._add_stats(4, 2)
-    rf2 = deepcopy(refresh)
-    warbands[1].add_minion(refresh)
-    warbands[1].add_minion(rf2)
+    warbands[1].add_minion(IckyImp(7, 4))
+    warbands[1].add_minion(RefreshingAnomaly(5, 6))
+    warbands[1].add_minion(RefreshingAnomaly(5, 6))
     warbands[1].add_minion(Sellemental())
     warbands[1].add_minion(AcolyteOfCthun())
 
@@ -144,45 +124,40 @@ def test_case_6(warbands: List[Warband]):
 
 
 def test_case_7(warbands: List[Warband]):
-    party1 = PartyElemental()
-    party1.make_golden()
-    party1._add_stats(8, 8)
-    warbands[0].add_minion(party1)
-    selle = Sellemental()
-    selle._add_stats(11, 11)
-    warbands[0].add_minion(selle)
-    party2 = PartyElemental()
-    party2._add_stats(5, 5)
-    warbands[0].add_minion(party2)
+    warbands[0].add_minion(PartyElemental(11, 10).make_golden())
+    warbands[0].add_minion(Sellemental(13, 13))
+    warbands[0].add_minion(PartyElemental(8, 7))
     warbands[0].add_minion(MajordomoExecutus())
-    refresh = RefreshingAnomaly()
-    refresh._add_stats(4, 4)
-    warbands[0].add_minion(refresh)
-    molten = MoltenRock()
-    molten._add_stats(7, 7)
-    warbands[0].add_minion(molten)
+    warbands[0].add_minion(RefreshingAnomaly(5, 8))
+    warbands[0].add_minion(MoltenRock(9, 11))
     warbands[0].add_minion(NomiKitchenNightmare())
 
-    SoN = SpawnOfNZoth()
-    SoN.make_golden()
-    warbands[1].add_minion(SoN)
-    wfe = WildfireElemental()
-    wfe._add_stats(4, 4)
-    warbands[1].add_minion(wfe)
-    peggy = PeggyBrittlebone()
-    peggy._add_stats(3, 3)
-    warbands[1].add_minion(peggy)
-    hog1 = CapnHoggarr()
-    hog1._add_stats(5, 5)
-    warbands[1].add_minion(hog1)
-    hog2 = CapnHoggarr()
-    hog2._add_stats(18, 18)
-    warbands[1].add_minion(hog2)
-    ss = SouthseaStrongarm()
-    ss._add_stats(1, 1)
-    warbands[1].add_minion(ss)
+    warbands[1].add_minion(SpawnOfNZoth().make_golden())
+    warbands[1].add_minion(WildfireElemental(11, 8))
+    warbands[1].add_minion(PeggyBrittlebone(9, 8))
+    warbands[1].add_minion(CapnHoggarr(11, 11))
+    warbands[1].add_minion(CapnHoggarr(24, 24))
+    warbands[1].add_minion(SouthseaStrongarm(5, 4))
     warbands[1].add_minion(SouthseaCaptian())
 
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
     assert results == [1.0, 3.6, 95.4], "Results were not as expected"
+
+
+def test_case_8(warbands: List[Warband]):
+    warbands[0].add_minion(Scallywag())
+    warbands[0].add_minion(Scallywag(3, 2).set_taunt())
+    warbands[0].add_minion(Scallywag(13, 16).make_golden().set_taunt())
+    warbands[0].add_minion(TonyTwoTusk(14, 51))
+    warbands[0].add_minion(PeggyBrittlebone())
+    warbands[0].add_minion(DreadAdmiralEliza().make_golden())
+    warbands[0].add_minion(BaronRivendare())
+
+    warbands[1].add_minion(MonstrousMacaw())
+    warbands[1].add_minion(Leapfrogger())
+    warbands[1].add_minion(Leapfrogger(5, 5).make_golden().set_reborn())
+    warbands[1].add_minion(ReanimatingRattler())
+    warbands[1].add_minion(RabidSaurolisk(12, 19))
+    warbands[1].add_minion(BaronRivendare())
+    warbands[1].add_minion(InsatiableUrzul(12, 16))

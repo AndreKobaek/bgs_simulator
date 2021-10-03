@@ -30,12 +30,12 @@ class Minion(object):
     start_of_combat: bool
     pre_attack: bool
 
-    def __init__(self) -> None:
+    def __init__(self, attack: int = None, health: int = None) -> None:
         self.name = ""
         self.tribe = ["Neutral"]
         self.tier = 1
-        self.attack = None
-        self.health = None
+        self.attack = attack
+        self.health = health
         self.base_attack = None
         self.base_health = None
         self.damage_taken = 0
@@ -71,14 +71,17 @@ class Minion(object):
         self.base_attack *= 2
         self.add_health(self.base_health)
         self.base_health *= 2
+        return self
 
     def set_health(self, health):
         self.health = health
 
     def _set_attack_and_health(self, atk, hp):
-        self.attack = atk
+        if self.attack is None:
+            self.attack = atk
         self.base_attack = atk
-        self.health = hp
+        if self.health is None:
+            self.health = hp
         self.base_health = hp
 
     def set_divine_shield(self, divine_shield: bool):
@@ -118,6 +121,7 @@ class Minion(object):
         minion_print = f"{self.name}: {self.attack} / {self.health}{' - Taunt' if self.taunt else ''}{' - Divine Shield' if self.divine_shield else ''}"
         return minion_print
 
+    # TODO redo as a summon of self instantiation
     def _reborn(self):
         if self.reborn:
             self.alive = True
@@ -175,6 +179,7 @@ class Minion(object):
     def _add_stats(self, atk, hp):
         self.attack += atk
         self.add_health(hp)
+        return self
 
     def _setup_minions_to_summon(self, number_of_minions, minion):
         if self.golden == 2:
@@ -193,6 +198,18 @@ class Minion(object):
         self.divine_shield = True
         for minion in own_warband.minions:
             minion.register_observable(own_warband, None)
+
+    def set_ds(self):
+        self.divine_shield = True
+        return self
+
+    def set_reborn(self):
+        self.reborn = True
+        return self
+
+    def set_taunt(self):
+        self.taunt = True
+        return self
 
 
 def on_death(

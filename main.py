@@ -7,6 +7,7 @@ from minions import (
     Alleycat,
     AnnoyoModule,
     ArmoftheEmpire,
+    BaronRivendare,
     BirdBuddy,
     BronzeWarden,
     BuddingGreenthumb,
@@ -24,6 +25,7 @@ from minions import (
     ImpMama,
     Imprisoner,
     ImpulsiveTrickster,
+    InsatiableUrzul,
     KangorsApprentice,
     Leapfrogger,
     MajordomoExecutus,
@@ -37,10 +39,12 @@ from minions import (
     OmegaBuster,
     PartyElemental,
     PeggyBrittlebone,
+    RabidSaurolisk,
     Rat,
     RatPack,
     RazorfenGeomancer,
     RazorgoretheUntamed,
+    ReanimatingRattler,
     RedWhelp,
     RefreshingAnomaly,
     RipsnarlCaptain,
@@ -56,9 +60,11 @@ from minions import (
     Tabbycat,
     TonyTwoTusk,
     TwilightEmissary,
+    UnstableGhoul,
     Voidwalker,
     WhelpSmuggler,
     WildfireElemental,
+    YoHoOgre,
 )
 from warband import Warband
 from board import Board
@@ -188,6 +194,70 @@ def Esben_opp2():
     return warbands[1]
 
 
+def andre_søn():
+    warbands = [Warband(), Warband()]
+    warbands[0].add_minion(MamaBear())
+    minion_1 = MoltenRock()
+    minion_1._add_stats(8, 19)
+    warbands[0].add_minion(minion_1)
+    minion_2 = MoltenRock()
+    minion_1._add_stats(1, 1)
+    warbands[0].add_minion(minion_2)
+    minion_1 = Scallywag()
+    warbands[0].add_minion(minion_1)
+    minion_1 = Scallywag()
+    warbands[0].add_minion(minion_1)
+
+    return warbands[0]
+
+
+def oliver_søn():
+    warbands = [Warband(), Warband()]
+    warbands[0].add_minion(Scallywag())
+    warbands[0].add_minion(Scallywag(3, 2).set_taunt())
+    warbands[0].add_minion(Scallywag(13, 16).make_golden().set_taunt())
+    warbands[0].add_minion(TonyTwoTusk(14, 51))
+    warbands[0].add_minion(PeggyBrittlebone())
+    warbands[0].add_minion(DreadAdmiralEliza().make_golden())
+    warbands[0].add_minion(BaronRivendare())
+
+    return warbands[0]
+
+
+def boje_søn():
+    warbands = [Warband(), Warband()]
+
+    warbands[1].add_minion(MonstrousMacaw())
+    warbands[1].add_minion(Leapfrogger())
+    warbands[1].add_minion(Leapfrogger(5, 5).make_golden().set_reborn())
+    warbands[1].add_minion(ReanimatingRattler())
+    warbands[1].add_minion(RabidSaurolisk(12, 19))
+    warbands[1].add_minion(BaronRivendare())
+    warbands[1].add_minion(InsatiableUrzul(12, 16))
+    return warbands[1]
+
+
+def esben_søn():
+    warbands = [Warband(), Warband()]
+
+    return warbands[0]
+
+
+def esben_ny():
+    warband = Warband()
+    warband.add_minion(YoHoOgre(2, 10))
+    warband.add_minion(AcolyteOfCthun())
+    warband.add_minion(UnstableGhoul())
+    return warband
+
+
+def oli():
+    warband = Warband()
+    warband.add_minion(GlyphGuadrdian(4, 8).set_ds())
+    warband.add_minion(GlyphGuadrdian())
+    return warband
+
+
 def setup_top():
     warband = Warband()
     evolve = EvolvingChromawing()
@@ -205,8 +275,8 @@ def setup_top():
 if __name__ == "__main__":
     # top_warband = setup_top()
     # bottom_warband = setup_bottom()
-    top_warband = Esben_opp2()
-    bottom_warband = Esben2()
+    top_warband = oliver_søn()
+    bottom_warband = boje_søn()
     # top_warband.make_all_minions_golden()
     # bottom_warband.make_all_minions_golden()
     print_boards()

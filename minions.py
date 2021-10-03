@@ -24,40 +24,40 @@ from settings import (
 
 
 class AcolyteOfCthun(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Acolyte of C'thun"
         self.reborn = True
         self._set_attack_and_health(2, 2)
 
 
 class Alleycat(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Alleycat"
         self.tribe = [TRIBE_BEAST]
         self._set_attack_and_health(1, 1)
 
 
 class DeckSwabbie(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Deck Swabbie"
         self.tribe = [TRIBE_PIRATE]
         self._set_attack_and_health(2, 2)
 
 
 class EvolvingChromawing(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Evolving Chromawing"
         self.tribe = [TRIBE_DRAGON]
         self._set_attack_and_health(1, 3)
 
 
 class IckyImp(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Icky Imp"
         self.tribe = [TRIBE_DEMON]
         self._set_attack_and_health(1, 1)
@@ -68,8 +68,8 @@ class IckyImp(Minion):
 
 
 class ImpulsiveTrickster(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Impulsive Trickster"
         self.tribe = [TRIBE_DEMON]
         self._set_attack_and_health(2, 2)
@@ -95,8 +95,8 @@ class ImpulsiveTrickster(Minion):
 
 
 class MicroMummy(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Micro Mummy"
         self.tribe = [TRIBE_MECH]
         self.reborn = True
@@ -104,16 +104,16 @@ class MicroMummy(Minion):
 
 
 class MurlocTidehunter(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Murloc Tidehunter"
         self.tribe = [TRIBE_MURLOC]
         self._set_attack_and_health(2, 1)
 
 
 class Pupbot(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Pupbot"
         self.tribe = [TRIBE_MECH]
         self.set_divine_shield(True)
@@ -121,16 +121,16 @@ class Pupbot(Minion):
 
 
 class RazorfenGeomancer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Razorfen Geomancer"
         self.tribe = [TRIBE_QUILBOAR]
         self._set_attack_and_health(3, 1)
 
 
 class RedWhelp(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Red Whelp"
         self.tribe = [TRIBE_DRAGON]
         self._set_attack_and_health(1, 2)
@@ -148,24 +148,24 @@ class RedWhelp(Minion):
 
 
 class RefreshingAnomaly(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Refreshing Anomaly"
         self.tribe = [TRIBE_ELEMENTAL]
         self._set_attack_and_health(1, 4)
 
 
 class RockpoolHunter(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Rockpool Hunter"
         self.tribe = [TRIBE_MURLOC]
         self._set_attack_and_health(2, 3)
 
 
 class Scallywag(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Scallywag"
         self.tribe = [TRIBE_PIRATE]
         self._set_attack_and_health(2, 1)
@@ -176,8 +176,8 @@ class Scallywag(Minion):
 
 
 class ScavengingHyena(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Scavenging Hyena"
         self.tribe = [TRIBE_BEAST]
         self._set_attack_and_health(2, 2)
@@ -199,24 +199,24 @@ class ScavengingHyena(Minion):
 
 
 class Sellemental(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Sellemental"
         self.tribe = [TRIBE_ELEMENTAL]
         self._set_attack_and_health(2, 2)
 
 
 class SunBaconRelaxer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Sun-Bacon Relaxer"
         self.tribe = [TRIBE_QUILBOAR]
         self._set_attack_and_health(1, 2)
 
 
 class WrathWeaver(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Wrath Weaver"
         self._set_attack_and_health(1, 3)
 
@@ -225,8 +225,8 @@ class WrathWeaver(Minion):
 
 
 class FreedealingGambler(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Freedealing Gambler"
         self.tier = 2
         self.tribe = [TRIBE_PIRATE]
@@ -234,8 +234,8 @@ class FreedealingGambler(Minion):
 
 
 class GlyphGuadrdian(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Glyph Guadrdian"
         self.tribe = [TRIBE_DRAGON]
         self.tier = 2
@@ -253,8 +253,8 @@ class GlyphGuadrdian(Minion):
 
 
 class HarvestGolem(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Harvest Golem"
         self.tribe = [TRIBE_MECH]
         self.tier = 2
@@ -268,8 +268,8 @@ class HarvestGolem(Minion):
 
 
 class Imprisoner(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Imprisoner"
         self.tribe = [TRIBE_DEMON]
         self.tier = 2
@@ -282,8 +282,8 @@ class Imprisoner(Minion):
 
 
 class KaboomBot(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Kaboom Bot"
         self.tribe = [TRIBE_MECH]
         self.tier = 2
@@ -297,8 +297,8 @@ class KaboomBot(Minion):
 
 
 class Leapfrogger(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Leapfrogger"
         self.tribe = [TRIBE_BEAST]
         self.tier = 2
@@ -316,16 +316,16 @@ class Leapfrogger(Minion):
 
 
 class MenagerieMug(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Menagerie Mug"
         self.tier = 2
         self._set_attack_and_health(2, 2)
 
 
 class MetaltoothLeaper(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "MetaltoothLeaper"
         self.tier = 2
         self.tribe = [TRIBE_MECH]
@@ -333,8 +333,8 @@ class MetaltoothLeaper(Minion):
 
 
 class MoltenRock(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Molten Rock"
         self.tier = 2
         self.tribe = [TRIBE_ELEMENTAL]
@@ -343,8 +343,8 @@ class MoltenRock(Minion):
 
 
 class MurlocWarleader(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Murloc Warleader"
         self.tribe = [TRIBE_MURLOC]
         self.tier = 2
@@ -381,8 +381,8 @@ class MurlocWarleader(Minion):
 
 
 class NathrezimOverseer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Nathrezim Overseer"
         self.tribe = [TRIBE_DEMON]
         self.tier = 2
@@ -390,8 +390,8 @@ class NathrezimOverseer(Minion):
 
 
 class OldMurcEye(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Old Murk-Eye"
         self.tribe = [TRIBE_MURLOC]
         self.tier = 2
@@ -430,8 +430,8 @@ class OldMurcEye(Minion):
 
 
 class PartyElemental(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Party Elemental"
         self.tier = 2
         self.tribe = [TRIBE_ELEMENTAL]
@@ -439,16 +439,16 @@ class PartyElemental(Minion):
 
 
 class ProphetoftheBoar(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Prophet of the Boar"
         self.tier = 2
         self._set_attack_and_health(3, 3)
 
 
 class RabidSaurolisk(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Rabid Saurolisk"
         self.tier = 2
         self.tribe = [TRIBE_BEAST]
@@ -456,8 +456,8 @@ class RabidSaurolisk(Minion):
 
 
 class Roadboar(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Roadboar"
         self.tier = 2
         self.tribe = [TRIBE_QUILBOAR]
@@ -470,8 +470,8 @@ class Roadboar(Minion):
 
 
 class SaltscaleHoncho(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Saltscale Honcho"
         self.tier = 2
         self.tribe = [TRIBE_MURLOC]
@@ -479,8 +479,8 @@ class SaltscaleHoncho(Minion):
 
 
 class SelflessHero(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Selfless Hero"
         self.tier = 2
         self._set_attack_and_health(2, 1)
@@ -496,8 +496,8 @@ class SelflessHero(Minion):
 
 
 class SewerRat(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Sewer Rat"
         self.tribe = [TRIBE_BEAST]
         self.tier = 2
@@ -509,8 +509,8 @@ class SewerRat(Minion):
 
 
 class SpawnOfNZoth(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Spawn of N'Zoth"
         self.tier = 2
         self._set_attack_and_health(2, 2)
@@ -525,8 +525,8 @@ class SpawnOfNZoth(Minion):
 # TODO skal have en broadcasting funktion som den sender ud til alle abbonenter,
 # alle pirates skal abbonere på ham, fx i tilfælde af han bliver golden mid game. ØV
 class SouthseaCaptian(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Southsea Captain"
         self.tribe = [TRIBE_PIRATE]
         self.tier = 2
@@ -568,8 +568,8 @@ class SouthseaCaptian(Minion):
 
 
 class ToughTusk(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Tough Tusk"
         self.tier = 2
         self.tribe = [TRIBE_QUILBOAR]
@@ -577,8 +577,8 @@ class ToughTusk(Minion):
 
 
 class UnstableGhoul(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Unstable Ghoul"
         self.tier = 2
         self._set_attack_and_health(1, 3)
@@ -601,8 +601,8 @@ def _aoe_damage(
 
 
 class WhelpSmuggler(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Whelp Smuggler"
         self.tier = 2
         self._set_attack_and_health(2, 5)
@@ -623,13 +623,13 @@ class WhelpSmuggler(Minion):
 
 
 class YoHoOgre(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Yo-Ho-Ogre"
         self.tier = 2
         self.tribe = [TRIBE_PIRATE]
         self._set_attack_and_health(2, 6)
-        self.post_damage_observers[self]
+        self.post_damage_observers = [self]
 
     def notify(
         self,
@@ -650,8 +650,8 @@ class YoHoOgre(Minion):
 
 
 class ArmoftheEmpire(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Arm of the Empire"
         self.tier = 3
         self._set_attack_and_health(4, 4)
@@ -672,8 +672,8 @@ class ArmoftheEmpire(Minion):
 
 
 class Bannerboar(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bannerboar"
         self.tier = 3
         self.tribe = [TRIBE_QUILBOAR]
@@ -681,8 +681,8 @@ class Bannerboar(Minion):
 
 
 class BirdBuddy(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bird Buddy"
         self.tier = 3
         self.avenge_limit = 1
@@ -707,8 +707,8 @@ class BirdBuddy(Minion):
 
 
 class BrinyBootlegger(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Briny Bootlegger"
         self.tier = 3
         self._set_attack_and_health(4, 4)
@@ -716,8 +716,8 @@ class BrinyBootlegger(Minion):
 
 
 class BristlebackBrute(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bristleback Brute"
         self.tier = 3
         self._set_attack_and_health(4, 4)
@@ -725,8 +725,8 @@ class BristlebackBrute(Minion):
 
 
 class BronzeWarden(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bronze Warden"
         self.tier = 3
         self._set_attack_and_health(2, 1)
@@ -736,8 +736,8 @@ class BronzeWarden(Minion):
 
 
 class BuddingGreenthumb(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Budding Greenthumb"
         self.tier = 3
         self.avenge_limit = 3
@@ -763,8 +763,8 @@ class BuddingGreenthumb(Minion):
 
 
 class ColdlightSeer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "ColdlightSeer"
         self.tier = 3
         self.tribe = [TRIBE_MURLOC]
@@ -772,8 +772,8 @@ class ColdlightSeer(Minion):
 
 
 class CracklingCyclone(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Crackling Cyclone"
         self.tier = 3
         self.tribe = [TRIBE_ELEMENTAL]
@@ -783,8 +783,8 @@ class CracklingCyclone(Minion):
 
 
 class DeflectoBot(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Deflect-o-Bot"
         self.tribe = [TRIBE_MECH]
         self.tier = 3
@@ -804,8 +804,8 @@ class DeflectoBot(Minion):
 
 
 class FelfinNavigator(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Felfin Navigator"
         self.tribe = [TRIBE_MURLOC]
         self.tier = 3
@@ -813,8 +813,8 @@ class FelfinNavigator(Minion):
 
 
 class Gemsplitter(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Gemsplitter"
         self.tribe = [TRIBE_QUILBOAR]
         self.tier = 3
@@ -837,16 +837,16 @@ class Gemsplitter(Minion):
 
 
 class Houndmaster(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Houndmaster"
         self.tier = 3
         self._set_attack_and_health(4, 3)
 
 
 class Kathranatir(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Kathra'natir"
         self.tribe = [TRIBE_DEMON]
         self.tier = 3
@@ -883,16 +883,16 @@ class Kathranatir(Minion):
 
 
 class Khadgar(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Khadgar"
         self.tier = 3
         self._set_attack_and_health(2, 2)
 
 
 class MonstrousMacaw(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Monstrous Macaw"
         self.tribe = [TRIBE_BEAST]
         self.tier = 3
@@ -914,8 +914,8 @@ class MonstrousMacaw(Minion):
 
 
 class Necrolyte(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Necrolyte"
         self._set_attack_and_health(3, 3)
         self.tier = 3
@@ -923,8 +923,8 @@ class Necrolyte(Minion):
 
 
 class RatPack(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Rat Pack"
         self._set_attack_and_health(2, 2)
         self.tier = 3
@@ -938,8 +938,8 @@ class RatPack(Minion):
 
 
 class ReplicatingMenace(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Replicating Menace"
         self.tribe = [TRIBE_MECH]
         self.tier = 3
@@ -953,8 +953,8 @@ class ReplicatingMenace(Minion):
 
 
 class SaltyLooter(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Salty Looter"
         self._set_attack_and_health(4, 5)
         self.tier = 3
@@ -962,8 +962,8 @@ class SaltyLooter(Minion):
 
 
 class ScrewjankClunker(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Screwjank Clunker"
         self._set_attack_and_health(2, 5)
         self.tier = 3
@@ -971,8 +971,8 @@ class ScrewjankClunker(Minion):
 
 
 class Smogger(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Smogger"
         self._set_attack_and_health(3, 3)
         self.tier = 3
@@ -980,8 +980,8 @@ class Smogger(Minion):
 
 
 class SoulDevourer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Soul Devourer"
         self._set_attack_and_health(3, 3)
         self.tier = 3
@@ -989,8 +989,8 @@ class SoulDevourer(Minion):
 
 
 class SoulJuggler(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Soul Juggler"
         self.tier = 3
         self._set_attack_and_health(3, 5)
@@ -1012,8 +1012,8 @@ class SoulJuggler(Minion):
 
 
 class SouthseaStrongarm(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "SouthseaStrongarm"
         self._set_attack_and_health(4, 3)
         self.tier = 3
@@ -1021,8 +1021,8 @@ class SouthseaStrongarm(Minion):
 
 
 class StatisElemental(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Statis Elemental"
         self.tier = 3
         self.tribe = [TRIBE_ELEMENTAL]
@@ -1030,8 +1030,8 @@ class StatisElemental(Minion):
 
 
 class Swolefin(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Swolefin"
         self._set_attack_and_health(4, 2)
         self.tier = 3
@@ -1039,8 +1039,8 @@ class Swolefin(Minion):
 
 
 class Tarecgosa(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Tarecgosa"
         self._set_attack_and_health(4, 4)
         self.tier = 3
@@ -1048,8 +1048,8 @@ class Tarecgosa(Minion):
 
 
 class TwilightEmissary(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Twilight Emissary"
         self.tier = 3
         self.tribe = [TRIBE_DRAGON]
@@ -1060,8 +1060,8 @@ class TwilightEmissary(Minion):
 
 
 class AnnoyoModule(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Annoy-o-Module"
         self.tier = 4
         self.tribe = [TRIBE_MECH]
@@ -1071,8 +1071,8 @@ class AnnoyoModule(Minion):
 
 
 class Bigfernal(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bigfernal"
         self.tribe = [TRIBE_DEMON]
         self.tier = 4
@@ -1092,8 +1092,8 @@ class Bigfernal(Minion):
 
 
 class Bonker(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bonker"
         self._set_attack_and_health(3, 7)
         self.tier = 4
@@ -1113,8 +1113,8 @@ class Bonker(Minion):
 
 
 class CaveHydra(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Cave Hydra"
         self._set_attack_and_health(2, 4)
         self.tier = 4
@@ -1123,8 +1123,8 @@ class CaveHydra(Minion):
 
 
 class ChampionofYShaarj(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Champion of Y'Shaarj"
         self.tier = 3
         self._set_attack_and_health(4, 4)
@@ -1145,8 +1145,8 @@ class ChampionofYShaarj(Minion):
 
 
 class DrakonidEnforcer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Drakonid Enforcer"
         self.tribe = [TRIBE_DRAGON]
         self.tier = 4
@@ -1169,8 +1169,8 @@ class DrakonidEnforcer(Minion):
 
 
 class CobaltScalebane(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Cobalt Scalebane"
         self._set_attack_and_health(5, 5)
         self.tier = 4
@@ -1178,8 +1178,8 @@ class CobaltScalebane(Minion):
 
 
 class DazzlingLightspawn(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Dazzling Lightspawn"
         self._set_attack_and_health(4, 5)
         self.tier = 4
@@ -1187,16 +1187,16 @@ class DazzlingLightspawn(Minion):
 
 
 class DefenderofArgus(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Defender of Argus"
         self._set_attack_and_health(3, 3)
         self.tier = 4
 
 
 class DynamicDuo(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Dynamic Duo"
         self._set_attack_and_health(4, 5)
         self.tier = 4
@@ -1204,8 +1204,8 @@ class DynamicDuo(Minion):
 
 
 class Goldgrubber(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Goldgrubber"
         self._set_attack_and_health(4, 4)
         self.tier = 4
@@ -1213,8 +1213,8 @@ class Goldgrubber(Minion):
 
 
 class GreaseBot(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "GreaseBot"
         self.tribe = [TRIBE_MECH]
         self.tier = 4
@@ -1236,8 +1236,8 @@ class GreaseBot(Minion):
 
 
 class Groundshaker(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Groundshaker"
         self._set_attack_and_health(2, 6)
         self.tier = 4
@@ -1245,8 +1245,8 @@ class Groundshaker(Minion):
 
 
 class ImpatientDoomsayer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Impatient Doomsayer"
         self._set_attack_and_health(2, 6)
         self.tier = 4
@@ -1270,16 +1270,16 @@ class ImpatientDoomsayer(Minion):
 
 
 class MajordomoExecutus(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Majordomo Executus"
         self._set_attack_and_health(6, 3)
         self.tier = 4
 
 
 class MechanoEgg(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Mechano-Egg"
         self.tribe = [TRIBE_MECH]
         self.tier = 4
@@ -1291,8 +1291,8 @@ class MechanoEgg(Minion):
 
 
 class MechanoTank(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Mechano-Tank"
         self.tribe = [TRIBE_MECH]
         self.tier = 4
@@ -1319,16 +1319,16 @@ class MechanoTank(Minion):
 
 
 class MenagerieJug(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Menagerie Mug"
         self._set_attack_and_health(3, 3)
         self.tier = 4
 
 
 class PeggyBrittlebone(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "PeggyBrittlebone"
         self._set_attack_and_health(6, 5)
         self.tier = 4
@@ -1352,8 +1352,8 @@ class PeggyBrittlebone(Minion):
 
 
 class PrestorsPyrospawn(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Prestor's Pyrospawn"
         self.tribe = [TRIBE_DRAGON]
         self.tier = 4
@@ -1382,8 +1382,8 @@ class PrestorsPyrospawn(Minion):
 
 
 class PrimalfinLookout(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Primalfin Lookout"
         self._set_attack_and_health(3, 2)
         self.tier = 4
@@ -1391,8 +1391,8 @@ class PrimalfinLookout(Minion):
 
 
 class PrizedPromoDrake(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Prized Promo-Drake"
         self._set_attack_and_health(5, 5)
         self.tier = 4
@@ -1408,8 +1408,8 @@ class PrizedPromoDrake(Minion):
 
 
 class RecyclingWraith(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "RecyclingWraith"
         self._set_attack_and_health(5, 4)
         self.tier = 4
@@ -1417,8 +1417,8 @@ class RecyclingWraith(Minion):
 
 
 class RingMatron(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Ring Matron"
         self.tribe = [TRIBE_DEMON]
         self.tier = 4
@@ -1433,8 +1433,8 @@ class RingMatron(Minion):
 
 
 class RipsnarlCaptain(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Ripsnarl Captain"
         self.tribe = [TRIBE_PIRATE]
         self.tier = 4
@@ -1456,8 +1456,8 @@ class RipsnarlCaptain(Minion):
 
 
 class SavannahHighmane(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Savannah Highmane"
         self.tribe = [TRIBE_BEAST]
         self.tier = 4
@@ -1471,8 +1471,8 @@ class SavannahHighmane(Minion):
 
 
 class WildfireElemental(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Wildfire Elemental"
         self._set_attack_and_health(7, 4)
         self.tier = 4
@@ -1500,8 +1500,8 @@ class WildfireElemental(Minion):
 
 
 class WitchwingNestmatron(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Wildfire Elemental"
         self._set_attack_and_health(3, 5)
         self.tier = 4
@@ -1523,8 +1523,8 @@ class WitchwingNestmatron(Minion):
 
 
 class AgamaggantheGreatBoar(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Agamaggan, the Great Boar"
         self._set_attack_and_health(6, 6)
         self.tier = 5
@@ -1532,8 +1532,8 @@ class AgamaggantheGreatBoar(Minion):
 
 
 class AggemThorncurse(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Aggem Thornecurse"
         self._set_attack_and_health(3, 6)
         self.tier = 5
@@ -1541,8 +1541,8 @@ class AggemThorncurse(Minion):
 
 
 class AnnihilanBattlemaster(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Annihilan Battlemaster"
         self._set_attack_and_health(3, 1)
         self.tier = 5
@@ -1550,24 +1550,24 @@ class AnnihilanBattlemaster(Minion):
 
 
 class BaronRivendare(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Baron Rivendare"
         self._set_attack_and_health(1, 7)
         self.tier = 5
 
 
 class BrannBronzebeard(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "BrannBronzebeard"
         self._set_attack_and_health(2, 4)
         self.tier = 5
 
 
 class BristlebackKnight(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Bristleback Knight"
         self.tribe = [TRIBE_QUILBOAR]
         self.tier = 5
@@ -1583,8 +1583,8 @@ class BristlebackKnight(Minion):
 
 
 class CapnHoggarr(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Cap'n Hoggarr"
         self._set_attack_and_health(6, 6)
         self.tier = 5
@@ -1592,8 +1592,8 @@ class CapnHoggarr(Minion):
 
 
 class DeadlySpore(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Deadly Spore"
         self._set_attack_and_health(1, 1)
         self.tier = 5
@@ -1601,8 +1601,8 @@ class DeadlySpore(Minion):
 
 
 class HolyMecherel(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Holy Mecherel"
         self.tribe = [TRIBE_MECH]
         self.tier = 5
@@ -1624,8 +1624,8 @@ class HolyMecherel(Minion):
 
 
 class InsatiableUrzul(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Insatiable Ur'zul"
         self._set_attack_and_health(4, 6)
         self.tier = 5
@@ -1634,8 +1634,8 @@ class InsatiableUrzul(Minion):
 
 
 class KangorsApprentice(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Kangor's Apprentice"
         self.tier = 5
         self._set_attack_and_health(3, 6)
@@ -1648,8 +1648,8 @@ class KangorsApprentice(Minion):
 
 
 class KingBagurgle(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "King Bagurgle"
         self.tribe = [TRIBE_MURLOC]
         self.tier = 5
@@ -1663,16 +1663,16 @@ class KingBagurgle(Minion):
 
 
 class LightfangEnforcer(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Lightfang Enforcer"
         self._set_attack_and_health(2, 2)
         self.tier = 5
 
 
 class MamaBear(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Mama Bear"
         self.tribe = [TRIBE_BEAST]
         self.tier = 5
@@ -1692,8 +1692,8 @@ class MamaBear(Minion):
 
 
 class MasterofRealities(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Master of Realities"
         self._set_attack_and_health(6, 6)
         self.tier = 5
@@ -1714,8 +1714,8 @@ class MasterofRealities(Minion):
 
 
 class Murozond(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Murozond"
         self._set_attack_and_health(5, 5)
         self.tier = 5
@@ -1723,16 +1723,16 @@ class Murozond(Minion):
 
 
 class NomiKitchenNightmare(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Nomi, Kitchen Nightmare"
         self.tier = 5
         self._set_attack_and_health(4, 4)
 
 
 class PalescaleCrocolisk(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Palescale Crocolisk"
         self.tribe = [TRIBE_BEAST]
         self.tier = 5
@@ -1776,8 +1776,8 @@ class PalescaleCrocolisk(Minion):
 
 
 class RazorgoretheUntamed(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Razorgore, the Untamed"
         self.tier = 5
         self.tribe = [TRIBE_DRAGON]
@@ -1785,8 +1785,8 @@ class RazorgoretheUntamed(Minion):
 
 
 class ReanimatingRattler(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Reanimating Rattler"
         self._set_attack_and_health(7, 3)
         self.tier = 5
@@ -1794,8 +1794,8 @@ class ReanimatingRattler(Minion):
 
 
 class SISefin(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "SI:Sefin"
         self.tribe = [TRIBE_MURLOC]
         self.tier = 5
@@ -1830,16 +1830,16 @@ class SISefin(Minion):
 
 
 class StrongshellScavenger(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Strongshell Scavenger"
         self._set_attack_and_health(2, 3)
         self.tier = 5
 
 
 class TavernTempest(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Tavern Tempest"
         self._set_attack_and_health(4, 4)
         self.tier = 5
@@ -1847,8 +1847,8 @@ class TavernTempest(Minion):
 
 
 class TonyTwoTusk(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Tony Two-Tusk"
         self.tribe = [TRIBE_PIRATE]
         self.tier = 5
@@ -1883,8 +1883,8 @@ class TonyTwoTusk(Minion):
 
 
 class Voidlord(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Voidlord"
         self.tribe = [TRIBE_DEMON]
         self.tier = 5
@@ -1902,8 +1902,8 @@ class Voidlord(Minion):
 
 
 class Amalgadon(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Amalgadon"
         self.tier = 6
         self.tribe = [
@@ -1923,16 +1923,16 @@ class Amalgadon(Minion):
 
 
 class ArchdruidHamuul(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Archdruid Hamuul"
         self._set_attack_and_health(4, 4)
         self.tier = 6
 
 
 class CaptainFlatTusk(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Captain Flat Tusk"
         self._set_attack_and_health(9, 6)
         self.tier = 6
@@ -1940,8 +1940,8 @@ class CaptainFlatTusk(Minion):
 
 
 class Charlga(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Charlga"
         self._set_attack_and_health(4, 4)
         self.tier = 6
@@ -1949,8 +1949,8 @@ class Charlga(Minion):
 
 
 class DreadAdmiralEliza(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Dread Admiral Eliza"
         self.tribe = [TRIBE_PIRATE]
         self.tier = 6
@@ -1976,8 +1976,8 @@ class DreadAdmiralEliza(Minion):
 
 
 class FamishedFelbat(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "FamishedFelbat"
         self._set_attack_and_health(9, 5)
         self.tier = 6
@@ -1985,8 +1985,8 @@ class FamishedFelbat(Minion):
 
 
 class FoeReaper4000(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Foe Reaper 4000"
         self._set_attack_and_health(6, 9)
         self.tier = 6
@@ -1995,8 +1995,8 @@ class FoeReaper4000(Minion):
 
 
 class GentleDjinni(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Gentle Djinni"
         self.tribe = [TRIBE_ELEMENTAL]
         self.tier = 6
@@ -2029,8 +2029,8 @@ class GentleDjinni(Minion):
 
 
 class Ghastcoiler(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Ghastcoiler"
         self.tribe = [TRIBE_BEAST]
         self.tier = 6
@@ -2072,8 +2072,8 @@ class Ghastcoiler(Minion):
 
 
 class GoldrintheGreatWolf(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Goldrinn, the Great Wolf"
         self.tribe = [TRIBE_BEAST]
         self.tier = 6
@@ -2091,8 +2091,8 @@ class GoldrintheGreatWolf(Minion):
 
 
 class ImpMama(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Imp Mama"
         self.tribe = [TRIBE_DEMON]
         self.tier = 6
@@ -2132,8 +2132,8 @@ class ImpMama(Minion):
 
 
 class Kalecgos(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Kalecgos"
         self.tier = 6
         self.tribe = [TRIBE_DRAGON]
@@ -2141,8 +2141,8 @@ class Kalecgos(Minion):
 
 
 class LilRag(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Lil' Rag"
         self._set_attack_and_health(6, 6)
         self.tier = 6
@@ -2150,8 +2150,8 @@ class LilRag(Minion):
 
 
 class Maexxna(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Maexxna"
         self._set_attack_and_health(2, 8)
         self.tier = 6
@@ -2160,8 +2160,8 @@ class Maexxna(Minion):
 
 
 class NadinaTheRed(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Nadina the Red"
         self.tier = 6
         self._set_attack_and_health(7, 5)
@@ -2176,8 +2176,8 @@ class NadinaTheRed(Minion):
 
 
 class NosyLooter(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Noosy Looter"
         self._set_attack_and_health(7, 6)
         self.tier = 6
@@ -2185,8 +2185,8 @@ class NosyLooter(Minion):
 
 
 class OmegaBuster(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Omega Buster"
         self.tribe = [TRIBE_MECH]
         self.tier = 6
@@ -2203,16 +2203,16 @@ class OmegaBuster(Minion):
 
 
 class SeafoodSlinger(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Seafood Slinger"
         self._set_attack_and_health(5, 5)
         self.tier = 6
 
 
 class ZappSlywick(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Zapp Slywick"
         self._set_attack_and_health(7, 10)
         self.tier = 6
@@ -2223,16 +2223,16 @@ class ZappSlywick(Minion):
 
 
 class Tabbycat(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Tabbycat"
         self.tribe = [TRIBE_BEAST]
         self._set_attack_and_health(1, 1)
 
 
 class SkyPirate(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Sky Pirate"
         self.tribe = [TRIBE_PIRATE]
         self._set_attack_and_health(1, 1)
@@ -2247,32 +2247,32 @@ class SkyPirate(Minion):
 
 
 class MicroBot(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Microbot"
         self.tribe = [TRIBE_MECH]
         self._set_attack_and_health(1, 1)
 
 
 class Robosaur(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Robosaur"
         self.tribe = [TRIBE_MECH]
         self._set_attack_and_health(8, 8)
 
 
 class Imp(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Imp"
         self.tribe = [TRIBE_DEMON]
         self._set_attack_and_health(1, 1)
 
 
 class Voidwalker(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Voidwalker"
         self.tribe = [TRIBE_DEMON]
         self.taunt = True
@@ -2280,24 +2280,24 @@ class Voidwalker(Minion):
 
 
 class FieryImp(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Imp"
         self.tribe = [TRIBE_DEMON]
         self._set_attack_and_health(3, 2)
 
 
 class DamagedGolem(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Damaged Golem"
         self.tribe = [TRIBE_MECH]
         self._set_attack_and_health(2, 1)
 
 
 class HalfShell(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Half-Shell"
         self.tribe = [TRIBE_BEAST]
         self.taunt = True
@@ -2305,24 +2305,24 @@ class HalfShell(Minion):
 
 
 class Rat(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Rat"
         self.tribe = [TRIBE_BEAST]
         self._set_attack_and_health(1, 1)
 
 
 class Hyena(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Hyena"
         self.tribe = [TRIBE_BEAST]
         self._set_attack_and_health(2, 2)
 
 
 class Plant(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Plant"
         self._set_attack_and_health(1, 1)
 
@@ -2331,8 +2331,8 @@ class Plant(Minion):
 
 
 class FishOfNzoth(Minion):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, attack: int = None, health: int = None) -> None:
+        super().__init__(attack, health)
         self.name = "Fish of N'Zoth"
         self._set_attack_and_health(2, 2)
 
