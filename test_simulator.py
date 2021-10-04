@@ -9,32 +9,43 @@ from minions import (
     Alleycat,
     BaronRivendare,
     CapnHoggarr,
+    CobaltScalebane,
     DreadAdmiralEliza,
     FreedealingGambler,
     GlyphGuadrdian,
     IckyImp,
+    ImpMama,
+    ImpatientDoomsayer,
     InsatiableUrzul,
+    Kalecgos,
     Leapfrogger,
     MajordomoExecutus,
     MoltenRock,
     MonstrousMacaw,
+    Murozond,
     NomiKitchenNightmare,
     PartyElemental,
     PeggyBrittlebone,
+    PrizedPromoDrake,
     RabidSaurolisk,
     RazorfenGeomancer,
+    RazorgoretheUntamed,
     ReanimatingRattler,
     RefreshingAnomaly,
     RipsnarlCaptain,
     Scallywag,
     Sellemental,
     SewerRat,
+    SoulDevourer,
     SouthseaCaptian,
     SouthseaStrongarm,
     SpawnOfNZoth,
     Tabbycat,
     TonyTwoTusk,
+    TwilightEmissary,
+    Voidlord,
     WildfireElemental,
+    WrathWeaver,
 )
 from warband import Warband, get_highest_health_minion
 
@@ -161,3 +172,27 @@ def test_case_8(warbands: List[Warband]):
     warbands[1].add_minion(RabidSaurolisk(12, 19))
     warbands[1].add_minion(BaronRivendare())
     warbands[1].add_minion(InsatiableUrzul(12, 16))
+
+    results = execute_battles(warbands[0], warbands[1], 1_000)
+    assert results == [100.0, 0.0, 0.0], "Results were not as expected"
+
+
+def test_case_9(warbands: List[Warband]):
+    warbands[0].add_minion(RazorgoretheUntamed(29, 25))
+    warbands[0].add_minion(CobaltScalebane(10, 7))
+    warbands[0].add_minion(PrizedPromoDrake(7, 7))
+    warbands[0].add_minion(Kalecgos(8, 16))
+    warbands[0].add_minion(Murozond(8, 8))
+    warbands[0].add_minion(CobaltScalebane(10, 7))
+    warbands[0].add_minion(TwilightEmissary(8, 5))
+
+    warbands[1].add_minion(WrathWeaver(31, 33))
+    warbands[1].add_minion(InsatiableUrzul(22, 23))
+    warbands[1].add_minion(SoulDevourer(10, 10))
+    warbands[1].add_minion(Voidlord())
+    warbands[1].add_minion(ImpMama())
+    warbands[1].add_minion(Voidlord())
+    warbands[1].add_minion(ImpatientDoomsayer())
+    seed(1)
+    results = execute_battles(warbands[0], warbands[1], 1_000)
+    assert results == [61.5, 24.8, 13.7], "Results were not as expected"

@@ -5,6 +5,8 @@ from typing import List
 from minions import (
     AcolyteOfCthun,
     Alleycat,
+    Amalgadon,
+    AnnihilanBattlemaster,
     AnnoyoModule,
     ArmoftheEmpire,
     BaronRivendare,
@@ -12,7 +14,9 @@ from minions import (
     BronzeWarden,
     BuddingGreenthumb,
     CapnHoggarr,
+    CobaltScalebane,
     CracklingCyclone,
+    DazzlingLightspawn,
     DeckSwabbie,
     DreadAdmiralEliza,
     EvolvingChromawing,
@@ -23,11 +27,14 @@ from minions import (
     HarvestGolem,
     IckyImp,
     ImpMama,
+    ImpatientDoomsayer,
     Imprisoner,
     ImpulsiveTrickster,
     InsatiableUrzul,
+    Kalecgos,
     KangorsApprentice,
     Leapfrogger,
+    LilRag,
     MajordomoExecutus,
     MamaBear,
     MechanoEgg,
@@ -35,16 +42,19 @@ from minions import (
     MicroBot,
     MoltenRock,
     MonstrousMacaw,
+    Murozond,
     NomiKitchenNightmare,
     OmegaBuster,
     PartyElemental,
     PeggyBrittlebone,
+    PrizedPromoDrake,
     RabidSaurolisk,
     Rat,
     RatPack,
     RazorfenGeomancer,
     RazorgoretheUntamed,
     ReanimatingRattler,
+    RecyclingWraith,
     RedWhelp,
     RefreshingAnomaly,
     RipsnarlCaptain,
@@ -52,6 +62,7 @@ from minions import (
     Scallywag,
     Sellemental,
     SewerRat,
+    SoulDevourer,
     SoulJuggler,
     SouthseaCaptian,
     SouthseaStrongarm,
@@ -61,9 +72,11 @@ from minions import (
     TonyTwoTusk,
     TwilightEmissary,
     UnstableGhoul,
+    Voidlord,
     Voidwalker,
     WhelpSmuggler,
     WildfireElemental,
+    WrathWeaver,
     YoHoOgre,
 )
 from warband import Warband
@@ -213,27 +226,29 @@ def andre_søn():
 
 def oliver_søn():
     warbands = [Warband(), Warband()]
-    warbands[0].add_minion(Scallywag())
-    warbands[0].add_minion(Scallywag(3, 2).set_taunt())
-    warbands[0].add_minion(Scallywag(13, 16).make_golden().set_taunt())
-    warbands[0].add_minion(TonyTwoTusk(14, 51))
-    warbands[0].add_minion(PeggyBrittlebone())
-    warbands[0].add_minion(DreadAdmiralEliza().make_golden())
-    warbands[0].add_minion(BaronRivendare())
-
+    warbands[0].add_minion(CracklingCyclone(31, 28))
+    warbands[0].add_minion(RecyclingWraith(20, 19))
+    warbands[0].add_minion(LilRag(9, 9))
+    warbands[0].add_minion(DazzlingLightspawn(9, 10))
+    warbands[0].add_minion(MoltenRock(77, 84))
+    warbands[0].add_minion(AnnihilanBattlemaster(28, 22).set_taunt())
+    warbands[0].add_minion(PartyElemental(18, 11).make_golden().set_taunt())
     return warbands[0]
 
 
 def boje_søn():
     warbands = [Warband(), Warband()]
-
-    warbands[1].add_minion(MonstrousMacaw())
-    warbands[1].add_minion(Leapfrogger())
-    warbands[1].add_minion(Leapfrogger(5, 5).make_golden().set_reborn())
-    warbands[1].add_minion(ReanimatingRattler())
-    warbands[1].add_minion(RabidSaurolisk(12, 19))
-    warbands[1].add_minion(BaronRivendare())
-    warbands[1].add_minion(InsatiableUrzul(12, 16))
+    amal = Amalgadon(8, 8)
+    amal.death_rattles = [amal.amalgadon_deathrattle]
+    warbands[1].add_minion(amal)
+    warbands[1].add_minion(Kalecgos(17, 31))
+    warbands[1].add_minion(PrizedPromoDrake(27, 21).make_golden())
+    warbands[1].add_minion(CobaltScalebane(29, 38).make_golden())
+    warbands[1].add_minion(RazorgoretheUntamed(55, 59).set_taunt())
+    amal2 = Amalgadon(22, 27).set_taunt()
+    amal2.poisonous = True
+    warbands[1].add_minion(amal2)
+    warbands[1].add_minion(ArmoftheEmpire())
     return warbands[1]
 
 
@@ -295,7 +310,7 @@ if __name__ == "__main__":
     )
     bar.start()
     start_time = time()
-    seed(1)
+    # seed(1)
     for i in range(iterations):
         board = Board(top_warband, bottom_warband)
         outcome = board.battle()

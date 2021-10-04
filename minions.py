@@ -2238,12 +2238,14 @@ class SkyPirate(Minion):
         self._set_attack_and_health(1, 1)
 
     def execute_summon_effect(self, own_warband: Warband, opponent_warband: Warband):
-        combat_sequence(
-            self,
-            get_next_defender(opponent_warband.minions),
-            own_warband,
-            opponent_warband,
-        )
+        defender = get_next_defender(opponent_warband.minions)
+        if defender is not None:
+            combat_sequence(
+                self,
+                defender,
+                own_warband,
+                opponent_warband,
+            )
 
 
 class MicroBot(Minion):
