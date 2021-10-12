@@ -27,6 +27,7 @@ class AcolyteOfCthun(Minion):
     def __init__(self, attack: int = None, health: int = None) -> None:
         super().__init__(attack, health)
         self.name = "Acolyte of C'thun"
+        self.taunt = True
         self.reborn = True
         self._set_attack_and_health(2, 2)
 
@@ -658,7 +659,7 @@ class ArmoftheEmpire(Minion):
 
     def register_observable(self, own_warband: Warband, opponent_warband: Warband):
         for minion in own_warband.minions:
-            if minion.taunt and self not in minion.pre_attack_observers:
+            if minion.taunt and self not in minion.pre_defend_observers:
                 minion.pre_defend_observers.append(self)
 
     def notify(
@@ -857,7 +858,7 @@ class Kathranatir(Minion):
         if self not in own_warband.summon_observers:
             own_warband.summon_observers.append(self)
 
-    def execute_summon_effect(self, own_warband):
+    def execute_summon_effect(self, own_warband: Warband):
         for minion in own_warband.minions:
             if TRIBE_DEMON in minion.tribe and minion is not self:
                 minion.attack += 2 * self.golden
@@ -907,7 +908,7 @@ class MonstrousMacaw(Minion):
         opponent_warband: Warband = None,
     ):
         for _ in range(self.golden):
-            deathrattle_minion = get_deathrattle_minion(own_warband.minions)
+            deathrattle_minion = get_deathrattle_minion(own_warband.minions, self)
             if deathrattle_minion is None:
                 break
             execute_deathrattles(deathrattle_minion, own_warband, opponent_warband)
@@ -1131,7 +1132,7 @@ class ChampionofYShaarj(Minion):
 
     def register_observable(self, own_warband: Warband, opponent_warband: Warband):
         for minion in own_warband.minions:
-            if minion.taunt and self not in minion.pre_attack_observers:
+            if minion.taunt and self not in minion.pre_defend_observers:
                 minion.pre_defend_observers.append(self)
 
     def notify(
@@ -1574,10 +1575,10 @@ class BristlebackKnight(Minion):
         self._set_attack_and_health(4, 8)
         self.windfury = 2
         self.set_divine_shield(True)
-        self.frenzy_ready = True
+        self.frenzy = True
 
     def activate_frenzy(self, own_warband):
-        if self.frenzy_ready:
+        if self.frenzy:
             self.gain_divine_shield(own_warband)
             self.frenzy = False
 
@@ -2198,7 +2199,7 @@ class OmegaBuster(Minion):
         _generic_summon_deathrattle(self, 6, MicroBot(), own_warband, opponent_warband)
         if buff_size > 0:
             for minion in own_warband.minions:
-                if minion.tribe == TRIBE_MECH and minion.alive:
+                if TRIBE_MECH in minion.tribe and minion.alive:
                     minion._add_stats(buff_size, buff_size)
 
 

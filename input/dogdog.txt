@@ -1,0 +1,404 @@
+Top board:
+Monstrous Macaw: 5 / 3
+Omega Buster: 6 / 6
+Amalgadon: 9 / 6 - P
+Noosy Looter: 7 / 6
+Mechano-Tank: 6 / 3
+Mechano-Tank: 6 / 3
+Baron Rivendare: 1 / 7
+
+Bottom board:
+Monstrous Macaw: 5 / 3
+Monstrous Macaw: 5 / 3
+Omega Buster: 6 / 6
+Deflect-o-Bot: 3 / 2
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 3 / 2
+Acolyte of C'thun: 8 / 4 - T
+
+----------- TURN 0 -------------
+
+Top:
+Monstrous Macaw: 5 / 3
+Omega Buster: 6 / 6
+Amalgadon: 9 / 6 - P
+Noosy Looter: 7 / 6
+Mechano-Tank: 6 / 3
+Mechano-Tank: 6 / 3
+Baron Rivendare: 1 / 7
+
+Defender: Mechano-Tank: 6 / 3 5
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Monstrous Macaw: 5 / 3
+Omega Buster: 6 / 6
+Deflect-o-Bot: 3 / 2
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 3 / 2
+Acolyte of C'thun: 8 / 4 - T
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Monstrous Macaw: 5 / 3
+Omega Buster: 6 / 6
+Amalgadon: 9 / 6 - P
+Noosy Looter: 7 / 6
+Mechano-Tank: 6 / 3
+Baron Rivendare: 1 / 7
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Omega Buster: 17 / 17
+Microbot: 12 / 12
+Deflect-o-Bot: 14 / 13 - DS
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 14 / 13 - DS
+Acolyte of C'thun: 8 / 4 - T
+
+Defender: Acolyte of C'thun: 8 / 4 - T 6
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Omega Buster: 16 / 16
+Microbot: 11 / 11
+Microbot: 11 / 11
+Amalgadon: 19 / 16 - P
+Noosy Looter: 7 / 6
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Defender: Microbot: 11 / 11 1
+
+Bottom:
+Monstrous Macaw: 5 / 3
+Omega Buster: 17 / 11
+Microbot: 12 / 12
+Deflect-o-Bot: 14 / 13 - DS
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 14 / 13 - DS
+Acolyte of C'thun: 8 / -1 - T
+
+Attacker: Monstrous Macaw: 5 / 3 0
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Omega Buster: 16 / 16
+Microbot: 11 / 6
+Microbot: 11 / 11
+Amalgadon: 19 / 16 - P
+Noosy Looter: 7 / 6
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Attacker: Omega Buster: 16 / 16 0
+
+Bottom:
+Omega Buster: 28 / 22
+Microbot: 12 / 12
+Microbot: 23 / 23
+Deflect-o-Bot: 25 / 24 - DS
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 25 / 24 - DS
+Acolyte of C'thun: 8 / -1 - T
+
+Defender: Acolyte of C'thun: 8 / -1 - T 6
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Omega Buster: 16 / 8
+Microbot: 11 / 6
+Microbot: 11 / 11
+Amalgadon: 19 / 16 - P
+Noosy Looter: 7 / 6
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Defender: Noosy Looter: 7 / 6 4
+
+Bottom:
+Omega Buster: 28 / 22
+Microbot: 12 / 12
+Microbot: 23 / 23
+Deflect-o-Bot: 25 / 24 - DS
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 25 / 24 - DS
+
+Attacker: Omega Buster: 28 / 22 0
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Omega Buster: 16 / 8
+Microbot: 11 / 6
+Microbot: 11 / 11
+Amalgadon: 19 / 16 - P
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Attacker: Microbot: 11 / 6 1
+
+Bottom:
+Omega Buster: 28 / 15
+Microbot: 12 / 12
+Microbot: 23 / 23
+Deflect-o-Bot: 25 / 24
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 25 / 24 - DS
+
+Defender: Deflect-o-Bot: 25 / 24 - DS 5
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Omega Buster: 16 / 8
+Microbot: 11 / 11
+Amalgadon: 19 / 16 - P
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Defender: Microbot: 11 / 11 1
+
+Bottom:
+Omega Buster: 28 / 15
+Microbot: 12 / 12
+Microbot: 23 / 23
+Deflect-o-Bot: 25 / 24
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 25 / 18
+
+Attacker: Microbot: 12 / 12 1
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Omega Buster: 16 / 8
+Amalgadon: 19 / 16 - P
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Attacker: Amalgadon: 19 / 16 - P 1
+
+Bottom:
+Omega Buster: 28 / 15
+Microbot: 12 / 1
+Microbot: 23 / 23
+Deflect-o-Bot: 25 / 24
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 25 / 18
+
+Defender: Omega Buster: 28 / 15 0
+
+------ END OF TURN 7 -------------
+----------- TURN 8 -------------
+
+Top:
+Omega Buster: 16 / 8
+Mechano-Tank: 16 / 13
+Baron Rivendare: 1 / 7
+
+Defender: Omega Buster: 16 / 8 0
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 11
+Microbot: 33 / 33
+Deflect-o-Bot: 35 / 34
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 35 / 28 - DS
+
+Attacker: Microbot: 33 / 33 3
+
+------ END OF TURN 8 -------------
+----------- TURN 9 -------------
+
+Top:
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Mechano-Tank: 23 / 20
+Baron Rivendare: 1 / 7
+
+Attacker: Mechano-Tank: 23 / 20 5
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 11
+Microbot: 33 / 17
+Deflect-o-Bot: 35 / 28
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 35 / 28 - DS
+
+Defender: Deflect-o-Bot: 35 / 28 - DS 6
+
+------ END OF TURN 9 -------------
+----------- TURN 10 -------------
+
+Top:
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Baron Rivendare: 1 / 7
+
+Defender: Microbot: 8 / 8 1
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 11
+Microbot: 33 / 17
+Deflect-o-Bot: 35 / 28
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 35 / 28
+
+Attacker: Deflect-o-Bot: 35 / 28 4
+
+------ END OF TURN 10 -------------
+----------- TURN 11 -------------
+
+Top:
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Baron Rivendare: 1 / 7
+
+Attacker: Baron Rivendare: 1 / 7 4
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 11
+Microbot: 33 / 17
+Deflect-o-Bot: 35 / 20
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 35 / 28
+
+Defender: Microbot: 22 / 11 2
+
+------ END OF TURN 11 -------------
+----------- TURN 12 -------------
+
+Top:
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+Microbot: 8 / 8
+
+Defender: Microbot: 8 / 8 1
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 10
+Microbot: 33 / 17
+Deflect-o-Bot: 35 / 20
+Baron Rivendare: 1 / 7
+Deflect-o-Bot: 35 / 28
+
+Attacker: Baron Rivendare: 1 / 7 5
+
+------ END OF TURN 12 -------------
+----------- TURN 13 -------------
+
+Top:
+Microbot: 8 / 8
+Microbot: 8 / 7
+Microbot: 8 / 8
+Microbot: 8 / 8
+
+Attacker: Microbot: 8 / 8 0
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 10
+Microbot: 33 / 17
+Deflect-o-Bot: 35 / 20
+Deflect-o-Bot: 35 / 28
+
+Defender: Microbot: 33 / 17 3
+
+------ END OF TURN 13 -------------
+----------- TURN 14 -------------
+
+Top:
+Microbot: 8 / 7
+Microbot: 8 / 8
+Microbot: 8 / 8
+
+Defender: Microbot: 8 / 8 1
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 10
+Microbot: 33 / 9
+Deflect-o-Bot: 35 / 20
+Deflect-o-Bot: 35 / 28
+
+Attacker: Deflect-o-Bot: 35 / 28 5
+
+------ END OF TURN 14 -------------
+----------- TURN 15 -------------
+
+Top:
+Microbot: 8 / 7
+Microbot: 8 / 8
+
+Attacker: Microbot: 8 / 7 0
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 11
+Microbot: 22 / 10
+Microbot: 33 / 9
+Deflect-o-Bot: 35 / 20
+Deflect-o-Bot: 35 / 20
+
+Defender: Microbot: 11 / 11 1
+
+------ END OF TURN 15 -------------
+----------- TURN 16 -------------
+
+Top:
+Microbot: 8 / 8
+
+Defender: Microbot: 8 / 8 0
+
+Bottom:
+Microbot: 11 / 11
+Microbot: 11 / 3
+Microbot: 22 / 10
+Microbot: 33 / 9
+Deflect-o-Bot: 35 / 20
+Deflect-o-Bot: 35 / 20
+
+Attacker: Microbot: 11 / 11 0
+
+------ END OF TURN 16 -------------
+Outcome: [100.0, 0.0, 0.0]
+Average damage: [10.0, 0.0, 0.0]
+Average turns: 17.00
+Turns / Time 4580.41

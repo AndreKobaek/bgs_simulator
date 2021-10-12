@@ -6,19 +6,29 @@ from board import Board
 from main import execute_battles
 from minions import (
     AcolyteOfCthun,
+    AggemThorncurse,
     Alleycat,
+    Amalgadon,
+    AnnihilanBattlemaster,
+    ArmoftheEmpire,
     BaronRivendare,
+    BristlebackKnight,
     CapnHoggarr,
+    CaptainFlatTusk,
     CobaltScalebane,
+    CracklingCyclone,
+    DazzlingLightspawn,
     DreadAdmiralEliza,
     FreedealingGambler,
     GlyphGuadrdian,
     IckyImp,
     ImpMama,
     ImpatientDoomsayer,
+    ImpulsiveTrickster,
     InsatiableUrzul,
     Kalecgos,
     Leapfrogger,
+    LilRag,
     MajordomoExecutus,
     MoltenRock,
     MonstrousMacaw,
@@ -31,9 +41,11 @@ from minions import (
     RazorfenGeomancer,
     RazorgoretheUntamed,
     ReanimatingRattler,
+    RecyclingWraith,
     RefreshingAnomaly,
     RipsnarlCaptain,
     Scallywag,
+    SelflessHero,
     Sellemental,
     SewerRat,
     SoulDevourer,
@@ -41,6 +53,7 @@ from minions import (
     SouthseaStrongarm,
     SpawnOfNZoth,
     Tabbycat,
+    Tarecgosa,
     TonyTwoTusk,
     TwilightEmissary,
     Voidlord,
@@ -103,7 +116,7 @@ def test_case_4(warbands: List[Warband]):
     warbands[1].add_minion(Sellemental())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [93.6, 5.0, 1.4], "Results were not as expected"
+    assert results == [96.0, 2.8, 1.2], "Results were not as expected"
 
 
 def test_case_5(warbands: List[Warband]):
@@ -153,7 +166,7 @@ def test_case_7(warbands: List[Warband]):
 
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [1.0, 3.6, 95.4], "Results were not as expected"
+    assert results == [0.5, 5.9, 93.6], "Results were not as expected"
 
 
 def test_case_8(warbands: List[Warband]):
@@ -196,3 +209,48 @@ def test_case_9(warbands: List[Warband]):
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
     assert results == [61.5, 24.8, 13.7], "Results were not as expected"
+
+
+def test_case_10(warbands: List[Warband]):
+    warbands[0].add_minion(CracklingCyclone(31, 28))
+    warbands[0].add_minion(RecyclingWraith(20, 19))
+    warbands[0].add_minion(LilRag(9, 9))
+    warbands[0].add_minion(DazzlingLightspawn(9, 10))
+    warbands[0].add_minion(MoltenRock(77, 84))
+    warbands[0].add_minion(AnnihilanBattlemaster(28, 22).set_taunt())
+    warbands[0].add_minion(PartyElemental(18, 11).make_golden().set_taunt())
+
+    amal = Amalgadon(8, 8).set_taunt()
+    amal.death_rattles = [amal.amalgadon_deathrattle]
+    warbands[1].add_minion(amal)
+    warbands[1].add_minion(Kalecgos(17, 31))
+    warbands[1].add_minion(PrizedPromoDrake(27, 21).make_golden())
+    warbands[1].add_minion(CobaltScalebane(29, 38).make_golden().set_taunt())
+    warbands[1].add_minion(RazorgoretheUntamed(55, 59).set_taunt())
+    warbands[1].add_minion(Amalgadon(22, 27).set_taunt().set_poisonous())
+    warbands[1].add_minion(ArmoftheEmpire())
+    seed(1)
+
+    results = execute_battles(warbands[0], warbands[1], 1_000)
+    assert results == [12.5, 13.0, 74.5], "Results were not as expected"
+
+
+def test_case_11(warbands: List[Warband]):
+    warbands[0].add_minion(CracklingCyclone(13, 10))
+    warbands[0].add_minion(CracklingCyclone(23, 20))
+    warbands[0].add_minion(BristlebackKnight(9, 13))
+    warbands[0].add_minion(RecyclingWraith(12, 10))
+    warbands[0].add_minion(MajordomoExecutus())
+    warbands[0].add_minion(Sellemental(2, 2))
+    warbands[0].add_minion(DazzlingLightspawn(6, 7))
+
+    warbands[1].add_minion(MonstrousMacaw(9, 7))
+    warbands[1].add_minion(AggemThorncurse(9, 12))
+    warbands[1].add_minion(SelflessHero())
+    warbands[1].add_minion(Tarecgosa(8, 8))
+    warbands[1].add_minion(WrathWeaver(24, 28))
+    warbands[1].add_minion(CaptainFlatTusk(12, 9).set_taunt())
+    warbands[1].add_minion(ImpulsiveTrickster(10, 10).make_golden().set_taunt())
+    seed(1)
+    results = execute_battles(warbands[0], warbands[1], 1_000)
+    assert results == [28.6, 20.6, 50.8], "Results were not as expected"

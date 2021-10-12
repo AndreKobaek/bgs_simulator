@@ -1,194 +1,149 @@
-Top board:
-Spawn of N'Zoth: 4 / 4
-Wildfire Elemental: 11 / 8
-PeggyBrittlebone: 9 / 8
-Cap'n Hoggarr: 11 / 11
-Cap'n Hoggarr: 24 / 24
-SouthseaStrongarm: 5 / 4
-Southsea Captain: 3 / 3
-
-Bottom board:
-Party Elemental: 14 / 12
-Sellemental: 13 / 13
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Molten Rock: 9 / 11 - Taunt
-Nomi, Kitchen Nightmare: 4 / 4
-
 ----------- TURN 0 -------------
 
 Top:
-Spawn of N'Zoth: 4 / 4
-Wildfire Elemental: 11 / 8
-PeggyBrittlebone: 9 / 8
-Cap'n Hoggarr: 11 / 11
-Cap'n Hoggarr: 24 / 24
-SouthseaStrongarm: 5 / 4
-Southsea Captain: 3 / 3
+Monstrous Macaw: 5 / 3-A
+Leapfrogger: 3 / 3-A
+Leapfrogger: 8 / 8-A
+Reanimating Rattler: 7 / 3-A
+Rabid Saurolisk: 12 / 19-A
+Baron Rivendare: 1 / 7-A
+Insatiable Ur'zul: 12 / 16-A - T
 
-Defender: Wildfire Elemental: 11 / 8 1
-
-Bottom:
-Party Elemental: 14 / 12
-Sellemental: 13 / 13
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Molten Rock: 9 / 11 - Taunt
-Nomi, Kitchen Nightmare: 4 / 4
-
-Attacker: Party Elemental: 14 / 12 0
-
------- END OF TURN 0 -------------
------------ TURN 0 -------------
-
-Top:
-Spawn of N'Zoth: 4 / 4
-PeggyBrittlebone: 9 / 8
-Cap'n Hoggarr: 11 / 11
-Cap'n Hoggarr: 24 / 24
-SouthseaStrongarm: 5 / 4
-Southsea Captain: 3 / 3
-
-Defender: PeggyBrittlebone: 9 / 8 1
+Attacker: Monstrous Macaw: 5 / 3-A 0
 
 Bottom:
-Party Elemental: 14 / 1
-Sellemental: 13 / 13
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Molten Rock: 9 / 11 - Taunt
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 2 / 1-A
+Scallywag: 3 / 2-A - T
+Scallywag: 15 / 17-A - T
+Tony Two-Tusk: 14 / 51-A
+PeggyBrittlebone: 6 / 5-A
+Dread Admiral Eliza: 12 / 14-A
+Baron Rivendare: 1 / 7-A
 
-Attacker: Party Elemental: 14 / 1 0
+Defender: Scallywag: 3 / 2-A - T 1
 
 ------ END OF TURN 0 -------------
 ----------- TURN 1 -------------
 
 Top:
-Spawn of N'Zoth: 4 / 4
-Cap'n Hoggarr: 11 / 11
-Cap'n Hoggarr: 24 / 24
-SouthseaStrongarm: 5 / 4
-Southsea Captain: 3 / 3
+Monstrous Macaw: 7 / 2-A
+Leapfrogger: 5 / 5-A
+Leapfrogger: 8 / 8-A
+Reanimating Rattler: 7 / 3-A
+Rabid Saurolisk: 12 / 19-A
+Baron Rivendare: 1 / 7-A
+Insatiable Ur'zul: 12 / 6-A - T
 
-Attacker: Spawn of N'Zoth: 4 / 4 0
+Defender: Insatiable Ur'zul: 12 / 6-A - T 6
 
 Bottom:
-Sellemental: 13 / 13
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Molten Rock: 9 / 11 - Taunt
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 10 / 5-A
+Scallywag: 23 / 21-A - T
+Tony Two-Tusk: 22 / 55-A
+PeggyBrittlebone: 14 / 9-A
+Dread Admiral Eliza: 20 / 18-A
+Baron Rivendare: 9 / 11-A
 
-Defender: Molten Rock: 9 / 11 - Taunt 4
+Attacker: Scallywag: 10 / 5-A 0
 
 ------ END OF TURN 1 -------------
 ----------- TURN 2 -------------
 
 Top:
-Cap'n Hoggarr: 13 / 13
-Cap'n Hoggarr: 26 / 26
-SouthseaStrongarm: 7 / 6
-Southsea Captain: 5 / 5
+Monstrous Macaw: 7 / 2-A
+Leapfrogger: 8 / 8-A
+Reanimating Rattler: 11 / 7-A
+Rabid Saurolisk: 14 / 16-A
+Baron Rivendare: 1 / 7-A
 
-Defender: Cap'n Hoggarr: 13 / 13 0
+Attacker: Leapfrogger: 8 / 8-A 1
 
 Bottom:
-Sellemental: 13 / 13
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Molten Rock: 9 / 7 - Taunt
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 43 / 31-A - T
+Tony Two-Tusk: 46 / 71-A
+PeggyBrittlebone: 40 / 24-A
+Dread Admiral Eliza: 40 / 28-A
+Baron Rivendare: 29 / 21-A
 
-Attacker: Sellemental: 13 / 13 0
+Defender: Scallywag: 43 / 31-A - T 0
 
 ------ END OF TURN 2 -------------
 ----------- TURN 3 -------------
 
 Top:
-Cap'n Hoggarr: 26 / 26
-SouthseaStrongarm: 7 / 6
-Southsea Captain: 5 / 5
+Monstrous Macaw: 9 / 4-A
+Leapfrogger: 8 / -35-A
+Reanimating Rattler: 13 / 9-A
+Rabid Saurolisk: 14 / 16-A
+Baron Rivendare: 1 / 7-A
 
-Attacker: Cap'n Hoggarr: 26 / 26 0
+Defender: Baron Rivendare: 1 / 7-A 4
 
 Bottom:
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Molten Rock: 9 / 7 - Taunt
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 43 / 23-A - T
+Tony Two-Tusk: 46 / 71-A
+PeggyBrittlebone: 40 / 24-A
+Dread Admiral Eliza: 40 / 28-A
+Baron Rivendare: 29 / 21-A
 
-Defender: Molten Rock: 9 / 7 - Taunt 3
+Attacker: Scallywag: 43 / 23-A - T 0
 
 ------ END OF TURN 3 -------------
 ----------- TURN 4 -------------
 
 Top:
-Cap'n Hoggarr: 26 / 17
-SouthseaStrongarm: 7 / 6
-Southsea Captain: 5 / 5
+Monstrous Macaw: 9 / 4-A
+Leapfrogger: 8 / -35-A
+Reanimating Rattler: 13 / 9-A
+Rabid Saurolisk: 14 / 16-A
 
-Defender: SouthseaStrongarm: 7 / 6 1
+Attacker: Reanimating Rattler: 13 / 9-A 2
 
 Bottom:
-Party Elemental: 8 / 7
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 63 / 32-A - T
+Tony Two-Tusk: 66 / 81-A
+PeggyBrittlebone: 60 / 34-A
+Dread Admiral Eliza: 60 / 38-A
+Baron Rivendare: 49 / 31-A
 
-Attacker: Party Elemental: 8 / 7 0
+Defender: Scallywag: 63 / 32-A - T 0
 
 ------ END OF TURN 4 -------------
 ----------- TURN 5 -------------
 
 Top:
-Cap'n Hoggarr: 26 / 17
-Southsea Captain: 5 / 5
+Monstrous Macaw: 9 / 4-A
+Leapfrogger: 9 / -34-A
+Rabid Saurolisk: 19 / 21-A
 
-Attacker: Southsea Captain: 5 / 5 1
+Defender: Monstrous Macaw: 9 / 4-A 0
 
 Bottom:
-Majordomo Executus: 6 / 3
-Refreshing Anomaly: 5 / 8
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 63 / 19-A - T
+Tony Two-Tusk: 66 / 81-A
+PeggyBrittlebone: 60 / 34-A
+Dread Admiral Eliza: 60 / 38-A
+Baron Rivendare: 49 / 31-A
 
-Defender: Majordomo Executus: 6 / 3 0
+Attacker: Tony Two-Tusk: 66 / 81-A 1
 
 ------ END OF TURN 5 -------------
 ----------- TURN 6 -------------
 
 Top:
-Cap'n Hoggarr: 26 / 17
+Leapfrogger: 11 / -32-A
+Rabid Saurolisk: 21 / 23-A
 
-Defender: Cap'n Hoggarr: 26 / 17 0
+Attacker: Rabid Saurolisk: 21 / 23-A 1
 
 Bottom:
-Refreshing Anomaly: 5 / 8
-Nomi, Kitchen Nightmare: 4 / 4
+Scallywag: 83 / 29-A - T
+Tony Two-Tusk: 86 / 82-A
+PeggyBrittlebone: 80 / 44-A
+Dread Admiral Eliza: 80 / 48-A
+Baron Rivendare: 69 / 41-A
 
-Attacker: Refreshing Anomaly: 5 / 8 0
+Defender: Scallywag: 83 / 29-A - T 0
 
 ------ END OF TURN 6 -------------
 ----------- TURN 7 -------------
-
-Top:
-Cap'n Hoggarr: 26 / 12
-
-Attacker: Cap'n Hoggarr: 26 / 12 0
-
-Bottom:
-Nomi, Kitchen Nightmare: 4 / 4
-
-Defender: Nomi, Kitchen Nightmare: 4 / 4 0
-
------- END OF TURN 7 -------------
-Outcome: [0.0, 0.0, 100.0]
-Average damage: [0.0, 0.0, 5.0]
-Average turns: 8.00
-Turns / Time 7943.76

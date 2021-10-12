@@ -123,14 +123,17 @@ class Warband(object):
 
 
 def get_next_defender(minions: List[Minion]) -> Minion:
+    possible_defenders = [
+        minion for minion in minions if minion.health > 0 and minion.alive
+    ]
     taunts = []
     # Hvis du har en funktion der ikke opdaterer objektet selv, bør det være en util funk.
-    for minion in minions:
+    for minion in possible_defenders:
         if minion.taunt:
             taunts.append(minion)
     if len(taunts) > 0:
         return get_random_minion(taunts)
-    return get_random_minion(minions)
+    return get_random_minion(possible_defenders)
 
 
 def get_random_minion(minions: List[Minion]) -> Minion:
@@ -157,8 +160,14 @@ def get_highest_health_minion(minions: List[Minion]) -> Optional[Minion]:
     return None
 
 
-def get_deathrattle_minion(minions: List[Minion]) -> Optional[Minion]:
-    deathrattle_minions = [minion for minion in minions if minion.death_rattles != []]
+def get_deathrattle_minion(
+    minions: List[Minion], exclude_minion: Minion = None
+) -> Optional[Minion]:
+    deathrattle_minions = [
+        minion
+        for minion in minions
+        if minion.death_rattles != [] and minion is not exclude_minion
+    ]
     if deathrattle_minions != []:
         if len(deathrattle_minions) > 1:
             return get_random_minion(deathrattle_minions)

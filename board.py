@@ -2,7 +2,7 @@ from typing import List
 from warband import Warband, calculate_damage, get_next_defender
 from copy import deepcopy
 from random import randint, shuffle
-from minion import Minion, notify_observers, on_death
+from minion import Minion, notify_observers, on_death, update_life_status
 
 
 class Board(object):
@@ -42,7 +42,7 @@ class Board(object):
                 def_minion = get_next_defender(self.defender.minions)
 
                 # Printing board state:
-                # self._print_board_state(turn, atk_minion, def_minion)
+                self._print_board_state(turn, atk_minion, def_minion)
 
                 fight(
                     atk_minion,
@@ -177,17 +177,6 @@ def register_observers(own_warband: Warband, opponent_warband: Warband):
         minion.register_observable(own_warband, opponent_warband)
 
 
-# def notify_observers(
-#     observers: List[Minion],
-#     dealer_minion: Minion,
-#     receiver_minion: Minion,
-#     own_warband: Warband,
-#     opponent_warband: Warband,
-# ):
-#     for observer in observers:
-#         observer.notify(dealer_minion, receiver_minion, own_warband, opponent_warband)
-
-
 def combat_sequence(
     atk_minion: Minion,
     def_minion: Minion,
@@ -207,13 +196,13 @@ def combat_sequence(
 
     notify_observers(
         def_minion.pre_defend_observers,
-        def_minion,
         atk_minion,
-        def_warband,
+        def_minion,
         atk_warband,
+        def_warband,
     )
     # Replaced by take_damage_2
-    atk_minion.take_damage_2(
+    atk_minion.take_damage(
         def_minion.attack,
         def_minion,
         atk_warband,
@@ -232,6 +221,7 @@ def combat_sequence(
         atk_warband,
         def_warband,
     )
+    update_life_status(atk_minion)
 
 
 def fight(
@@ -242,6 +232,14 @@ def fight(
 ):
     combat_sequence(atk_minion, def_minion, atk_warband, def_warband)
 
+    if atk_minion.cleave:
+        adj_minions = def_warband.get_adjacent_minions(def_minion)
+        if len(adj_minions) > 0:
+            for adj_minion in adj_minions:
+                adj_minion.take_damage_2(
+                    atk_minion.attack, atk_minion, def_warband, atk_warband
+                )
+
     already_handled = []
     deathrattle_handler = {}
     while dead_minions(atk_warband, def_warband, deathrattle_handler, already_handled):
@@ -251,14 +249,7 @@ def fight(
             already_handled.append(minion)
         deathrattle_handler = {}
 
-    if atk_minion.cleave:
-        adj_minions = def_warband.get_adjacent_minions(def_minion)
-        if len(adj_minions) > 0:
-            for adj_minion in adj_minions:
-                adj_minion.take_damage_2(
-                    atk_minion.attack, atk_minion, def_warband, atk_warband
-                )
-    atk_minion.number_of_attacks += 1
+    atk_minion.number_of_attacks += 1 / atk_minion.windfury
 
 
 def dead_minions(

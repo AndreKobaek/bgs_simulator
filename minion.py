@@ -66,7 +66,8 @@ class Minion(object):
 
     def make_golden(self):
         self.golden = 2
-        self.windfury *= 2
+        if self.windfury > 1:
+            self.windfury *= 2
         self.attack += self.base_attack
         self.base_attack *= 2
         self.add_health(self.base_health)
@@ -88,11 +89,7 @@ class Minion(object):
         self.divine_shield = divine_shield
         self.base_ds = divine_shield
 
-    def take_damage(self, incoming_damage: int):
-        self.health -= incoming_damage
-        self.damage_taken += incoming_damage
-
-    def take_damage_2(
+    def take_damage(
         self,
         incoming_damage: int,
         receiver_minion,
@@ -107,36 +104,41 @@ class Minion(object):
             else:
                 self.health -= incoming_damage
                 self.damage_taken += incoming_damage
+                if self.health > 0:
+                    self.activate_frenzy(own_warband)
 
-            if self.health <= 0:
-                self.alive = False
-
-            if self.alive:
-                self.activate_frenzy(own_warband)
+    def take_damage_2(
+        self,
+        incoming_damage: int,
+        receiver_minion,
+        own_warband,
+        opponent_warband,
+    ):
+        self.take_damage(
+            incoming_damage, receiver_minion, own_warband, opponent_warband
+        )
+        if self.health <= 0:
+            self.alive = False
 
     def add_health(self, incoming_health):
         self.health += incoming_health
 
     def __str__(self) -> str:
-        minion_print = f"{self.name}: {self.attack} / {self.health}{' - Taunt' if self.taunt else ''}{' - Divine Shield' if self.divine_shield else ''}"
+        minion_print = f"{self.name}: {self.attack} / {self.health}{' - T' if self.taunt else ''}{' - DS' if self.divine_shield else ''}{' - P' if self.poisonous else ''}"
         return minion_print
 
     # TODO redo as a summon of self instantiation
-    def _reborn(self):
-        if self.reborn:
-            self.alive = True
-            self.divine_shield = self.base_divine_shield
-            self._set_attack_and_health(self.base_attack, 1)
-            self.damage_taken = self.base_health - 1
-            self.reborn = False
-
-    def update_life_status(self) -> bool:
-        if self.health <= 0 and self.reborn:
-            self.health = 1
-            self.attack = self.base_attack
-        elif self.health <= 0:
-            self.alive = False
-        return self.alive
+    def _reborn(
+        self,
+    ):
+        golden = self.golden == 2
+        self.__init__()
+        if golden:
+            self.make_golden()
+        self._set_attack_and_health(self.base_attack, 1)
+        self.damage_taken = self.base_health - 1
+        self.reborn = False
+        return self
 
     def update_death_observers(self):
         self.death_observers = [
@@ -211,6 +213,20 @@ class Minion(object):
         self.taunt = True
         return self
 
+    def set_poisonous(self):
+        self.poisonous = True
+        return self
+
+    def set_windfury(self):
+        self.windfury = 2
+        return self
+
+
+def update_life_status(minion) -> bool:
+    if minion.health <= 0:
+        minion.alive = False
+    return minion.alive
+
 
 def on_death(
     dealer_minion: Minion,
@@ -229,7 +245,10 @@ def on_death(
     execute_deathrattles(dealer_minion, own_warband, opponent_warband)
 
     if dealer_minion.reborn:
-        dealer_minion._reborn()
+        own_warband.summon_minions(
+            dealer_minion, [dealer_minion._reborn()], opponent_warband
+        )
+        own_warband.remove_minion(dealer_minion)
     else:
         own_warband.remove_minion(dealer_minion)
 
