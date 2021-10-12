@@ -466,8 +466,8 @@ class Roadboar(Minion):
         self.frenzy = True
 
     def activate_frenzy(self, own_warband: Warband):
-        pass
-        # TODO add blood gem to hand
+        for _ in range(self.golden):
+            own_warband.add_cards_to_hand()
 
 
 class SaltscaleHoncho(Minion):
@@ -833,8 +833,8 @@ class Gemsplitter(Minion):
         own_warband: Warband = None,
         opponent_warband: Warband = None,
     ):
-        pass
-        # TODO add card to hand
+        for _ in range(self.golden):
+            own_warband.add_cards_to_hand()
 
 
 class Houndmaster(Minion):
@@ -858,7 +858,7 @@ class Kathranatir(Minion):
         if self not in own_warband.summon_observers:
             own_warband.summon_observers.append(self)
 
-    def execute_summon_effect(self, own_warband: Warband):
+    def execute_summon_effect(self, own_warband: Warband, opponent_warband: Warband):
         for minion in own_warband.minions:
             if TRIBE_DEMON in minion.tribe and minion is not self:
                 minion.attack += 2 * self.golden
@@ -1109,8 +1109,7 @@ class Bonker(Minion):
         own_warband: Warband = None,
         opponent_warband: Warband = None,
     ):
-        pass
-        # TODO add bloodgem to hand
+        own_warband.add_cards_to_hand()
 
 
 class CaveHydra(Minion):
@@ -1266,8 +1265,8 @@ class ImpatientDoomsayer(Minion):
         opponent_warband: Warband = None,
     ):
         if self.avenge_tick():
-            pass
-            # TODO add card to hand
+            for _ in range(self.golden):
+                own_warband.add_cards_to_hand()
 
 
 class MajordomoExecutus(Minion):
@@ -1334,6 +1333,10 @@ class PeggyBrittlebone(Minion):
         self._set_attack_and_health(6, 5)
         self.tier = 4
         self.tribe = [TRIBE_PIRATE]
+
+    def register_observable(self, own_warband: Warband, opponent_warband: Warband):
+        if self not in own_warband.card_gain_observers:
+            own_warband.card_gain_observers.append(self)
 
     def notify(
         self,
@@ -1516,8 +1519,8 @@ class WitchwingNestmatron(Minion):
         opponent_warband: Warband = None,
     ):
         if self.avenge_tick():
-            pass
-            # TODO add card to hand
+            for _ in range(self.golden):
+                own_warband.add_cards_to_hand()
 
 
 # ###### TIER FIVE ########
@@ -2026,7 +2029,8 @@ class GentleDjinni(Minion):
             for _ in range(self.golden)
         ]
         own_warband.summon_minions(self, chosen_elementals, opponent_warband)
-        # TODO add card to hand
+        for _ in range(self.golden):
+            own_warband.add_cards_to_hand()
 
 
 class Ghastcoiler(Minion):

@@ -11,6 +11,8 @@ class Warband(object):
         self.next_attacker = 0
         self.dead_mechs = []
         self.summon_observers: List[Minion] = []
+        self.card_gain_observers: List[Minion] = []
+        self.cards_in_hand: int = 0
 
     def add_minion(self, minion):
         self.minions.append(minion)
@@ -56,6 +58,12 @@ class Warband(object):
     def minions_alive(self) -> int:
         return len([x for x in self.minions if x.alive])
 
+    def add_cards_to_hand(self):
+        if self.cards_in_hand < 10:
+            self.cards_in_hand += 1
+            for minion in self.card_gain_observers:
+                minion.notify(None, None, self, None)
+
     def update_warband(self):
         for minion in self.minions:
             if not minion.alive and TRIBE_MECH in minion.tribe:
@@ -83,29 +91,57 @@ class Warband(object):
             limit,
         )
 
+    def summon_scale(self):
+        khadgars = [
+            minion.golden + 1 for minion in self.minions if minion.name == "Khadgar"
+        ]
+        if khadgars == []:
+            return [1]
+        else:
+            return khadgars
+
     def remove_minion(self, dead_minion: Minion):
         self.minions = [minion for minion in self.minions if minion is not dead_minion]
 
     def summon_minions(self, summoner: Minion, minions: List[Minion], opponent_warband):
-        board_space = self._get_available_boardspace(len(minions))
-        if board_space > 0:
-            minions_2_sum = deepcopy(minions)
-            for minion in minions_2_sum:
-                minion.number_of_attacks = summoner.number_of_attacks
+        minions_2_sum = deepcopy(minions)
+        number_of_attacks = summoner.number_of_attacks
+        summoner_position = self.minions.index(summoner) + 1
+        for minion in minions_2_sum:
+            for scale in self.summon_scale():
+                summoned_minions = self.summon_minion(
+                    summoner_position,
+                    number_of_attacks,
+                    minion,
+                    scale,
+                    opponent_warband,
+                )
+                summoner_position += len(summoned_minions)
+                for sum_minion in summoned_minions:
+                    sum_minion.execute_summon_effect(self, opponent_warband)
+            else:
+                break
 
-            minions_2_sum = minions_2_sum[:board_space]
-            summoner_position = self.minions.index(summoner) + 1
-            self.minions = (
-                self.minions[:summoner_position]
-                + minions_2_sum
-                + self.minions[summoner_position:]
-            )
-            for minion in self.minions:
-                minion.register_observable(self, opponent_warband)
-            for minion in minions_2_sum:
-                for summon_observer in self.summon_observers:
-                    summon_observer.buff_summoned_minion(minion, self)
-                minion.execute_summon_effect(self, opponent_warband)
+    def summon_minion(
+        self,
+        summoner_position: int,
+        number_of_attacks: int,
+        minion: Minion,
+        amount_to_summon: int,
+        opponent_warband,
+    ) -> List[Minion]:
+        summoned_minions = []
+        board_space = self._get_available_boardspace(amount_to_summon)
+        for _ in range(board_space):
+            minion.number_of_attacks = number_of_attacks
+            self.minions.insert(summoner_position, minion)
+            for observers in self.minions:
+                observers.register_observable(self, opponent_warband)
+            for summon_observer in self.summon_observers:
+                summon_observer.buff_summoned_minion(minion, self)
+            summoner_position += 1
+            summoned_minions.append(minion)
+        return summoned_minions
 
     def can_do_battle(self):
         return self.minions_alive() > 0

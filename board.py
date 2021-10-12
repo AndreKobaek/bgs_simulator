@@ -70,35 +70,6 @@ class Board(object):
         else:
             return [1, 0, turn]
 
-    def _fight_outcome(
-        self,
-        dealer_minion: Minion,
-        receiver_minion: Minion,
-        opponent_warband: Warband,
-        own_warband: Warband,
-    ):
-        # check if minion has frenzy and activate if
-        alive = dealer_minion.update_life_status()
-        if receiver_minion.attack > 0:
-            notify_observers(
-                dealer_minion.post_damage_observers,
-                dealer_minion,
-                receiver_minion,
-                own_warband,
-                opponent_warband,
-            )
-        if alive and receiver_minion.attack > 0:
-            dealer_minion.activate_frenzy(own_warband)
-        elif not alive:
-            dealer_minion.update_death_observers()
-            for death_observer in dealer_minion.death_observers:
-                death_observer.notify(
-                    dealer_minion, receiver_minion, own_warband, opponent_warband
-                )
-            for deathrattle in dealer_minion.death_rattles:
-                deathrattle(own_warband, opponent_warband)
-            register_observers(own_warband, opponent_warband)
-
     def _coin_flip(self):
         if len(self.top_warband.minions) == len(self.bottom_warband.minions):
             if randint(0, 1) == 0:

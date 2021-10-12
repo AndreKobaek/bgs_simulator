@@ -104,6 +104,10 @@ class Minion(object):
             else:
                 self.health -= incoming_damage
                 self.damage_taken += incoming_damage
+                for post_damage_obs in self.post_damage_observers:
+                    post_damage_obs.notify(
+                        self, receiver_minion, own_warband, opponent_warband
+                    )
                 if self.health > 0:
                     self.activate_frenzy(own_warband)
 

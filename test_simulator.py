@@ -2,8 +2,9 @@ from copy import deepcopy
 from random import seed
 from typing import List
 import pytest
-from board import Board
+from board import Board, register_observers
 from main import execute_battles
+from minion import on_death
 from minions import (
     AcolyteOfCthun,
     AggemThorncurse,
@@ -20,6 +21,7 @@ from minions import (
     DazzlingLightspawn,
     DreadAdmiralEliza,
     FreedealingGambler,
+    Ghastcoiler,
     GlyphGuadrdian,
     IckyImp,
     ImpMama,
@@ -254,3 +256,51 @@ def test_case_11(warbands: List[Warband]):
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
     assert results == [28.6, 20.6, 50.8], "Results were not as expected"
+
+
+def test_peggy(warbands: List[Warband]):
+    warbands[0].add_minion(PeggyBrittlebone())
+    cap_check = CapnHoggarr()
+    assert cap_check.attack == 6
+    assert cap_check.health == 6
+    warbands[0].add_minion(cap_check)
+    board = Board(warbands[0], warbands[1])
+    board.top_warband.add_cards_to_hand()
+    cap_check = board.top_warband.minions[1]
+
+    assert cap_check.attack == 7
+    assert cap_check.health == 7
+
+
+def test_skypirate(warbands: List[Warband]):
+    warbands[1].add_minion(Scallywag())
+    board = Board(warbands[0], warbands[1])
+    on_death(
+        board.bottom_warband.minions[0], None, board.bottom_warband, board.top_warband
+    )
+    assert board.bottom_warband.minions[0].name == "Sky Pirate"
+
+
+def test_edge_case_for_summoning(warbands: List[Warband]):
+    for _ in range(7):
+        warbands[1].add_minion(Ghastcoiler())
+    board = Board(warbands[0], warbands[1])
+    board.bottom_warband.minions[0].take_damage_2(
+        7, None, board.bottom_warband, board.top_warband
+    )
+    on_death(
+        board.bottom_warband.minions[0], None, board.bottom_warband, board.top_warband
+    )
+    assert len(board.bottom_warband.minions) == 7
+
+
+def test_edge_case_for_summoning_2(warbands: List[Warband]):
+    for _ in range(1):
+        warbands[1].add_minion(ImpMama())
+    board = Board(warbands[0], warbands[1])
+    for _ in range(10):
+        board.bottom_warband.minions[0].take_damage_2(
+            1, None, board.bottom_warband, board.top_warband
+        )
+    board.bottom_warband.update_warband()
+    assert len(board.bottom_warband.minions) == 6

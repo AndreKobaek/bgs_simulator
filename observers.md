@@ -37,7 +37,6 @@ Yo-Ho-Ogre
 Imp Mama
 
 # TODO
-Peggy
 Khadgar
 Zapp
 Southsea Captain
