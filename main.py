@@ -268,13 +268,27 @@ def esben_søn():
 
 def esben_ny():
     warbands = [Warband(), Warband()]
-    warbands[0].add_minion(RazorfenGeomancer().set_reborn())
+    warbands[0].add_minion(CracklingCyclone(31, 28))
+    warbands[0].add_minion(RecyclingWraith(20, 19))
+    warbands[0].add_minion(LilRag(9, 9))
+    warbands[0].add_minion(DazzlingLightspawn(9, 10))
+    warbands[0].add_minion(MoltenRock(77, 84))
+    warbands[0].add_minion(AnnihilanBattlemaster(28, 22).set_taunt())
+    warbands[0].add_minion(PartyElemental(18, 11).make_golden().set_taunt())
     return warbands[0]
 
 
 def oli():
     warbands = [Warband(), Warband()]
-    warbands[1].add_minion(RefreshingAnomaly())
+    amal = Amalgadon(8, 8).set_taunt()
+    amal.death_rattles = [amal.amalgadon_deathrattle]
+    warbands[1].add_minion(amal)
+    warbands[1].add_minion(Kalecgos(17, 31))
+    warbands[1].add_minion(PrizedPromoDrake(27, 21).make_golden())
+    warbands[1].add_minion(CobaltScalebane(29, 38).make_golden().set_taunt())
+    warbands[1].add_minion(RazorgoretheUntamed(55, 59).set_taunt())
+    warbands[1].add_minion(Amalgadon(22, 27).set_taunt().set_poisonous())
+    warbands[1].add_minion(ArmoftheEmpire())
     return warbands[1]
 
 
@@ -295,8 +309,8 @@ def setup_top():
 if __name__ == "__main__":
     # top_warband = setup_top()
     # bottom_warband = setup_bottom()
-    top_warband = andre_søn()
-    bottom_warband = oliver_søn()
+    top_warband = oli()
+    bottom_warband = esben_ny()
     # top_warband.make_all_minions_golden()
     # bottom_warband.make_all_minions_golden()
     print_boards()

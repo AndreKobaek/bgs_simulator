@@ -1,0 +1,274 @@
+Top board:
+Amalgadon: 8 / 8 - T
+Kalecgos: 17 / 31
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 34 / 43 - T
+Razorgore, the Untamed: 55 / 59 - T
+Amalgadon: 22 / 27 - T - P
+Arm of the Empire: 4 / 4
+
+Bottom board:
+Crackling Cyclone: 31 / 28 - DS
+RecyclingWraith: 20 / 19
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 84 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 13 - T
+
+----------- TURN 0 -------------
+
+Top:
+Amalgadon: 8 / 8 - T
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 46 / 55 - T
+Razorgore, the Untamed: 55 / 59 - T
+Amalgadon: 22 / 27 - T - P
+Arm of the Empire: 4 / 4
+
+Defender: Razorgore, the Untamed: 55 / 59 - T 4
+
+Bottom:
+Crackling Cyclone: 31 / 28 - DS
+RecyclingWraith: 20 / 19
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 84 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 13 - T
+
+Attacker: Crackling Cyclone: 31 / 28 - DS 0
+
+------ END OF TURN 0 -------------
+----------- TURN 0 -------------
+
+Top:
+Amalgadon: 8 / 8 - T
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 46 / 55 - T
+Razorgore, the Untamed: 57 / 28 - T
+Amalgadon: 22 / 27 - T - P
+Arm of the Empire: 4 / 4
+
+Defender: Amalgadon: 22 / 27 - T - P 5
+
+Bottom:
+Crackling Cyclone: 31 / 28
+RecyclingWraith: 20 / 19
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 84 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 13 - T
+
+Attacker: Crackling Cyclone: 31 / 28 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Amalgadon: 8 / 8 - T
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 46 / 55 - T
+Razorgore, the Untamed: 57 / 28 - T
+Arm of the Empire: 4 / 4
+
+Attacker: Amalgadon: 8 / 8 - T 0
+
+Bottom:
+RecyclingWraith: 20 / 19
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 84 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 13 - T
+
+Defender: Molten Rock: 77 / 84 - T 3
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Plant: 1 / 1
+Plant: 1 / 1
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 46 / 55 - T
+Razorgore, the Untamed: 57 / 28 - T
+Arm of the Empire: 4 / 4
+
+Defender: Razorgore, the Untamed: 57 / 28 - T 5
+
+Bottom:
+RecyclingWraith: 20 / 19
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 13 - T
+
+Attacker: RecyclingWraith: 20 / 19 0
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Plant: 1 / 1
+Plant: 1 / 1
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 46 / 55 - T
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Attacker: Plant: 1 / 1 0
+
+Bottom:
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 13 - T
+
+Defender: Party Elemental: 21 / 13 - T 4
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Plant: 1 / 1
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 46 / 55 - T
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Defender: Cobalt Scalebane: 46 / 55 - T 3
+
+Bottom:
+Lil' Rag: 9 / 9
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 12 - T
+
+Attacker: Lil' Rag: 9 / 9 0
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Plant: 1 / 1
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 48 / 46 - T
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Attacker: Plant: 1 / 1 0
+
+Bottom:
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 22 - T
+Party Elemental: 21 / 12 - T
+
+Defender: Annihilan Battlemaster: 28 / 22 - T 2
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 48 / 46 - T
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Defender: Cobalt Scalebane: 48 / 46 - T 2
+
+Bottom:
+Dazzling Lightspawn: 9 / 10
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 21 - T
+Party Elemental: 21 / 12 - T
+
+Attacker: Dazzling Lightspawn: 9 / 10 0
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Kalecgos: 29 / 43
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 50 / 37 - T
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Attacker: Kalecgos: 29 / 43 0
+
+Bottom:
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 21 - T
+Party Elemental: 21 / 12 - T
+
+Defender: Party Elemental: 21 / 12 - T 2
+
+------ END OF TURN 7 -------------
+----------- TURN 8 -------------
+
+Top:
+Kalecgos: 29 / 22
+Prized Promo-Drake: 32 / 26
+Cobalt Scalebane: 50 / 37 - T
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Defender: Cobalt Scalebane: 50 / 37 - T 2
+
+Bottom:
+Molten Rock: 77 / 76 - T
+Annihilan Battlemaster: 28 / 21 - T
+
+Attacker: Molten Rock: 77 / 76 - T 0
+
+------ END OF TURN 8 -------------
+----------- TURN 9 -------------
+
+Top:
+Kalecgos: 29 / 22
+Prized Promo-Drake: 32 / 26
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Attacker: Prized Promo-Drake: 32 / 26 1
+
+Bottom:
+Molten Rock: 77 / 24 - T
+Annihilan Battlemaster: 28 / 21 - T
+
+Defender: Molten Rock: 77 / 24 - T 0
+
+------ END OF TURN 9 -------------
+----------- TURN 10 -------------
+
+Top:
+Kalecgos: 29 / 22
+Razorgore, the Untamed: 59 / 8 - T
+Arm of the Empire: 4 / 4
+
+Defender: Razorgore, the Untamed: 59 / 8 - T 1
+
+Bottom:
+Annihilan Battlemaster: 28 / 21 - T
+
+Attacker: Annihilan Battlemaster: 28 / 21 - T 0
+
+------ END OF TURN 10 -------------
+Outcome: [0.0, 0.0, 100.0]
+Average damage: [0.0, 0.0, 9.0]
+Average turns: 11.00
+Turns / Time 5409.47

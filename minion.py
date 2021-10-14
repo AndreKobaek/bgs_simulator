@@ -135,14 +135,14 @@ class Minion(object):
     def _reborn(
         self,
     ):
-        golden = self.golden == 2
-        self.__init__()
-        if golden:
+        reborn = deepcopy(self)
+        reborn.__init__()
+        if self.golden == 2:
             self.make_golden()
-        self._set_attack_and_health(self.base_attack, 1)
-        self.damage_taken = self.base_health - 1
-        self.reborn = False
-        return self
+        reborn._set_attack_and_health(reborn.base_attack, 1)
+        reborn.damage_taken = reborn.base_health - 1
+        reborn.reborn = False
+        return reborn
 
     def update_death_observers(self):
         self.death_observers = [

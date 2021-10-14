@@ -67,13 +67,16 @@ class Warband(object):
     def update_warband(self):
         for minion in self.minions:
             if not minion.alive and TRIBE_MECH in minion.tribe:
-                dead_mech = deepcopy(minion)
-                dead_mech.__init__()
-                if minion.golden == 2:
-                    dead_mech.make_golden()
-                self.dead_mechs.append(dead_mech)
+                self.add_dead_mechs_if_dead(minion)
         self.minions = [x for x in self.minions if x.alive]
         self.summon_observers = [x for x in self.summon_observers if x.alive]
+
+    def add_dead_mechs_if_dead(self, dead_minion: Minion = None):
+        dead_mech = deepcopy(dead_minion)
+        dead_mech.__init__()
+        if dead_minion.golden == 2:
+            dead_mech.make_golden()
+        self.dead_mechs.append(dead_mech)
 
     def sniped(self, damage: int, dealer_minion: Minion, shooter_warband):
         receiver = get_random_minion(self.minions)
@@ -101,14 +104,19 @@ class Warband(object):
             return khadgars
 
     def remove_minion(self, dead_minion: Minion):
-        self.minions = [minion for minion in self.minions if minion is not dead_minion]
+        if TRIBE_MECH in dead_minion.tribe:
+            self.add_dead_mechs_if_dead(dead_minion)
+        if dead_minion in self.summon_observers:
+            self.summon_observers.remove(dead_minion)
+        self.minions.remove(dead_minion)
 
     def summon_minions(self, summoner: Minion, minions: List[Minion], opponent_warband):
         minions_2_sum = deepcopy(minions)
         number_of_attacks = summoner.number_of_attacks
         summoner_position = self.minions.index(summoner) + 1
+        scales = self.summon_scale()
         for minion in minions_2_sum:
-            for scale in self.summon_scale():
+            for scale in scales:
                 summoned_minions = self.summon_minion(
                     summoner_position,
                     number_of_attacks,
@@ -119,8 +127,6 @@ class Warband(object):
                 summoner_position += len(summoned_minions)
                 for sum_minion in summoned_minions:
                     sum_minion.execute_summon_effect(self, opponent_warband)
-            else:
-                break
 
     def summon_minion(
         self,

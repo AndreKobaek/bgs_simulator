@@ -11,6 +11,7 @@ from minions import (
     Alleycat,
     Amalgadon,
     AnnihilanBattlemaster,
+    AnnoyoModule,
     ArmoftheEmpire,
     BaronRivendare,
     BristlebackKnight,
@@ -29,6 +30,7 @@ from minions import (
     ImpulsiveTrickster,
     InsatiableUrzul,
     Kalecgos,
+    KangorsApprentice,
     Leapfrogger,
     LilRag,
     MajordomoExecutus,
@@ -118,7 +120,7 @@ def test_case_4(warbands: List[Warband]):
     warbands[1].add_minion(Sellemental())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [96.0, 2.8, 1.2], "Results were not as expected"
+    assert results == [95.9, 3.0, 1.1], "Results were not as expected"
 
 
 def test_case_5(warbands: List[Warband]):
@@ -193,6 +195,9 @@ def test_case_8(warbands: List[Warband]):
 
 
 def test_case_9(warbands: List[Warband]):
+    # https://youtu.be/uLWnl2_KZCo?t=783
+    # [56.9, 26.6, 16.5]
+
     warbands[0].add_minion(RazorgoretheUntamed(29, 25))
     warbands[0].add_minion(CobaltScalebane(10, 7))
     warbands[0].add_minion(PrizedPromoDrake(7, 7))
@@ -210,10 +215,13 @@ def test_case_9(warbands: List[Warband]):
     warbands[1].add_minion(ImpatientDoomsayer())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [61.5, 24.8, 13.7], "Results were not as expected"
+    assert results == [57.5, 25.1, 17.4], "Results were not as expected"
 
 
 def test_case_10(warbands: List[Warband]):
+    # https://youtu.be/uLWnl2_KZCo?t=1114
+    # [74.9, 13.4, 11.7]
+
     warbands[0].add_minion(CracklingCyclone(31, 28))
     warbands[0].add_minion(RecyclingWraith(20, 19))
     warbands[0].add_minion(LilRag(9, 9))
@@ -238,6 +246,10 @@ def test_case_10(warbands: List[Warband]):
 
 
 def test_case_11(warbands: List[Warband]):
+
+    # https://youtu.be/MHkPMkxj4HE?t=728
+    # [49.7, 21.0, 29.3]
+
     warbands[0].add_minion(CracklingCyclone(13, 10))
     warbands[0].add_minion(CracklingCyclone(23, 20))
     warbands[0].add_minion(BristlebackKnight(9, 13))
@@ -304,3 +316,18 @@ def test_edge_case_for_summoning_2(warbands: List[Warband]):
         )
     board.bottom_warband.update_warband()
     assert len(board.bottom_warband.minions) == 6
+
+
+def test_kangor(warbands: List[Warband]):
+    warbands[0].add_minion(AnnoyoModule())
+    warbands[0].add_minion(AnnoyoModule())
+    warbands[0].add_minion(KangorsApprentice())
+
+    warbands[1].add_minion(Sellemental(6, 11))
+
+    board = Board(warbands[0], warbands[1])
+    board.battle()
+    assert board.top_warband.minions[0].divine_shield
+    assert board.top_warband.minions[1].divine_shield
+    assert board.top_warband.minions[0].attack == 2
+    assert board.top_warband.minions[1].attack == 2

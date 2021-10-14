@@ -583,6 +583,7 @@ class UnstableGhoul(Minion):
         self.name = "Unstable Ghoul"
         self.tier = 2
         self._set_attack_and_health(1, 3)
+        self.taunt = True
         self.death_rattles = [self.unstableghoul_deathrattle]
 
     def unstableghoul_deathrattle(
@@ -629,6 +630,7 @@ class YoHoOgre(Minion):
         self.name = "Yo-Ho-Ogre"
         self.tier = 2
         self.tribe = [TRIBE_PIRATE]
+        self.taunt = True
         self._set_attack_and_health(2, 6)
         self.post_damage_observers = [self]
 
@@ -1053,6 +1055,7 @@ class TwilightEmissary(Minion):
         super().__init__(attack, health)
         self.name = "Twilight Emissary"
         self.tier = 3
+        self.taunt = True
         self.tribe = [TRIBE_DRAGON]
         self._set_attack_and_health(4, 4)
 
@@ -1200,6 +1203,7 @@ class DynamicDuo(Minion):
         self.name = "Dynamic Duo"
         self._set_attack_and_health(4, 5)
         self.tier = 4
+        self.taunt = True
         self.tribe = [TRIBE_QUILBOAR]
 
 
@@ -1701,6 +1705,7 @@ class MasterofRealities(Minion):
         self.name = "Master of Realities"
         self._set_attack_and_health(6, 6)
         self.tier = 5
+        self.taunt = True
 
     def register_observable(self, own_warband: Warband, opponent_warband: Warband):
         for minion in own_warband.minions:
