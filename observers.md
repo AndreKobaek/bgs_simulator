@@ -37,8 +37,7 @@ Yo-Ho-Ogre
 Imp Mama
 
 # TODO
-Khadgar
-Zapp
+Khadgar -testing
 Southsea Captain
 
 # Start_of_combat

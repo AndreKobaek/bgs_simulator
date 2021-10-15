@@ -1,14 +1,16 @@
 from copy import deepcopy
 from random import randint
+from typing import List
 from board import combat_sequence
 from warband import (
     Warband,
     get_deathrattle_minion,
     get_highest_health_minion,
-    get_next_defender,
 )
 from warband import get_random_minion
-from minion import Minion, execute_deathrattles
+from minion import Minion, execute_deathrattles, get_next_defender
+import sys
+
 from settings import (
     TRIBE_BEAST,
     TRIBE_DEMON,
@@ -2227,6 +2229,21 @@ class ZappSlywick(Minion):
         self._set_attack_and_health(7, 10)
         self.tier = 6
         self.windfury = 1
+
+    def get_next_defender(self, minions: List[Minion]):
+        min_attack = sys.maxsize
+        possible_defenders = []
+        for minion in minions:
+            if minion.health > 0 and minion.alive:
+                if minion.attack < min_attack:
+                    min_attack = minion.attack
+                    possible_defenders = [minion]
+                if minion.attack == min_attack:
+                    possible_defenders.append(minion)
+        if possible_defenders != []:
+            return get_random_minion(possible_defenders)
+        else:
+            return None
 
 
 # ###### TOKEN MINIONS ########

@@ -1,0 +1,215 @@
+Top board:
+Bronze Warden: 10 / 3 - DS
+Tarecgosa: 32 / 30 - DS
+Prized Promo-Drake: 17 / 7 - DS
+Tarecgosa: 11 / 10 - DS
+Drakonid Enforcer: 11 / 10 - DS
+Micro Mummy: 14 / 8 - T - DS
+Annoy-o-Module: 2 / 4 - T - DS
+
+Bottom board:
+Unstable Ghoul: 1 / 3 - T
+Scallywag: 2 / 1
+Scallywag: 2 / 1
+Dread Admiral Eliza: 12 / 14
+Khadgar: 5 / 5
+Khadgar: 4 / 4
+Baron Rivendare: 4 / 10
+
+----------- TURN 0 -------------
+
+Top:
+Bronze Warden: 10 / 3 - DS
+Tarecgosa: 37 / 35 - DS
+Prized Promo-Drake: 17 / 7 - DS
+Tarecgosa: 16 / 15 - DS
+Drakonid Enforcer: 11 / 10 - DS
+Micro Mummy: 14 / 8 - T - DS
+Annoy-o-Module: 2 / 4 - T - DS
+
+Defender: Annoy-o-Module: 2 / 4 - T - DS 6
+
+Bottom:
+Unstable Ghoul: 1 / 3 - T
+Scallywag: 2 / 1
+Scallywag: 2 / 1
+Dread Admiral Eliza: 12 / 14
+Khadgar: 5 / 5
+Khadgar: 4 / 4
+Baron Rivendare: 4 / 10
+
+Attacker: Unstable Ghoul: 1 / 3 - T 0
+
+------ END OF TURN 0 -------------
+----------- TURN 1 -------------
+
+Top:
+Bronze Warden: 10 / 3 - DS
+Tarecgosa: 37 / 35 - DS
+Prized Promo-Drake: 17 / 7 - DS
+Tarecgosa: 16 / 15 - DS
+Drakonid Enforcer: 13 / 12 - DS
+Micro Mummy: 14 / 8 - T - DS
+Annoy-o-Module: 2 / 4 - T
+
+Attacker: Bronze Warden: 10 / 3 - DS 0
+
+Bottom:
+Unstable Ghoul: 1 / 1 - T
+Scallywag: 2 / 1
+Scallywag: 2 / 1
+Dread Admiral Eliza: 12 / 14
+Khadgar: 5 / 5
+Khadgar: 4 / 4
+Baron Rivendare: 4 / 10
+
+Defender: Unstable Ghoul: 1 / 1 - T 0
+
+------ END OF TURN 1 -------------
+----------- TURN 2 -------------
+
+Top:
+Bronze Warden: 10 / 1
+Tarecgosa: 37 / 34
+Tarecgosa: 16 / 14
+Drakonid Enforcer: 25 / 23
+Micro Mummy: 1 / 2
+
+Defender: Drakonid Enforcer: 25 / 23 3
+
+Bottom:
+Sky Pirate: 217 / 76
+Sky Pirate: 217 / 76
+Sky Pirate: 217 / 76
+Dread Admiral Eliza: 84 / 48
+Khadgar: 77 / 39
+Khadgar: 76 / 38
+Baron Rivendare: 76 / 44
+
+Attacker: Sky Pirate: 217 / 76 0
+
+------ END OF TURN 2 -------------
+----------- TURN 3 -------------
+
+Top:
+Bronze Warden: 10 / 1
+Tarecgosa: 37 / 34
+Tarecgosa: 16 / 14
+Micro Mummy: 1 / 2
+
+Attacker: Tarecgosa: 37 / 34 1
+
+Bottom:
+Sky Pirate: 289 / 87
+Sky Pirate: 289 / 87
+Sky Pirate: 289 / 87
+Dread Admiral Eliza: 108 / 60
+Khadgar: 101 / 51
+Khadgar: 100 / 50
+Baron Rivendare: 100 / 56
+
+Defender: Sky Pirate: 289 / 87 0
+
+------ END OF TURN 3 -------------
+----------- TURN 4 -------------
+
+Top:
+Bronze Warden: 10 / 1
+Tarecgosa: 16 / 14
+Micro Mummy: 1 / 2
+
+Defender: Tarecgosa: 16 / 14 1
+
+Bottom:
+Sky Pirate: 289 / 50
+Sky Pirate: 289 / 50
+Sky Pirate: 289 / 50
+Dread Admiral Eliza: 108 / 60
+Khadgar: 101 / 51
+Khadgar: 100 / 50
+Baron Rivendare: 100 / 56
+
+Attacker: Dread Admiral Eliza: 108 / 60 3
+
+------ END OF TURN 4 -------------
+----------- TURN 5 -------------
+
+Top:
+Bronze Warden: 10 / 1
+Micro Mummy: 1 / 2
+
+Attacker: Micro Mummy: 1 / 2 1
+
+Bottom:
+Sky Pirate: 301 / 56
+Sky Pirate: 301 / 56
+Sky Pirate: 301 / 56
+Dread Admiral Eliza: 112 / 46
+Khadgar: 105 / 53
+Khadgar: 104 / 52
+Baron Rivendare: 104 / 58
+
+Defender: Sky Pirate: 301 / 56 0
+
+------ END OF TURN 5 -------------
+----------- TURN 6 -------------
+
+Top:
+Bronze Warden: 10 / 1
+
+Defender: Bronze Warden: 10 / 1 0
+
+Bottom:
+Sky Pirate: 301 / 55
+Sky Pirate: 301 / 55
+Sky Pirate: 301 / 55
+Dread Admiral Eliza: 112 / 46
+Khadgar: 105 / 53
+Khadgar: 104 / 52
+Baron Rivendare: 104 / 58
+
+Attacker: Khadgar: 105 / 53 4
+
+------ END OF TURN 6 -------------
+----------- TURN 7 -------------
+
+Top:
+Bronze Warden: 2 / 1 - DS
+
+Attacker: Bronze Warden: 2 / 1 - DS 0
+
+Bottom:
+Sky Pirate: 301 / 55
+Sky Pirate: 301 / 55
+Sky Pirate: 301 / 55
+Dread Admiral Eliza: 112 / 46
+Khadgar: 105 / 43
+Khadgar: 104 / 52
+Baron Rivendare: 104 / 58
+
+Defender: Sky Pirate: 301 / 55 0
+
+------ END OF TURN 7 -------------
+----------- TURN 8 -------------
+
+Top:
+Bronze Warden: 2 / 1
+
+Defender: Bronze Warden: 2 / 1 0
+
+Bottom:
+Sky Pirate: 301 / 53
+Sky Pirate: 301 / 53
+Sky Pirate: 301 / 53
+Dread Admiral Eliza: 112 / 46
+Khadgar: 105 / 43
+Khadgar: 104 / 52
+Baron Rivendare: 104 / 58
+
+Attacker: Khadgar: 104 / 52 5
+
+------ END OF TURN 8 -------------
+Outcome: [100.0, 0.0, 0.0]
+Average damage: [20.0, 0.0, 0.0]
+Average turns: 9.00
+Turns / Time 2928.98

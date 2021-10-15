@@ -22,6 +22,7 @@ from minions import (
     DazzlingLightspawn,
     DeckSwabbie,
     DeflectoBot,
+    DrakonidEnforcer,
     DreadAdmiralEliza,
     EvolvingChromawing,
     FreedealingGambler,
@@ -29,6 +30,7 @@ from minions import (
     Ghastcoiler,
     GlyphGuadrdian,
     HarvestGolem,
+    HolyMecherel,
     IckyImp,
     ImpMama,
     ImpatientDoomsayer,
@@ -37,6 +39,7 @@ from minions import (
     InsatiableUrzul,
     Kalecgos,
     KangorsApprentice,
+    Khadgar,
     Leapfrogger,
     LilRag,
     MajordomoExecutus,
@@ -44,6 +47,7 @@ from minions import (
     MechanoEgg,
     MechanoTank,
     MicroBot,
+    MicroMummy,
     MoltenRock,
     MonstrousMacaw,
     Murozond,
@@ -53,6 +57,7 @@ from minions import (
     PartyElemental,
     PeggyBrittlebone,
     PrizedPromoDrake,
+    Pupbot,
     RabidSaurolisk,
     Rat,
     RatPack,
@@ -100,225 +105,53 @@ def print_boards():
     print("")
 
 
-def setup_bottom():
-    warband = Warband()
-    warband.add_minion(MonstrousMacaw())
-    SoN = SpawnOfNZoth()
-    SoN.reborn = True
-    warband.add_minion(SoN)
-    minion1 = GlyphGuadrdian()
-    minion1._add_stats(1, 1)
-    warband.add_minion(minion1)
-    warband.add_minion(GlyphGuadrdian())
-    warband.add_minion(RatPack())
-    warband.add_minion(StatisElemental())
-    return warband
-
-
-def boje():
-    warband = Warband()
-    warband.add_minion(GlyphGuadrdian())
-    selle = Sellemental()
-    selle._add_stats(1, 1)
-    warband.add_minion(selle)
-    warband.add_minion(Sellemental())
-    warband.add_minion(Sellemental())
-    warband.add_minion(PartyElemental())
-    warband.add_minion(RedWhelp())
-    return warband
-
-
-def boje_opponent():
-    warband = Warband()
-    warband.add_minion(Sellemental())
-    warband.add_minion(Sellemental())
-    warband.add_minion(AcolyteOfCthun())
-    return warband
-
-
-def Esben1():
-    warband = Warband()
-    warband.add_minion(ImpulsiveTrickster())
-    warband.add_minion(Imprisoner())
-    razor = RazorgoretheUntamed()
-    razor._add_stats(2, 2)
-    warband.add_minion(razor)
-    warband.add_minion(TwilightEmissary())
-    juggler = SoulJuggler()
-    juggler.make_golden()
-    warband.add_minion(juggler)
-    # 22.7 35.7 41.6
-    return warband
-
-
-def Esben1_opp():
-    warband = Warband()
-    warband.add_minion(GlyphGuadrdian())
-    warband.add_minion(BronzeWarden())
-    selle = Sellemental()
-    selle._add_stats(6, 6)
-    warband.add_minion(selle)
-    razor = RazorgoretheUntamed()
-    razor._add_stats(4, 4)
-    warband.add_minion(razor)
-    warband.add_minion(PartyElemental())
-    redwhelp = RedWhelp()
-    redwhelp._add_stats(1, 0)
-    return warband
-
-
-def Esben2():
-    warbands: List[Warband] = [Warband(), Warband()]
-    party1 = PartyElemental()
-    party1.make_golden()
-    party1._add_stats(8, 8)
-    warbands[0].add_minion(party1)
-    selle = Sellemental()
-    selle._add_stats(11, 11)
-    warbands[0].add_minion(selle)
-    party2 = PartyElemental()
-    party2._add_stats(5, 5)
-    warbands[0].add_minion(party2)
-    warbands[0].add_minion(MajordomoExecutus())
-    refresh = RefreshingAnomaly()
-    refresh._add_stats(4, 4)
-    warbands[0].add_minion(refresh)
-    molten = MoltenRock()
-    molten._add_stats(7, 7)
-    warbands[0].add_minion(molten)
-    warbands[0].add_minion(NomiKitchenNightmare())
-    return warbands[0]
-
-
-def Esben_opp2():
-    warbands: List[Warband] = [Warband(), Warband()]
-    SoN = SpawnOfNZoth()
-    SoN.make_golden()
-    warbands[1].add_minion(SoN)
-    wfe = WildfireElemental()
-    wfe._add_stats(4, 4)
-    warbands[1].add_minion(wfe)
-    peggy = PeggyBrittlebone()
-    peggy._add_stats(3, 3)
-    warbands[1].add_minion(peggy)
-    hog1 = CapnHoggarr()
-    hog1._add_stats(5, 5)
-    warbands[1].add_minion(hog1)
-    hog2 = CapnHoggarr()
-    hog2._add_stats(18, 18)
-    warbands[1].add_minion(hog2)
-    ss = SouthseaStrongarm()
-    ss._add_stats(1, 1)
-    warbands[1].add_minion(ss)
-    warbands[1].add_minion(SouthseaCaptian())
-    return warbands[1]
-
-
-def andre_søn():
+def dogdog():
     warbands = [Warband(), Warband()]
-    warbands[0].add_minion(CracklingCyclone(31, 28))
-    warbands[0].add_minion(RecyclingWraith(20, 19))
-    warbands[0].add_minion(LilRag(9, 9))
-    warbands[0].add_minion(DazzlingLightspawn(9, 10))
-    warbands[0].add_minion(MoltenRock(77, 84))
-    warbands[0].add_minion(AnnihilanBattlemaster(28, 22).set_taunt())
-    warbands[0].add_minion(PartyElemental(18, 11).make_golden().set_taunt())
-
-    return warbands[0]
-
-
-def oliver_søn():
-    warbands = [Warband(), Warband()]
-    amal = Amalgadon(8, 8).set_taunt()
-    amal.death_rattles = [amal.amalgadon_deathrattle]
-    warbands[1].add_minion(amal)
-    warbands[1].add_minion(Kalecgos(17, 31))
-    warbands[1].add_minion(PrizedPromoDrake(27, 21).make_golden())
-    warbands[1].add_minion(CobaltScalebane(29, 38).make_golden().set_taunt())
-    warbands[1].add_minion(RazorgoretheUntamed(55, 59).set_taunt())
-    warbands[1].add_minion(Amalgadon(22, 27).set_taunt().set_poisonous())
-    warbands[1].add_minion(ArmoftheEmpire())
-
-    return warbands[1]
-
-
-def boje_søn():
-    warbands = [Warband(), Warband()]
-    warbands[1].add_minion(MonstrousMacaw())
-    warbands[1].add_minion(MonstrousMacaw())
-    warbands[1].add_minion(OmegaBuster())
-    warbands[1].add_minion(DeflectoBot())
-    warbands[1].add_minion(BaronRivendare())
-    warbands[1].add_minion(DeflectoBot())
-    warbands[1].add_minion(AcolyteOfCthun(6, 2).make_golden())
-    return warbands[1]
-
-
-def esben_søn():
-    warbands = [Warband(), Warband()]
+    warbands[0].add_minion(UnstableGhoul())
     warbands[0].add_minion(Scallywag())
-    warbands[0].add_minion(Scallywag(3, 2).set_taunt())
-    warbands[0].add_minion(Scallywag(13, 16).make_golden().set_taunt())
-    warbands[0].add_minion(TonyTwoTusk(14, 51))
-    warbands[0].add_minion(PeggyBrittlebone())
+    warbands[0].add_minion(Scallywag())
     warbands[0].add_minion(DreadAdmiralEliza().make_golden())
-    warbands[0].add_minion(BaronRivendare())
+    warbands[0].add_minion(Khadgar(3, 3).make_golden())
+    warbands[0].add_minion(Khadgar(4, 4))
+    warbands[0].add_minion(BaronRivendare(4, 10))
     return warbands[0]
 
 
-def esben_ny():
+def dogopp():
     warbands = [Warband(), Warband()]
-    warbands[0].add_minion(CracklingCyclone(31, 28))
-    warbands[0].add_minion(RecyclingWraith(20, 19))
-    warbands[0].add_minion(LilRag(9, 9))
-    warbands[0].add_minion(DazzlingLightspawn(9, 10))
-    warbands[0].add_minion(MoltenRock(77, 84))
-    warbands[0].add_minion(AnnihilanBattlemaster(28, 22).set_taunt())
-    warbands[0].add_minion(PartyElemental(18, 11).make_golden().set_taunt())
-    return warbands[0]
-
-
-def oli():
-    warbands = [Warband(), Warband()]
-    amal = Amalgadon(8, 8).set_taunt()
-    amal.death_rattles = [amal.amalgadon_deathrattle]
-    warbands[1].add_minion(amal)
-    warbands[1].add_minion(Kalecgos(17, 31))
-    warbands[1].add_minion(PrizedPromoDrake(27, 21).make_golden())
-    warbands[1].add_minion(CobaltScalebane(29, 38).make_golden().set_taunt())
-    warbands[1].add_minion(RazorgoretheUntamed(55, 59).set_taunt())
-    warbands[1].add_minion(Amalgadon(22, 27).set_taunt().set_poisonous())
-    warbands[1].add_minion(ArmoftheEmpire())
+    warbands[1].add_minion(BronzeWarden(10, 3))
+    warbands[1].add_minion(Tarecgosa(32, 30).set_ds())
+    warbands[1].add_minion(PrizedPromoDrake(17, 7).set_ds())
+    warbands[1].add_minion(Tarecgosa(11, 10).set_ds())
+    warbands[1].add_minion(DrakonidEnforcer(11, 10).set_ds())
+    warbands[1].add_minion(MicroMummy(13, 6).make_golden().set_ds().set_taunt())
+    warbands[1].add_minion(AnnoyoModule())
     return warbands[1]
+    # 100% loss
 
 
-def setup_top():
-    warband = Warband()
-    evolve = EvolvingChromawing()
-    evolve._add_stats(12, 15)
-    warband.add_minion(evolve)
-    selle = Sellemental()
-    selle._add_stats(9, 9)
-    warband.add_minion(selle)
-    smuggler = WhelpSmuggler()
-    smuggler._add_stats(4, 4)
-    warband.add_minion(smuggler)
-    return warband
+def dogopp2():
+    warbands = [Warband(), Warband()]
+    warbands[1].add_minion(OmegaBuster(24, 17).set_ds().set_taunt())
+    warbands[1].add_minion(HolyMecherel(26, 13))
+    warbands[1].add_minion(Pupbot(14, 6).make_golden())
+    warbands[1].add_minion(OmegaBuster())
+    warbands[1].add_minion(KangorsApprentice().make_golden())
+    warbands[1].add_minion(BaronRivendare(3, 9))
+    warbands[1].add_minion(MechanoTank(8, 3).make_golden())
+
+    return warbands[1]
 
 
 if __name__ == "__main__":
-    # top_warband = setup_top()
-    # bottom_warband = setup_bottom()
-    top_warband = oli()
-    bottom_warband = esben_ny()
-    # top_warband.make_all_minions_golden()
-    # bottom_warband.make_all_minions_golden()
+    top_warband = dogopp()
+    bottom_warband = dogdog()
     print_boards()
 
     turns = []
     results = [0] * 3
     average_damage = [0] * 3
-    iterations = 1  # _000
+    iterations = 1_000
     bar = progressbar.ProgressBar(
         maxval=iterations,
         widgets=[

@@ -1,8 +1,7 @@
-from copy import deepcopy
 from random import seed
 from typing import List
 import pytest
-from board import Board, register_observers
+from board import Board
 from main import execute_battles
 from minion import on_death
 from minions import (
@@ -14,7 +13,9 @@ from minions import (
     AnnoyoModule,
     ArmoftheEmpire,
     BaronRivendare,
+    BrinyBootlegger,
     BristlebackKnight,
+    BronzeWarden,
     CapnHoggarr,
     CaptainFlatTusk,
     CobaltScalebane,
@@ -31,9 +32,11 @@ from minions import (
     InsatiableUrzul,
     Kalecgos,
     KangorsApprentice,
+    Khadgar,
     Leapfrogger,
     LilRag,
     MajordomoExecutus,
+    MicroMummy,
     MoltenRock,
     MonstrousMacaw,
     Murozond,
@@ -63,6 +66,7 @@ from minions import (
     Voidlord,
     WildfireElemental,
     WrathWeaver,
+    ZappSlywick,
 )
 from warband import Warband, get_highest_health_minion
 
@@ -120,7 +124,7 @@ def test_case_4(warbands: List[Warband]):
     warbands[1].add_minion(Sellemental())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [95.9, 3.0, 1.1], "Results were not as expected"
+    assert results == [95.0, 4.0, 1.0], "Results were not as expected"
 
 
 def test_case_5(warbands: List[Warband]):
@@ -132,7 +136,7 @@ def test_case_5(warbands: List[Warband]):
 
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [51.0, 49.0, 0.0], "Results were not as expected"
+    assert results == [48.5, 51.5, 0.0], "Results were not as expected"
 
 
 def test_case_6(warbands: List[Warband]):
@@ -170,7 +174,7 @@ def test_case_7(warbands: List[Warband]):
 
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [0.5, 5.9, 93.6], "Results were not as expected"
+    assert results == [1.1, 4.9, 94.0], "Results were not as expected"
 
 
 def test_case_8(warbands: List[Warband]):
@@ -215,7 +219,7 @@ def test_case_9(warbands: List[Warband]):
     warbands[1].add_minion(ImpatientDoomsayer())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [57.5, 25.1, 17.4], "Results were not as expected"
+    assert results == [57.3, 24.9, 17.8], "Results were not as expected"
 
 
 def test_case_10(warbands: List[Warband]):
@@ -242,7 +246,7 @@ def test_case_10(warbands: List[Warband]):
     seed(1)
 
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [12.5, 13.0, 74.5], "Results were not as expected"
+    assert results == [10.9, 13.3, 75.8], "Results were not as expected"
 
 
 def test_case_11(warbands: List[Warband]):
@@ -267,7 +271,7 @@ def test_case_11(warbands: List[Warband]):
     warbands[1].add_minion(ImpulsiveTrickster(10, 10).make_golden().set_taunt())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [28.6, 20.6, 50.8], "Results were not as expected"
+    assert results == [28.4, 23.5, 48.1], "Results were not as expected"
 
 
 def test_peggy(warbands: List[Warband]):
@@ -331,3 +335,68 @@ def test_kangor(warbands: List[Warband]):
     assert board.top_warband.minions[1].divine_shield
     assert board.top_warband.minions[0].attack == 2
     assert board.top_warband.minions[1].attack == 2
+
+
+def test_khadgar_den_hard_one(warbands: List[Warband]):
+    warbands[1].add_minion(ImpMama())
+    warbands[1].add_minion(Khadgar())
+
+    board = Board(warbands[0], warbands[1])
+
+    board.bottom_warband.minions[0].take_damage_2(
+        1, None, board.bottom_warband, board.top_warband
+    )
+
+    assert len(board.bottom_warband.minions) == 4
+
+
+def test_khadgar_den_hard_two(warbands: List[Warband]):
+    warbands[1].add_minion(ImpMama())
+    warbands[1].add_minion(Khadgar())
+    warbands[1].add_minion(Khadgar())
+
+    board = Board(warbands[0], warbands[1])
+
+    board.bottom_warband.minions[0].take_damage_2(
+        1, None, board.bottom_warband, board.top_warband
+    )
+
+    assert len(board.bottom_warband.minions) == 7
+
+
+def test_case_21(warbands: List[Warband]):
+    # https://youtu.be/7i_gSaiwNJs?t=954
+    assert True
+
+
+def test_reborn(warbands: List[Warband]):
+    warbands[1].add_minion(BronzeWarden(10, 1))
+    on_death(warbands[1].minions[0], None, warbands[1], warbands[0])
+    assert warbands[1].minions[0].attack == 2
+
+
+def test_golden_reborn(warbands: List[Warband]):
+    warbands[1].add_minion(MicroMummy(10, 10).make_golden())
+
+    assert warbands[1].minions[0].attack == 11
+
+    assert warbands[1].minions[0].base_attack == 2
+
+    on_death(warbands[1].minions[0], None, warbands[1], warbands[0])
+
+    assert warbands[1].minions[0].attack == 2
+    assert warbands[1].minions[0].health == 1
+
+
+def test_zapp_slywick(warbands: List[Warband]):
+    warbands[1].add_minion(ZappSlywick())
+
+    warbands[0].add_minion(MicroMummy())
+    warbands[0].add_minion(AcolyteOfCthun())
+    warbands[0].add_minion(FreedealingGambler())
+    warbands[0].add_minion(BrinyBootlegger())
+
+    assert (
+        warbands[1].minions[0].get_next_defender(warbands[0].minions)
+        == warbands[0].minions[0]
+    )

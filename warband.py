@@ -1,8 +1,7 @@
 from copy import deepcopy
 from typing import List, Optional
 from settings import MAX_BOARDSIZE, TRIBE_MECH
-from minion import Minion
-from random import randint
+from minion import Minion, get_random_minion
 
 
 class Warband(object):
@@ -162,26 +161,6 @@ class Warband(object):
     def make_all_minions_golden(self):
         for minion in self.minions:
             minion.make_golden()
-
-
-def get_next_defender(minions: List[Minion]) -> Minion:
-    possible_defenders = [
-        minion for minion in minions if minion.health > 0 and minion.alive
-    ]
-    taunts = []
-    # Hvis du har en funktion der ikke opdaterer objektet selv, bør det være en util funk.
-    for minion in possible_defenders:
-        if minion.taunt:
-            taunts.append(minion)
-    if len(taunts) > 0:
-        return get_random_minion(taunts)
-    return get_random_minion(possible_defenders)
-
-
-def get_random_minion(minions: List[Minion]) -> Minion:
-    alive_minions = [x for x in minions if x.alive]
-    if alive_minions != []:
-        return alive_minions[randint(0, len(alive_minions) - 1)]
 
 
 def calculate_damage(minions: List[Minion]) -> int:

@@ -1,5 +1,5 @@
 from typing import List
-from warband import Warband, calculate_damage, get_next_defender
+from warband import Warband, calculate_damage
 from copy import deepcopy
 from random import randint, shuffle
 from minion import Minion, notify_observers, on_death, update_life_status
@@ -22,10 +22,12 @@ class Board(object):
 
     def battle(self):
         self._coin_flip()
-        for minion in self.attacker.minions:
-            minion.pre_combat_effect(self.attacker, self.defender)
-        for minion in self.defender.minions:
-            minion.pre_combat_effect(self.defender, self.attacker)
+
+        for pre_combat_setup in gather_pre_combat_effects(
+            self.top_warband, self.bottom_warband
+        ):
+            pre_combat_setup[0](pre_combat_setup[1], pre_combat_setup[2])
+
         turn = 0
         while self._can_battle():
             atk_minion: Minion = self.attacker.get_next_attacker()
@@ -39,7 +41,7 @@ class Board(object):
                 if atk_minion.windfury > 1
                 else 1
             ):
-                def_minion = get_next_defender(self.defender.minions)
+                def_minion = atk_minion.get_next_defender(self.defender.minions)
 
                 # Printing board state:
                 # self._print_board_state(turn, atk_minion, def_minion)
@@ -256,3 +258,17 @@ def add_deathrattles(
             deathrattle_handler[minion] = [own_warband, opponent_warband]
             return_value = True
     return return_value
+
+
+def gather_pre_combat_effects(top_warband: Warband, bottom_warband: Warband):
+    pre_combat_effects = []
+    for minion in top_warband.minions:
+        pre_combat_effects.append(
+            [minion.pre_combat_effect, top_warband, bottom_warband]
+        )
+    for minion in bottom_warband.minions:
+        pre_combat_effects.append(
+            [minion.pre_combat_effect, bottom_warband, top_warband]
+        )
+    shuffle(pre_combat_effects)
+    return pre_combat_effects

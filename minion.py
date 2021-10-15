@@ -1,5 +1,6 @@
 from copy import deepcopy
 from typing import List
+from random import randint
 
 
 class Minion(object):
@@ -138,8 +139,8 @@ class Minion(object):
         reborn = deepcopy(self)
         reborn.__init__()
         if self.golden == 2:
-            self.make_golden()
-        reborn._set_attack_and_health(reborn.base_attack, 1)
+            reborn.make_golden()
+        reborn.set_health(1)
         reborn.damage_taken = reborn.base_health - 1
         reborn.reborn = False
         return reborn
@@ -199,6 +200,9 @@ class Minion(object):
         self.divine_shield = False
         for divine_observer in self.divine_observers:
             divine_observer.notify(self, None, own_warband)
+
+    def get_next_defender(self, minions):
+        return get_next_defender(minions)
 
     def gain_divine_shield(self, own_warband):
         self.divine_shield = True
@@ -282,3 +286,23 @@ def notify_observers(
 ):
     for observer in observers:
         observer.notify(dealer_minion, receiver_minion, own_warband, opponent_warband)
+
+
+def get_random_minion(minions: List[Minion]) -> Minion:
+    alive_minions = [x for x in minions if x.alive]
+    if alive_minions != []:
+        return alive_minions[randint(0, len(alive_minions) - 1)]
+
+
+def get_next_defender(minions):
+    possible_defenders = [
+        minion for minion in minions if minion.health > 0 and minion.alive
+    ]
+    taunts = []
+    # Hvis du har en funktion der ikke opdaterer objektet selv, bør det være en util funk.
+    for minion in possible_defenders:
+        if minion.taunt:
+            taunts.append(minion)
+    if len(taunts) > 0:
+        return get_random_minion(taunts)
+    return get_random_minion(possible_defenders)
