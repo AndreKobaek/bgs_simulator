@@ -1,6 +1,7 @@
 from copy import deepcopy
 from typing import List
 from random import randint
+import json
 
 
 class Minion(object):
@@ -64,6 +65,9 @@ class Minion(object):
         self.post_damage_observers: List[Minion] = []
         self.buff_observers: List[Minion] = []
         self.death_observers: List[Minion] = []
+
+    def from_JSON(self, dict_object):
+        self.__dict__.update(dict_object)
 
     def make_golden(self):
         self.golden = 2
@@ -129,7 +133,7 @@ class Minion(object):
         self.health += incoming_health
 
     def __str__(self) -> str:
-        minion_print = f"{self.name}: {self.attack} / {self.health}{' - T' if self.taunt else ''}{' - DS' if self.divine_shield else ''}{' - P' if self.poisonous else ''}"
+        minion_print = f"{self.name}: {self.attack} / {self.health}{' - T' if self.taunt else ''}{' - R' if self.reborn else ''}{' - DS' if self.divine_shield else ''}{' - P' if self.poisonous else ''}"
         return minion_print
 
     # TODO redo as a summon of self instantiation

@@ -14,8 +14,6 @@ class Board(object):
     def __init__(self, top_warband, bottom_warband) -> None:
         self.top_warband = deepcopy(top_warband)
         self.bottom_warband = deepcopy(bottom_warband)
-        self.top_warband.name = "Top Warband"
-        self.bottom_warband.name = "Bottom Warband"
 
         register_observers(self.top_warband, self.bottom_warband)
         register_observers(self.bottom_warband, self.top_warband)

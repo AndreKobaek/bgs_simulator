@@ -32,6 +32,7 @@ from minions import (
     InsatiableUrzul,
     Kalecgos,
     KangorsApprentice,
+    Kathranatir,
     Khadgar,
     Leapfrogger,
     LilRag,
@@ -50,6 +51,7 @@ from minions import (
     ReanimatingRattler,
     RecyclingWraith,
     RefreshingAnomaly,
+    ReplicatingMenace,
     RipsnarlCaptain,
     Scallywag,
     SelflessHero,
@@ -124,7 +126,7 @@ def test_case_4(warbands: List[Warband]):
     warbands[1].add_minion(Sellemental())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [95.0, 4.0, 1.0], "Results were not as expected"
+    assert results == [95.7, 2.7, 1.6], "Results were not as expected"
 
 
 def test_case_5(warbands: List[Warband]):
@@ -219,7 +221,7 @@ def test_case_9(warbands: List[Warband]):
     warbands[1].add_minion(ImpatientDoomsayer())
     seed(1)
     results = execute_battles(warbands[0], warbands[1], 1_000)
-    assert results == [57.3, 24.9, 17.8], "Results were not as expected"
+    assert results == [52.9, 29.5, 17.6], "Results were not as expected"
 
 
 def test_case_10(warbands: List[Warband]):
@@ -400,3 +402,21 @@ def test_zapp_slywick(warbands: List[Warband]):
         warbands[1].minions[0].get_next_defender(warbands[0].minions)
         == warbands[0].minions[0]
     )
+
+
+def test_json_object():
+    warband = Warband()
+    warband.add_minion(Scallywag())
+    # warband.add_minion(Kathranatir())
+    minion = Amalgadon()
+    minion.death_rattles = [
+        minion.amalgadon_deathrattle,
+        ReplicatingMenace().replicatingmenace_deathrattle,
+    ]
+    warband.add_minion(minion)
+
+    json_obj = warband.toJSON()
+    new_warband = Warband()
+    new_warband.from_JSON(json_obj)
+
+    assert len(new_warband.minions[1].death_rattles) == 2

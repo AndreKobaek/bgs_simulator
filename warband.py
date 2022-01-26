@@ -2,19 +2,57 @@ from copy import deepcopy
 from typing import List, Optional
 from settings import MAX_BOARDSIZE, TRIBE_MECH
 from minion import Minion, get_random_minion
+import json
+import pickle
 
 
 class Warband(object):
-    def __init__(self) -> None:
-        self.minions: List[Minion] = []
+    def __init__(self, list_of_minions=None) -> None:
+        if list_of_minions is not None:
+            self.minions = list_of_minions
+        else:
+            self.minions: List[Minion] = []
         self.next_attacker = 0
         self.dead_mechs = []
         self.summon_observers: List[Minion] = []
         self.card_gain_observers: List[Minion] = []
         self.cards_in_hand: int = 0
 
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+    def toPickle(self):
+        return pickle.dumps(self, protocol=5)
+
+    def from_Pickle(self, pickle_object):
+        self = pickle.loads(pickle_object)
+
+    def from_JSON(self, json_object):
+        self.__dict__ = json.loads(json_object)
+        new_minions = []
+        for minion in self.minions:
+            import minions
+
+            class_ = getattr(minions, clean_minion_name(minion["name"]))
+            new_minion: Minion = class_()
+            deathrattles = minion.pop("death_rattles")
+            new_minion.from_JSON(minion)
+            if len(new_minion.death_rattles) < len(deathrattles):
+                if len(new_minion.death_rattles) == 1:
+                    deathrattles = deathrattles[1:]
+                for dr in deathrattles:
+                    insert_dr = getattr(minions, dr)
+                    new_minion.death_rattles.append(insert_dr)
+            new_minions.append(new_minion)
+        self.minions = new_minions
+
     def add_minion(self, minion):
         self.minions.append(minion)
+        return self
+
+    def add_list_of_minions(self, minions_list):
+        self.minions.extend(minions_list)
+        return self
 
     def __str__(self) -> str:
         return "\n".join([x.__str__() for x in self.minions])
@@ -138,7 +176,7 @@ class Warband(object):
         summoned_minions = []
         board_space = self._get_available_boardspace(amount_to_summon)
         for _ in range(board_space):
-            minion.number_of_attacks = number_of_attacks
+            minion.number_of_attacks = max(number_of_attacks - 1, 0)
             self.minions.insert(summoner_position, minion)
             for observers in self.minions:
                 observers.register_observable(self, opponent_warband)
@@ -161,6 +199,10 @@ class Warband(object):
     def make_all_minions_golden(self):
         for minion in self.minions:
             minion.make_golden()
+
+
+def clean_minion_name(name: str) -> str:
+    return "".join(e for e in name if e.isalnum())
 
 
 def calculate_damage(minions: List[Minion]) -> int:
